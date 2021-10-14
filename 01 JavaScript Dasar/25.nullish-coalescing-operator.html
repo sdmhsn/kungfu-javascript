@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nullish Coalescing Operator</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            nullish coalescing operator: operator untuk menyederhanakan penulisan seperti ternary operator
+            - menggunakan dua tanda tanya (??), kalo ternary satu tanda tanya (?)
+            - dikhusus untuk nullish value yaitu suatu value yang memenuhi kondisi undefined atau null baik menggunakan (&&) atau (||), yang akan berubah menjadi seperti apa yang diinginkan
+        */
+
+        /*
+        // 1. tanpa nullish operator:
+        let parameter;
+        let data = parameter;
+
+        if (data === undefined || data == null) {  // null bukan merupakan tipe data sehingga menggunakan operator ==
+            data = 'dilakukan pembaruan';
+        }
+
+        console.log(data);
+        */
+
+        /**/
+        // 2. dengan nullish operator:
+        let parameter1; // undefined
+        let data1 = parameter1 ?? 'dilakukan pembaruansss';  // memenuhi kondisi undefined (parameter === undefined), maka assign value string ke variable data1
+        console.log(data1);
+
+        let parameter2 = null; // null
+        let data2 = parameter2 ?? 'ini diaaa';  // memenuhi kondisi null (parameter == null) atau (true), maka assign value string ke variable data1
+        console.log(data2);
+
+        let data3 = null ?? 'nah loh'; // null. karena memenuhi kondisi null atau (true), maka assign value string ke variable data2
+        console.log(data3);
+
+        // tidak memenuhi nullish value
+        let parameter3 = 'my name is saddam'; // null
+        let data4 = parameter3 ?? 'ini diaaa';  // tidak memenuhi kondisi null atau undefined (false), maka nullish operator tidak dieksekusi
+        console.log(data4);
+    </script>
+</body>
+</html>

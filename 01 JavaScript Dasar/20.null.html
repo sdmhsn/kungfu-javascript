@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Null</title>
+</head>
+<body>
+    
+    <script>
+        /* 
+            Null: data yang sudah didefinisikan tapi kosong isinya (null) / direpresentasikan dengan data kosong
+            - kata kunci Null adalah datanya kosong
+            - Null dan undefined merupakan dua data yang berbeda. Variable dari data Null sudah diset / diassign value nya, tapi value tersebut berisi data kosong. Sedangkan Undefined bisa berarti variable yang belum diassign value nya / diset value nya dengan value undefined, atau suatu data yang tidak ditemukan index nya pada array maupun property yang tidak ditemukan pada object 
+            - Null bukan tipe data
+            - Null termasuk tipe data object
+        */
+        
+        // Berikut merupakan contoh perbedaan dari undefined, null dan variable yang memiliki data/isinya.
+        const firstName = null; // ini Null
+        // let firstName; // ini undefined
+        // let firstName = undefined; // ini undefined dengan value undefined
+        // let firstName = 'saddam'; // variable yang berisikan data string
+        // console.log(typeof(firsName)); // null termasuk tipe data object
+
+        if (firstName === undefined){
+            console.log('Data Undefined');
+        } else if (firstName === null){
+            console.log('Null');
+        } else{
+            console.log(`Hello ${firstName}`);
+        }
+    </script>
+</body>
+</html>

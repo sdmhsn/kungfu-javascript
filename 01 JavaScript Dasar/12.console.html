@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Console</title>
+</head>
+<body>
+    
+
+    <script>
+        /* 
+            console: fitur melakukan logging. memprint suatu tulisan bukan ke halaman web, namun ke bagian console browser (fitur inspect)
+            - dapat berguna seperti proses debugging
+            - tidak tampil ke halaman web
+            - semakin banyak tulisan yang ditampilkan pada console browser, akan membuat semakin lambat / berat kinerja aplikasi web kita
+        */
+
+        console.info('Hello world :)');
+        console.log('Hello world :)'); // log dan info sama
+        console.debug('Hello world :)');
+
+        console.warn('Ini peringatan!');
+
+        console.error('Ini error!');
+
+        console.debug('Ini debug!'); // secara default debug tidak dikeluarkan. jika ingin mengeluarkannya di console atur levels menjadi mode verbose
+        
+        let nama = ['saddam', 'rahmat', 'fuad', 'fitri'];  // array akan dibahas selanjutnya
+        console.table(nama); // digunakan untuk melihat isi tipe data array di console 
+
+    </script>
+</body>
+</html>

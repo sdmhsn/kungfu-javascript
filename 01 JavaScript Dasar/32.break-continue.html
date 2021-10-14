@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Break and Continue</title>
+</head>
+<body>
+    
+
+    <script>
+        /*
+            break: layaknya pada switch statement, break digunakan untuk menghentikan case dalam switch
+            - pada perulangan, break juga dapat digunakan untuk menghentikan proses perulangan
+            
+            continue: digunakan untuk menghentikan counter perulangan saat ini, kemudian melanjutkan (continue) ke proses counter perulangan selanjutnya
+            
+            - baik break dan continue dapat digunakan ke semua jenis perulangan
+        */
+
+        /*
+        // 1. contoh break
+        let counter = 1;
+
+        while (true) { // terjadi infinite loop karena kondisi true terus-terusan
+            console.log(`Hello ke-${counter}`);
+            counter++;
+            
+            if (counter === 10) { // dibuatlah kondisi perbandingan agar infinite loop stop apabila sampai perhitungan yang ke 10
+                break; 
+            }
+        }
+        */
+
+        // 2. contoh continue
+        /*
+        // - menggunakan continue untuk melewati angka ganjil
+        for (let i = 1; i <= 20; i++) {
+            if (i % 2 === 0) { // jika bilangan genap. jika ingin bilangan ganjil maka gunakan operator !==
+                continue; // lanjutkan ke bilangan selanjutnya, tanpa eksekusi perintah console.log dibawah ini. pada posisi disini, post statement sudah dieksekusi terlebih dahulu di bagian paranthesis diatas
+            }
+            console.log(`Bilangan ganjil ke-${i}`);
+        }
+        */
+
+        /*
+        // - experiment sendiri (melewati angka tertentu)
+        // 1. menggunakan while
+        let counter = 1;
+
+        while (counter <= 10) {
+            if (counter === 5) {
+                counter++; // ditambah post statement / increment agar tidak terjadi infinite loop
+                continue;
+            }
+            console.log(`Hello ke-${counter}`);
+            counter++;
+        }
+        */
+
+        // 2. menggunakan for
+        for (let counter = 1; counter <= 10; counter++) {
+            if (counter === 5) {
+                continue;
+            }
+            console.log(`Hello ke-${counter}`);
+        }
+    </script>
+</body>
+</html>

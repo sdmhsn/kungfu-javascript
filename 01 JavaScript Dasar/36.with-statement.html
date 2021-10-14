@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>With statement</title>
+</head>
+<body>
+    
+
+    <script>
+        /* 
+            with statement: digunakan untuk menurunkan sebuah scope data
+            - kita dapat mengakses suatu property dalam object tanpa menyebutkan propertynya. contoh names.fullName menjadi fullName saja
+            - tidak direkomendasikan / disarankan penggunaannya, terutama pada js versi terbaru karena membuat pemahaman kode program menjadi ambigu
+        */
+        
+        /*
+        // 1. tanpa with statement
+        const names = {
+            fullName: 'saddam',
+            middleName: 'bin',
+            lastName: 'husein'
+        }
+
+        console.log(names.fullName);
+        console.log(names.middleName);
+        console.log(names.lastName);
+        */
+
+        /*
+        // 2. dengan with statement
+        const names = {
+            fullName: 'saddam',
+            middleName: 'bin',
+            lastName: 'husein'
+        }
+
+        with (names) {
+            console.log(fullName);
+            console.log(middleName);
+            console.log(lastName);
+        }
+        */
+
+        // 3. mengapa penggunaan with membuat pemahaman kode menjadi ambigu
+        const names = {
+            fullName: 'saddam',
+            middleName: 'bin',
+            lastName: 'husein'
+        }
+
+        const fullName = 'budi';
+
+        with (names) {
+            console.log(fullName); // niatnya ingin menampilkan 'budi', bukan 'saddam'
+            console.log(middleName);
+            console.log(lastName);
+        }
+    </script>
+</body>
+</html>

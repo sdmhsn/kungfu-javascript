@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursive Function</title>
+</head>
+<body>
+    
+
+    <script>
+        /*
+            recursive function: suatu konsep tentang kemampuan sebuah function memanggil dirinya sendiri
+            - terkadang menggunakan recursive function dapat menyelesaikan suatu permasalahan menjadi lebih mudah, seperti kasus faktorial (bilangan bulat yang mengalikan dirinya sendiri - 1)
+            - ciri khas dari recursive function harus ada termination akhirnya. dimana jika tidak ada maka terjadi efek infinite loop pada recursive function tersebut
+        */
+        // 1. Factorial using loop
+        function factorial(value) {
+            let result = 1; // dimulai dari 1. kalau 0 maka semuanya akan menjadi nol karena perkalian
+            for (let i = 1; i <= value; i++) { // bisa juga menggunakan perhitungan terbalik dari besar ke kecil (i--)
+                result *= i;
+            }
+            return result;
+        }
+
+        console.log('Factorial loop');
+        console.log(factorial(3));
+        console.log(1 * 2 * 3); // pembuktian perhitungan faktorial menggunakan loop
+        console.log('');
+
+        // 2. Factorial using recursive
+        function recursiveFactorial(value) {
+            if (value === 1) { // jika nilai value adalah 1, 
+                return 1; // maka return angka 1 dan sekaligus menghentikan recursive function
+            } else {  // jika bukan 1,
+                return value * recursiveFactorial(value - 1);  // maka return parameter value dikalikan dengan pemanggilan function recursiveFactorial() yang parameter valuenya dikurangi 1. adanya pemanggilan function terhadap dirinya sendiri akan membuat looping, dengan parameter value yang berubah mengurang karena dikurangi 1. perkalian akan terus dilakukan karena function memanggil dirinya sendiri terus menerus, sehingga bergerak menemukan angka termination akhir yaitu 1 seperti pada kondisi if. karena angka 1 memenuhi kondisi if return 1 diatas, maka otomatis loop recursive berhenti dan mereturn kondisi else (bukan if). 
+                /*
+                cth: value = 4, recursiveFactorial(value - 1) = 3 maka:
+                4 * recursiveFactorial(3)
+                4 * 3 * recursiveFactorial(2)
+                4 * 3 * 2 * 1 = 24 // karena angka 1 sesuai dengan kondisi if maka hentikan loop recursive karena ditemukan termination akhir. return hasil dari kondisi else
+                */
+            }
+        }
+
+        console.log('Recursive factorial');
+        console.log(recursiveFactorial(4));
+        console.log(1 * 2 * 3 * 4) // pembuktian perhitungan faktorial menggunakan recursive
+
+    </script>
+</body>
+</html>

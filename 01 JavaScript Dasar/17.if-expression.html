@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IF Expression</title>
+</head>
+<body>
+    
+    <script>
+        /*
+        percabangan
+            if expression:
+            - kita bisa mengeksekusi kode program tertentu ketika memenuhi suatu kondisi
+            - kondisi yang harus dipenuhi adalah data dengan tipe boolean true
+            - jika hasil kondisi if true terpenuhi, maka dieksekusi. ketika kodisi if adalah false, maka tidak dieksekusi
+
+            else expression: 
+            - eksekusi apabila if bernilai false
+            - jika menggunakan else berarti lebih dari 1 logic
+
+            else if expression:
+            - digunakan untuk membuat beberapa kondisi
+            - tidak hanya 2 percabangan kondisi (if dan else)
+            - dapat berisikan lebih dari satu else if dalam kode program percabangan
+            - jika terdapat 2 / lebih kondisi yang terpenuhi (true) pada percabangan, maka yang diambil / dieksekusi adalah kondisi yang pertama 
+        */
+        // satu kondisi
+        const examValue = 86;
+
+        if (examValue > 80){ // jika true, lanjutkan cetak pada block ({})!. kondisi yang harus dipenuhi oleh if adalah true. jadi posisi true suatu kondisi ada pada if (block ini tidak akan berubah menjadi false)
+            document.writeln('<p>Lulus</p>'); // examValue adalah 90, sehingga bernilai true dan dieksekusi
+        }
+        document.writeln('-'.repeat(30));
+        
+        
+        // dua kondisi
+        if (examValue > 80){
+            document.writeln('<p>Lulus</p>'); 
+        } else {  // apabila kondisi tidak terpenuhi, cetak opsi false!
+            document.writeln('<p>Gagal</p>'); 
+        }
+        document.writeln('-'.repeat(30));
+        
+        // banyak kondisi (lebih dari dua)
+        if (examValue > 80){  // true. karena terdapat 3 kondisi dalam percabangan ini yang terpenuhi (true), maka eksekusi kondisi pertama lalu stop
+            document.writeln('<p>Nilai: A</p>');
+        } else if (examValue > 70){ // true
+            document.writeln('<p>Nilai: B</p>');
+        } else if (examValue > 60){ // true
+            document.writeln('<p>Nilai: C</p>');
+        } else {
+            document.writeln('<p>Hasil: Coba lagi</p>');
+        }
+        document.writeln('-'.repeat(30));
+        
+        // atau menggunakan range dari operator logika
+        if (examValue >= 80){
+            document.writeln('<p>Nilai A</p>'); 
+        } else if (examValue >= 70 && examValue <= 79 ){ 
+            document.writeln('<p>Nilai B</p>'); 
+        } else if (examValue >= 60 && examValue <= 69 ){
+            document.writeln('<p>Nilai C</p>'); 
+        } else if (examValue >= 50 && examValue <= 59 ){
+            document.writeln('<p>Nilai D</p>'); 
+        } else {
+            document.writeln('<p>Coba lagi :(</p>');
+        }
+        document.writeln('-'.repeat(30));
+        
+        // jika terdapat 2 kondisi yang terpenuhi, maka kondisi pertama yang akan dicetak
+        if (examValue > 45){ // jika kondisi pertama terpenuhi, maka cetak dan program berhenti (rubah nilai variable examValue paling atas menjadi > 80 ). Apabila nilai kondisi if pertama ini bernilai > 45 (misalnya), itu juga memenuhi. karena yang pertama maka eksekusi
+            document.writeln('<p>Lulus</p>'); 
+        } else if (examValue > 60){  // ini juga memenuhi nilai variable examValue paling atas > 80. coba rubah kondisi if pertama dari examValue menjadi 145. maka hasilnya akan dialihkan ke else if ini karena memenuhi nilai > 80 examValue paling atas, sedangkan nilai kondisi if sebelumnya > 145 tidak memenuhi examValue > 80 paling atas.
+            document.writeln('<p>Cukup</p>');
+        } else{
+            document.writeln('<p>Coba lagilah!</p>');
+        }
+        document.writeln('-'.repeat(30));
+
+        // contoh tambahan (experiment):
+        let nilai;
+
+        if (examValue >= 80){
+            nilai = 'A';
+        } else if (examValue >= 70){
+            nilai = 'B';
+        } else if (examValue >= 60){
+            nilai = 'C';
+        } else {
+            nilai = 'Coba lagi';
+        }
+        document.writeln(`<p>Hasil: ${nilai}</p>`);
+
+    </script>
+</body>
+</html>

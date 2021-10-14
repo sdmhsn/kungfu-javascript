@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Default parameter</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            default parameter: memberikan default value pada parameter
+            - apabila kita tidak memberikan data pada argument atau data tersebut bersifat undefined, maka yang digunakan adalah default value yang ada parameter
+            - parameter bersifat opsional, kita bisa tidak memberikan value terhadap parameter pada suatu function
+        */
+
+        // contoh implementasi
+        function register(name, gender = 'UNKNOWN') {  // default parameter value: 'UNKNOWN'
+            console.log(name);
+            console.log(gender);
+        }
+
+        register('saddam', 'pria');
+        console.log('');
+        register('fitri', 'wanita');
+        console.log('');
+        register('tono');  // tanpa argument kedua akan menggunakan default parameter value
+        console.log('');
+        register('mono', undefined);  // argument kedua undefined akan menggunakan / mengambil default parameter value. layaknya sebuah variable yang blm diassign nilainya.
+        console.log('');
+        register(); 
+        console.log('');
+        register('mana', null);  // null berbeda dengan undefined
+    </script>
+</body>
+</html>

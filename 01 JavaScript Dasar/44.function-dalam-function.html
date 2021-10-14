@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function di dalam Function</title>
+</head>
+<body>
+    
+
+    <script>
+        /*
+            function di dalam function: membuat function yang terdapat di dalam function
+            - disebut juga nested function
+            - function yang terdapat di dalam function disebut inner function, sedangkan function yang diluarnya disebut outter function
+            - inner function tidak dapat dipanggil / diakses diluar outter function, hanya bisa diakses / dipanggil di dalam outter function (tempat inner functionnya dibuat)
+            - biasanya digunakan untuk mem break down kode function yang terlalu panjang, namun hanya bisa digunakan untuk function tersebut
+        */
+        function outter() {
+            console.log('Ini outter');
+
+            function inner() {
+                console.log('Ini inner');
+            }
+
+            inner();
+            inner();
+            // outter(); // experiment sendiri: akan terjadi infinite loop
+        }
+
+        outter();
+        // inner(); // apabile memanggil / mengakses inner function di luar outter function, maka akan terjadi error
+    </script>
+</body>
+</html>

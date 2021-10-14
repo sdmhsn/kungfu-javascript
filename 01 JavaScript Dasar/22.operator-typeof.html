@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operator typeof()</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            typeof: sebuah operator yang berfungsi untuk melihat tipe data yang digunakan oleh suatu variable atau value
+            - hasil output dari typeof() berupa string nama dari suatu tipe data
+            - pengecekan suatu tipe data dikarenakan javascript merupakan dynamic language (tidak diset tipe datanya / javascript otomatis dapat mendeteksi tipe data data dari suatu data)
+            - penggunaan typeof dapat berupa function typeof() atau keyword typeof
+        */
+
+        /* 
+        // 1. menentukan typeof menggunakan if else statement
+        // let data = 'saddam';
+        // let data = 123;
+        // let data;
+        // let data = true;
+        // let data = []; // array termasuk object
+        // let data = {};
+        let data = null;  // null termasuk object
+
+        if (typeof data === 'string') { // karena output typeof() berupa string, maka ketika dibandingkan harus menggunakan tanda petik
+            alert('string');
+        } else if (typeof data === 'number') {
+            alert('number');
+        } else if (typeof data === 'undefined') {
+            alert('undefined');
+        } else if (typeof data === 'boolean') {
+            alert('boolean');
+        } else if (typeof data === 'object') {
+            alert('object');
+        }
+        */
+
+        /*
+        // 2. menentukan typeof() menggunakan switch statement
+        // let data = 'saddam';
+        // let data = 123;
+        // let data;
+        // let data = true;
+        // let data = [];
+        // let data = {};
+        let data = null;
+
+        switch (typeof(data)) {
+            case 'string':
+                alert('string');
+                break;
+            case 'number':
+                alert('number');
+                break;
+            case 'undefined':
+                alert('undefined');
+                break;
+            case 'boolean':
+                alert('boolean');
+                break;
+            case 'object':
+                alert('object');
+                break;
+            default:
+                break;
+        }
+        */
+
+        // contoh experiment sendiri:
+        // tipe data string
+        const data1 = () => 'hello';  // arrow function oneline
+        console.log(data1());
+        console.log(typeof(data1()));
+
+        const data2 = function () {
+            return 'hello 2';
+        }
+        console.log(data2());
+        console.log(typeof(data2()));
+        console.log('');
+        
+        // tipe data number 
+        const dataNumber1 = 3.2;  // float
+        console.log(dataNumber1);
+        console.log(typeof(dataNumber1));
+        
+        const dataNumber2 = 3; // integer
+        console.log(dataNumber2);
+        console.log(typeof(dataNumber2));
+
+        const dataNumber3 = NaN; // NaN
+        console.log(dataNumber3);
+        console.log(typeof(dataNumber3));
+        console.log('');
+
+        const dataNumber4 = Infinity;
+        console.log(dataNumber4);
+        console.log(typeof(dataNumber4));
+        console.log('');
+        
+        // tipe data object
+        const dataArray = [];
+        console.log(dataArray);
+        console.log(typeof(dataArray));
+
+        const dataObject = {};
+        console.log(dataObject);
+        console.log(typeof(dataObject));
+
+        const dataNull = null;
+        console.log(dataNull);
+        console.log(typeof(dataNull));
+        console.log('');
+
+        // tipe data undefined
+        let dataUndefined; // atau
+        // let dataUndefined = undefined;
+        console.log(dataUndefined);
+        console.log(typeof(dataUndefined));
+        console.log('');
+        
+        // tipe data boolean
+        let dataBool = true;
+        console.log(dataBool);
+        console.log(typeof(dataBool));
+        
+    </script>
+</body>
+</html>

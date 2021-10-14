@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function parameter</title>
+</head>
+<body>
+    
+    <script>
+
+        /*
+            function parameter: mengirim / menginput informasi ke dalam function yang kita panggil
+            - beberapa literatur menjelaskan bahwa pada pemanggilan function disebut argument, sedangkan pada pembuatan / deklarasi function disebut parameter
+            - parameter dan argument diisi kedalam parantheses function
+            - parameter bisa berjumlah lebih dari satu
+            - pastikan nama parameter antara satu dengan yang lainnya di dalam parameter berbeda
+            - parameter dapat bersifat opsional, kita bisa tidak memberikan value terhadap parameter (file. 40 / playlist 41. default parameter pzn)
+        */
+        function sayHello(firstName, lastName) {
+            document.writeln(`<h1>Hello ${firstName} ${lastName}</h1>`);
+        }
+
+        sayHello('Saddam', 'Husein');
+        sayHello('Rahmat', 'Hidayat');
+    </script>
+</body>
+</html>

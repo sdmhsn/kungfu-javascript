@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strict Mode</title>
+</head>
+<body>
+    
+
+    <script>
+        /*
+            - Saat kita menjalankan kode program JavaScript, secara default kode program kita berjalan dalam mode tidak strict, atau istilahnya sloppy mode
+            - Pada ECMAScript 5, diperkenalkan mode strict, dimana ketika strict mode dijalankan, maka akan merubah beberapa cara kerja di JavaScript, seperti : 
+                * Merubah beberapa JavaScript error dari yang tadinya silent error, menjadi throw error (terlihat)
+                * Memperbaiki beberapa kesalahan engine JavaScript untuk optimisasi
+                * Menolak beberapa kode perintah yang kedepannya akan digunakan di ECMAScript
+            - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode/Transitioning_to_strict_mode 
+            - Untuk menyalakan strict mode, kita bisa menambahkan `use strict` pada baris awal file javascript kita atau bisa juga ditambahkan di awal function kita
+        */
+
+        /*
+        // contoh strict mode 1:
+        function useStrictMode() {
+            'use strict'; // mode strict. kode menjadi lebih sensitif, karena mendeteksi adanya with statement yang tidak disarankan untuk digunakan
+            const person = {
+                name: 'Saddam',
+            }
+            with (person) {
+                console.log(name);
+            }
+        }
+
+        useStrictMode();
+        */
+
+        // contoh strict mode 2 (duniailkom: silent error):
+        'use strict'; // menampilkan error. memaksa JavaScript menampilkan error pada kode program yang seharusnya bisa berjalan “normal”. Tujuannya, meminimalisir kemungkinan bug karena penulisan yang salah, typo, dan berbagai hal lain
+        let hargaBarang = 12000;
+        let biayaOngkir = 4000;
+        let hargaTotal = hargaBarang + biayaOngkir;
+        let pajak = 10 / 100 * hargaTotal;
+        hargatotal = hargaTotal + pajak; // letak error
+        console.log(hargaTotal);
+    </script>
+</body>
+</html>

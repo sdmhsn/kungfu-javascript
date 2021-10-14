@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow Function di dalam Object</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            - arrow function juga dapat digunakan pada object method
+            - seperti pada pembahasan sebelumnya, arrow function tidak dapat digunakan pada fitur:
+                * arguments object
+                * function generator
+                * this (sebenarnya bisa tapi tidak seperti yang diinginkan karena mengacu ke object window)
+                * super
+            - this pada object method yang menggunakan arrow function, tidak mengacu pada object tempat method tersebut, tetapi ke object Window (global object)
+            - jadi pastikan menggunakan arrow function sebagai object method KECUALI pada fitur yang tidak dapat digunakan seperti diatas
+        */
+        
+        // console.log(window)
+        // console.log(window.name);
+
+        const person = {
+            name: 'Saddam',
+            sayHello: (name) => { // pada function declaration (function biasa), menggunakan anonymous function function(name) {...}
+                console.log(`Hello ${name}`);
+                console.log(this) // pembuktian this mengacu ke object window, bukan object person
+                console.log(`Hello ${name}, my name is ${this.name}`); // ${this.name} berisi kosong karena dianggap window.name (property name pada window tidak ada)
+            }
+        }
+
+        person.sayHello('Amin');
+    </script>
+</body>
+</html>

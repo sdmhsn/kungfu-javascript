@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undefined</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            undefined: merupakan tipe data dari suatu data yang belum direpresentasikan / didefinisikan 
+            - isinya (variable yang belum diset valuenya dengan value apapun). 
+            - berbeda dengan null di bahasa pemrograman lain.
+            - undefined termasuk reserved keyword sehingga tidak boleh digunakan sebagai nama variable
+            - pada javascript, suatu data yang diakses dengan index / value yang tidak ada (diset / diassign) akan menghasilkan nilai undefined. berbeda dengan bahasa pemrograman lainnya seperti java / python yang akan menghasilkan error
+            - suatu variable dapat juga diset menjadi undefined dengan cara diassign dengan value undefined    
+        */
+
+        /**/
+        // 1. menggunakan percabangan untuk identifikasi undefined:
+        let nama; // seandainya di set nilainya, maka akan menampilkan alert 'Defined'
+        // let nama = undefined; // ini juga merupakan undefined karena diset valuenya dengan undefined
+        // let nama = 'saddam'; // variable yang berisikan value string
+
+        if (nama === undefined){ // menggunakan === karena undefined merupakan tipe data, sehingga sekalian dilakukan pencocokan nilai dan tipe datanya
+            alert('Ini Undefined');  // bernilai 'undefined' karena variable nama diatas baru sebatas dideklarasikan, belum diassign nilainya
+        }
+        else {
+            alert('Defined'); // ketika variable diassign nilainya (kecuali nilai undefined), maka hasil alert adalah 'Defined'
+        }
+
+        /*
+        // 2. undefined pada array:
+        const name = ['saddam', 'rahmat', 'fuad'];
+
+        if (name[3] === undefined) {  // true karena tidak ada array 3 (kondisi terpenuhi)
+            alert('Array undefined');
+        } else {
+            alert('Array defined');
+        }
+        */
+
+        /*
+        // 3. delete index array berarti kita seakan2 menset suatu array bervalue undefined:
+        const name = ['saddam', 'rahmat', 'fuad'];
+        delete name[0]; // seakan2 kita mengupdate elemen array menjadi name[0] = undefined;
+        // name[0] = undefined;
+
+        if (name[0] === undefined) {  // true karena array 0 sudah didelete dan posisi urutannya tidak tergeser 
+            alert('Array undefined');
+        } else {
+            alert('Array defined');
+        }
+        */
+
+        /*
+        // 4. undefined pada object:
+        // let person = {};
+        let person = {
+            nama: 'saddam'
+        };
+
+        if (person.nama === undefined) { 
+            alert('Object undefined');
+        } else {
+            alert('Object defined');
+        }
+        */
+
+        /*
+        // 5. contoh undefined (hasil experiment sendiri):
+        // contoh 1:
+        let a;  // hanya berlaku pada var dan let. sedangkan const tidak. jika deklarasi suatu variable dengan keyword const tanpa nilai, maka akan terjadi error. membuat konstanta kita harus memberikan nilai awal pada saat pendeklarasian. namun kita bisa menggunakan penulisan const a = undefined; yang tidak menghasilkan error
+
+        console.log(a);
+        console.log('tipe data a: ' + typeof(a));  // bukti kalau undefined merupakan tipe data
+
+        // contoh 2 (pada array):
+        const dataArray = ['saddam', 'rahmat', 'fuad'];
+        console.log(dataArray[4]);  // akses ke index yang tidak terdapat pada suatu array juga akan menghasilkan output undefined
+
+        // contoh 3 (pada object):
+        const dataObject = {
+            user1: 'saddam',
+            user2: 'rahmat',
+            user3: 'fuad'
+        };
+        console.log(dataObject.user4);  // tidak terdapat property user4 pada object dataObject
+
+        // contoh 4:
+        const name = ['saddam', 'rahmat', 'fuad'];
+        input1 = Number(prompt('Masukkan index:'));
+        // console.log(typeof(input1));
+
+        if (input1 === undefined) { // asynchronous
+            alert('Ini undefined');
+        } else {
+            alert(`Index ${input1} adalah ${name[input1]}`); // asynchronous
+        }
+        */
+    </script>
+</body>
+</html>

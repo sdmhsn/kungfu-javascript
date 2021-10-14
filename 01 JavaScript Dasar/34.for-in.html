@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For In</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            for in: merupakan perulangan yang mengiterasi suatu data dengan tipe data object (array dan object [operator typeof])
+            - yang diiterasi adalah property / key / atribut dari object. kalo pada array indexnya
+            - dapat juga diimplementasikan pada array, namun tidak direkomendasikan karena kita tidak membutuhkan data indexnya, namun hanya elementnya saja. sebaiknya iterasi array menggunakan for of
+            - iterasi dapat menggunakan const    
+        */
+
+        /*
+        // 1. for in di object
+        // mengiterasi data object
+        const person = {
+            firstName: 'Saddam',
+            middleName: 'Bin',
+            lastName: 'Husein'
+        }
+
+        for (const property in person) { // dapat menggunakan const
+            document.writeln(`<p>${property}: ${person[property]}</p>`); // iterasi nama property (key) dan value
+        }
+        */
+        
+        /*
+        // 2. for in di array
+        // mengiterasi data (element) array menggunakan for in tidak direkomendasikan
+        const names = ['saddam', 'bin', 'husein'];
+
+        for (const index in names) {
+            document.writeln(`<p>Index ${index}: ${names[index]}</p>`)
+        }
+        */
+
+        /**/
+        // experiment sendiri
+        // 1. contoh pada array namun tidak direkomendasikan
+        const dataArray = ['saddam', 'rahmat', 'fuad', 'fitri'];
+
+        for (let i in dataArray) {
+            console.log(`index ke ${i}: ${dataArray[i]}`);
+        }
+
+        /*
+        // 2. contoh pada object
+        const dataObject = {
+            user1: 'saddam',
+            user2: 'rahmat',
+            user3: 'fuad',
+            user4: 'fitri'
+        }
+
+        for (let j in dataObject) {
+            console.log(`${j}: ${dataObject[j]}`)
+        }
+        */
+
+        /*
+        // 3. contoh pada object yang memiliki method
+        const mobil = {
+            merk: 'Avanza',
+            tipe: 'MPV',
+            warna: 'Merah',
+            harga: '200000000',
+            hidupkan: function(value) {
+                return `Mobil ${value}`;
+            }
+        }
+
+        mobil.hidupkan('Nyala');
+        console.log(mobil.hidupkan('Mati'));
+        console.log(mobil);
+
+        for (const k in mobil) {
+            console.log(`${k}: ${mobil[k]}`); // pada method yang ditampilkan adalah deklarasi function dari method hidupkan
+        }
+        */
+    </script>
+</body>
+</html>

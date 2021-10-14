@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do While loop</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            do while: sama seperti perulangan (loop) while, namun bedanya terletak pada posisi pengecekan kondisi loop. pada while pengecekan berada di awal loop, sedangkan do while berada di bagian AKHIR loop.
+            - ketika dieksekusi pertama kali, blok kode loop dan post statement (increment) pertama langsung ditampilkan, meskipun tidak bernilai true. sedangkan pengecekan kondisi do while apakah masih true atau false berada di akhir eksekusi program tersebut. ketik true lanjut loop, dan ketika false stop loop
+            - contoh implementasi do while seperti menampilkan menu program terlebih dahulu, baru dilanjutkan user menginput pilihan dari menu tersebut. 
+            - blok perulangan minimal sekali dieksekusi pertama kali, terlepas true atau false
+        */
+
+        /*
+        // 1. do while loop
+        let counter = 1;
+
+        do {
+            document.writeln(`<h1>Hello ke-${counter}</h1>`);
+            counter++;
+        } while (counter <= 5);  // pengecekan kondisi berada di akhir loop
+        */
+
+        // 2. ciri khas do while loop
+        let counter = 100;
+
+        do {
+            document.writeln(`<h1>Hello ke-${counter}</h1>`);  // meskipun false (pada kondisi dibawah), output tetap ditampilkan pertama kali
+        } while (counter <= 10);
+    </script>
+</body>
+</html>

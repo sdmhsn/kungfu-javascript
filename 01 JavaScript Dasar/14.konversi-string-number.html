@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konversi String dan Number</title>
+</head>
+<body>
+    
+    <script>
+        // contoh masalah tanpa konversi
+        const value1 = '1';
+        const value2 = 1;
+
+        const sum = value1 + value2;
+        document.writeln(`<p>${sum}</p>`); // string + number = string. hasilnya 11 bukan 2
+        document.writeln(typeof(sum));
+        
+        sum2 = sum + value1;
+        document.writeln(`<p>${sum2}</p>`);
+        document.writeln('-'.repeat(10));
+
+        /* 
+            cara melakukan konversi string dan number
+
+            function yang dapat digunakan:
+            parseInt(string)        : mengkonversi dari string ke number (bilangan integer / bulat)
+            parseFloat(string)      : mengkonversi dari string ke number (float)
+            Number(string)          : mengkonversi dari string ke number (bilangan integer atau float)
+            number.toString()       : mengkonversi dari number ke string
+        */
+
+        // konversi string ke number:
+        document.writeln(`<p>${parseInt('1.1')}</p>`);  // karena dikonversi ke tipe data number integer, maka angka dibelakangnya (.1) dihiraukan BUKAN DIBULATKAN
+        document.writeln(`<p>${parseFloat('1.1')}</p>`); // dikonversi ke bilangan float
+        document.writeln(`<p>${Number('1.1')}</p>`);  // tidak dibulatkan. ditampilkan apa adanya
+        document.writeln(`<p>${Number('1')}</p>`);  // ditampilkan apa adanya
+        
+        const angka = '2.1';
+        const hasil = parseInt(angka);
+        // const hasil = parseFloat(angka);
+        // const hasil = Number(angka);
+        document.writeln(`<p>${hasil}</p>`);
+        document.writeln(`<p>${typeof(hasil)}</p>`);
+        document.writeln('-'.repeat(10));
+
+        // konversi number ke string:
+        const a = 1;
+        const b = 1;
+        
+        const total = a.toString() + b.toString();  // tipe data number di konversi menjadi string
+        document.writeln(`<p>${total}</p>`); // '1' + '1' = '11' (string). bukan number 2
+        document.writeln(`<p>${typeof(total)}</p>`);
+        
+        sum2 = parseInt(total) + value2 // total yang semulanya string, dikonversi menjadi number integer 11, sehingga 11 + 1 = 12
+        document.writeln(`<p>${sum2}</p>`);  // tidak menghasilkan error.
+        document.writeln(`<p>${typeof(sum2)}</p>`);
+        document.writeln('-'.repeat(10));
+
+        // NaN: data string yang akan dikonversikan ke number adalah bukan data yang valid, maka akan menghasilkan NaN (Not a Number)
+        // cth NaN: 
+        const c = parseInt('c');
+
+        document.writeln(`<p>${c}</p>`);
+        document.writeln(`<p>${typeof(c)}</p>`);  // NaN merupakan number special yang termasuk tipe data number meskipun namanya Not a Number.
+        document.writeln('-'.repeat(10));
+        
+        // pada parseInt() dan parseFloat() masih mentolerir karakter dari teks di belakang angka (hanya dibelakang angka), sehingga menjadi valid
+        document.writeln(`<p>${parseInt('c')}</p>`); // invalid. dari string dikonversikan menjadi tipe data number dari karakter bukan angka
+        document.writeln(`<p>${parseInt('11')}</p>`); // valid. dari string dikonversikan menjadi tipe data number 11
+        document.writeln(`<p>${parseInt('5saddam')}</p>`); // pada integer masih dapat mentolerir dari teks di belakang angka
+        document.writeln(`<p>${parseFloat('1.1text')}</p>`); // pada float masih dapat menolerir dari teks di belakang angka, sehingga menjadi tipe data number float 1.1 dan valid
+        document.writeln(`<p>${parseFloat('text1.1')}</p>`); // invalid. tidak dapat menolerir dari teks di depan angka, sehingga menjadi NaN
+        document.writeln('-'.repeat(10));
+        
+        // Number() sama sekali tidak mentolerir kesalahan pada data
+        document.writeln(`<p>${Number('1.1text')}</p>`);  // NaN: data invalid, karena terdapat text pada angka
+        document.writeln(`<p>${Number('1x')}</p>`); // NaN: data invalid, karena terdapat text pada angka
+        document.writeln(`<p>${Number('Bukan number')}</p>`); // NaN: data invalid, , karena bukan merupakan angka
+        document.writeln('-'.repeat(10));
+        
+        // Operasi pada NaN
+        const nilai1 = Number('salah'); // NaN
+        const nilai2 = Number(100); // 11
+        
+        const sum3 = nilai1 + nilai2; // ketika salah satunya adalah NaN maka valuenya adalah NaN. Apapun operasinya terhadap NaN, hasilnya sudah pasti NaN
+        document.writeln(`<p>${sum3}</p>`);
+        document.writeln('-' * 10); // NaN: data tidak valid. berbeda dengan python, akan valid
+        document.writeln('<br>');
+        document.writeln('-'.repeat(10));
+
+        // isNaN(): Mengecek apakah suatu data NaN ataupun bukan NaN dapat menggunakan function isNaN(number). hasilnya berupa boolean yang mereturn:
+        // true = NaN
+        // false = bukan NaN
+        document.writeln(`<p>${isNaN('11')}</p>`); // '11' bukan NaN, sehingga bernilai false
+        document.writeln(`<p>${isNaN('saddam')}</p>`); // NaN
+        document.writeln(`<p>${isNaN(nilai1)}</p>`);
+        document.writeln(`<p>${isNaN(nilai2)}</p>`);
+        document.writeln(`<p>${isNaN(NaN)}</p>`);
+    </script>
+</body>
+</html>

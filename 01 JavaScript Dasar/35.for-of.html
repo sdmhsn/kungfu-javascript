@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For of</title>
+</head>
+
+<body>
+
+    <script>
+        /*
+            for of: digunakan untuk melakukan iterasi perulangan terhadap isi value dari iterable object, seperti Array, String dan lain-lain
+            - tidak dapat digunakan untuk mengiterasi data object, karena object bukanlah iterable
+            - perbedaan for in dan for of: for in iterasi isi value, sedangkan for of iterasi property dan value object
+            - data yang bisa di iterable: array, string dll
+        */
+
+        // 1. for of di array
+        const names = ['saddam', 'bin', 'husein'];
+
+        for (const name of names) {  // dapat menggunakan const
+            document.writeln(`<p>${name}</p>`); // menampilkan isi value / element array nya
+        }
+
+        // 2. for of di string
+        const fullName = 'saddam bin husein';
+
+        for (const index of fullName) {
+            document.writeln(`<h5>${index}</h5>`);
+        }
+
+        /**/
+        // 3. experiment sendiri
+        // for of di string
+        const namaku = 'saddam';
+
+        for (const huruf of namaku) {
+            console.log(huruf);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>label</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            label: merupakan penanda pada suatu loop yang diinginkan. dengan adanya penanda tersebut kita dapat memberi break atau continue melalui tempat loop lainnya sesuai yang diinginkan
+            - Untuk membuat label, kita bisa gunakan nama label (contoh: loopi) lalu diikuti dengan : (titik dua)
+        */
+
+        loopi:
+        for (let i = 1; i <= 100; i++) {
+            loopj:
+            for (let j = 1; j <= 10; j++) {
+                console.log(`${i} - ${j}`);
+                if (j === 5) {
+                    break loopi;  // menghentikan looping dari i. selain break dapat juga menggunakan continue
+                }
+            }
+        }
+    </script>
+</body>
+</html>

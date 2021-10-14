@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operator Perbandingan</title>
+</head>
+<body>
+    
+    <script>
+        /* 
+            Operator perbandingan: semua hasil operator perbandingan sudah pasti hasilnya adalah boolean (true atau false).
+        
+            operator perbandingan yang ada pada js:
+            >       : lebih dari
+            <       : kurang dari
+            >=      : lebih dari sama dengan
+            <=      : kurang dari sama dengan
+            ==      : sama dengan
+            ===     : sama dengan dan sama tipe data
+            !=      : tidak sama dengan
+            !==     : tidak sama dengan dan tidak sama tipe data
+        */
+        
+        let result = 5 == '5';  // bernilain true karna meskipun berbeda tipe data (number dan string) tapi keduanya adalah 5
+        document.writeln(result);
+        document.writeln('<p>' + '--------------------------' + '</p>');
+
+        result = 5 === '5'; // bernilai false karna meskipun keduanya adalah 5, namun keduanya berbeda tipe data
+        document.writeln(result);
+        document.writeln('<p>' + '--------------------------' + '</p>');
+
+        result = 5 > 10;
+        document.writeln(result);
+        document.writeln('<p>' + '--------------------------' + '</p>');
+        
+        result = 5 < 10;
+        document.writeln(result);
+        document.writeln('<p>' + '--------------------------' + '</p>');
+
+        result = 5 <= 5;
+        document.writeln(result);
+        document.writeln('<p>' + '--------------------------' + '</p>');
+    </script>
+</body>
+</html>

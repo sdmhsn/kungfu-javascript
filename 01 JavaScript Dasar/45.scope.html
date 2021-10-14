@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scope</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            scope: merupakan area akses dari suatu data yang tersimpan di dalam variable atau function. data tersebut harus diketahui bisa diakses dari mana saja
+            - terdapat 2 jenis scope yaitu global scope dan local scope
+            - setiap membuat function, kita akan membuat data di dalam function tersebut. area pembuatan data tersebut disebut local scope
+            - sedangkan data yang berada di luar function biasanya di paling atas function, area data tersebut disebut global scope
+            - data di global scope bisa diakses melalui local scope. namun sebaliknya data di local scope tidak bisa diakses melalui global scope (hanya bisa diakses di local scope itu sendiri)
+            - data antar local scope lainnya juga tidak bisa saling mengakses. hanya bisa diakses masing2 local scope tersebut
+            - pengaksesan suatu variable yang berbeda scope dapat menghasilkan error
+        */
+
+        /*
+        // 1. global scope
+        let counter = 0; // data di global scope
+
+        function hitMe() { // function hitMe() juga termasuk global scope
+            counter++;  // dapat diakses melalui local scope hitMe()
+        }
+
+        hitMe();
+        hitMe();
+        hitMe();
+
+        console.log(counter);
+        */
+
+        /*
+        // 2. local scope
+        function first() {
+            let firstVariable = 'first';  // berada di local scope
+            console.log(firstVariable); // hanya bisa diakses di local scope
+        }
+
+        function second() {
+            let secondVariable = 'second';
+            console.log(firstVariable); // termasuk data antar local scope lainnya juga tidak bisa saling mengakses
+        }
+
+        first();
+        second();
+
+        console.log(firstVariable); // akan error karena data yang berada di local scope first() tidak dapat diakses
+        */
+
+        /*
+        // 3. nested function scope
+        function outter() {
+            const firstOutterVariable = 'first';
+
+            function inner() {
+                console.log(firstOutterVariable); // bisa mengakses data di luar inner() function yang berada di local scope
+                const firstInnerVariable = 'second';
+            }
+
+            // console.log(firstInnerVariable); akan error. hanya bisa diakses di dalam inner();
+
+            inner();
+        }
+
+        outter();
+        */
+
+        // 4. experiment sendiri
+        // scope dengan object
+        const name = {
+            firstName: 'saddam',
+            lastName: 'husein',
+        };
+
+        console.log(name);
+
+        function fullName() {
+            console.log(name.firstName);
+            console.log(name.lastName);
+        }
+
+        fullName();
+    
+    
+    
+    </script>
+</body>
+</html>

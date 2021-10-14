@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ternary Operator</title>
+</head>
+<body>
+    
+
+    <script>
+        /*
+            ternary operator: merupakan penulisan singkat dari if else sederhana
+        */
+        
+        /*
+        // versi if else statement
+        const nilai = 79;
+
+        if (nilai > 80) {
+            console.log('anda lulus');
+        } else {
+            console.log('coba lagi');
+        }
+        */
+
+        // versi ternary operator (sederhana)
+        // contoh 1:
+        // const nilai = 89;
+
+        // nilai > 80 ? alert('anda lulus') : alert('coba lagi'); // jika kondisi true memenuhi (if / ?), maka eksekusi nilai pertama (alert('anda lulus')). jika tidak (else / :), maka eksekusi nilai kedua (alert('coba lagi'))
+
+        // contoh 2:
+        const nilai = 90;
+        let pesan;
+
+        pesan = nilai > 80 ? 'anda lulus' : 'coba lagi'; // statement akan mengupdate variable pesan
+
+        console.log(pesan);
+
+    </script>
+</body>
+</html>

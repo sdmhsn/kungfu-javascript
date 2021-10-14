@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function</title>
+</head>
+<body>
+    
+    <script>
+        /* 
+            function: merupakan blok kode program yang akan berjalan saat dipanggil
+            - contoh function seperti .writeln()
+            - manfaat function adalah dengan function suatu kode cukup dibuat sekali dengan membungkusnya kedalam function, kemudian function yang sudah dibuat dapat digunakan berkali2 dengan cara memanggil nama function tersebut ketika membutuhkannya. 
+            - tanpa function, suatu kode akan dibuat secara berulang-ulang
+            - format pembuatan function: keyword function - nama function - parentheses / tanda kurung () - blok function (kurung kurawal {})
+            - format pemanggilan function: nama function - parentheses / tanda kurung
+            - kode program yang ingin dimasukkan ke dalam function, diletakkan ke dalam kurung kurawal {} blok function
+            - nama function tidak bisa ada spasi 
+            - antara nama function dengan dengan parentheses baik di pembuatan dan pemanggilan function, harus tanpa spasi  
+            - selagi sebuah function tidak dipanggil, maka blok kode program yang terdapat dalam function tidak akan dieksekusi / dijalankan
+            - function biasa juga disebut method   
+        */
+        
+        // membuat function
+        function sayHelloWorld() { // penulisan nama function menggunakan camel case. format: keyword function - nama function - parentheses / tanda kurung () - kurung kurawal
+            document.writeln('<h1>Hello World</h1>');
+        }
+
+        // memanggil function
+        sayHelloWorld(); // format: nama function - parentheses / tanda kurung tanpa spasi dengan nama function
+        sayHelloWorld(); // boleh digunakan / dipanggil berkali-kali
+        </script>
+</body>
+</html>

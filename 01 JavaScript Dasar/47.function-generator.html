@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function Generator</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            function generator: function yang berfungsi untuk membuat data generator
+            - data generator memiliki fungsi seperti array, bisa menampung banyak data dan dapat diiterasi. namun bukan array
+            - untuk membuat data generator tambahkan tanda bintang asterisk (*) sesudah keyword function. cth: function*
+            - untuk mengembalikan nilai (mirip return) data pada data generator dapat menggunakan keyword yield yang diikuti datanya. cth: yield 'saddam'
+            - bersifat lazy artinya ketika datanya belum diambil dari generator, maka yield tidak akan dieksekusi (yield tidak akan dieksekusi selagi datanya belum diambil / dipanggil)
+        */
+
+        /*
+        // 1. function generator sederhana
+        function* name() { // data generator
+            // ini artinya membuat data generator sebanyak 3 (seperti sebuah array yang memiliki 3 buah element):
+            yield 'saddam';
+            yield 'bin';
+            yield 'husein';
+            yield 100;
+        }
+
+        const data = name();
+        console.log(data);  // bersifat lazy. tidak akan menampilkan datanya. inilah perbedaan dengan array
+        console.log(data[0]) // tidak dapat diakses menggunakan index. undefined karena sejatinya bukan array
+
+        for (const i of data) {  // terbukti data dapat diiterasi seperti array
+            console.log(i);
+        }
+        */
+
+        /*
+        // 2. function generator bilangan kompleks
+        function* bilanganGanjil(value) {
+            for (let i = 1; i <= value; i++) {
+                if (i % 2 === 1) {
+                    yield i;
+                }
+            }
+        }
+
+        const ganjil = bilanganGanjil(20);
+        
+        console.log('bilangan ganjil:');
+        for (const i of ganjil) {
+            console.log(i);
+        }
+        */
+
+        /*
+        // 3. konsep lazy
+        function* bilanganGanjil(value) {
+            for (let i = 1; i <= value; i++) {
+                if (i % 2 === 1) {
+                    console.log(`Yield ${i}`);  // terlebih dahulu dieksekusi
+                    yield i; // yield dieksekusi kemudian
+                }
+            }
+        }
+
+        const ganjil = bilanganGanjil(20);
+        
+        console.log('lazy:');
+        for (const i of ganjil) {
+            console.log(i);
+        }
+
+        console.log('');
+
+        // pembuktian konsep lazy melalui konsep eager
+        function bilanganGanjilArray(value) {
+            const result = [];
+
+            for (let i = 1; i <= value; i++) {
+                if (i % 2 === 1) {
+                    console.log(`Yield ${i}`); 
+                    result.push(i);
+                }
+            }
+
+            return result;
+        }
+        
+        console.log('eager:');
+
+        const number = bilanganGanjilArray(20);
+
+        for (const i of number) {
+            console.log(i);
+        }
+        */
+
+        // 4. mengambil data generator satu persatu menggunakan fungsi bawaan generator next()
+        function* name() {
+            yield 'saddam';
+            yield 'bin';
+            yield 'husein';
+            yield 100;
+        }
+
+        const data = name();
+
+        console.log(data.next().value);  // hanya mengambil data yang dibutuhkan
+        console.log(data.next().value);
+        console.log(data.next().value);
+        console.log(data.next().value);
+        console.log(data.next().value);  // tidak ada lagi data generator
+        console.log(data.next().value);  // tidak ada lagi data generator
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masalah Variable yang Menggunakan Keyword var</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            - penggunaan var sudah tidak direkomendasikan lagi
+            - var tidak memiliki block scope
+            - menggunakan var cukup mengerikan karena dapat mengakibatkan hasil yang tidak terprediksi
+        */
+
+        /*
+        // 1. keyword let
+        // global scope
+        let i = 20;
+
+        for (let i = 1; i <= 10; i++) { // let i tidak akan merubah variable i yang ada pada global scope, karena beda scope. kecuali tidak menggunakan keyword let. let i yang ada pada parentheses for ini, hanya berlaku pada local scope dari for ini saja / akan membuat variable baru meskipun nama variablenya sama dengan yang ada pada scope global
+            // local scope
+            console.log(`Local: ${i}`);
+        }
+
+        console.log(`Global: ${i}`);  // nilai variable i tetap 20 karena tidak teroveride / tertimpa dengan variable i yang ada pada local scope for
+        */
+
+        /*
+        // 2. keyword var
+        // global scope
+        var i = 20;
+
+        for (var i = 1; i <= 10; i++) {  // karena menggunakan var, maka variable i yang ada pada parentheses akan mengoveride / menimpa variable i yang ada pada scope global diatasnya. looping i yang terakhir adalah 11 (proses increment terakhir, yang membuat kondisi false hingga terjadi looping stop). sehingga looping akhir ini, mengoveride / menimpa variable i = 20 diatas. ketika variable i dipanggil diluar local scope, maka nilainya sudah menjadi 11, bukan 20 lagi.
+            // local scope
+            console.log(`Local: ${i}`);
+        }
+
+        console.log(`Global: ${i}`); // penggunaan var akan meng overide variable yang ada pada global scope. ini mengakibatkan hasil yang tidak terprediksi
+        */
+        /*
+            tambahan dari buku javascript uncover:
+            Sekarang, walaupun saya tidak sengaja menggunakan nama variabel yang sama untuk perulangan, 
+            kedua variabel ini berbeda scope, sehingga tidak berpengaruh satu sama lain.
+            Kesimpulannya, semakin kecil ruang lingkup sebuah variabel, semakin bagus, agar kita terhindar
+            dari kesalahan seperti diatas. Jika anda membuat kode program secara kolaborasi dengan tim,
+            kemungkinan variabel yang bentrok akan lebih besar. Menggunakan let sebagai pengganti var
+            bisa memperkecil terjadinya masalah ini.
+        */
+
+        // 3. dari buku javascript uncover (masalah variable var: hoisting)
+        /*
+        var a = "Belajar Pemrograman Web";
+
+        function foo(){
+            console.log("a di dalam function: " + a); // undefined. jika menggunakan let a hasilnya error. menggunakan var tidak mengeluarkan error, tapi undefined, namun ini sangat berbahaya karena kita tidak dapat mengetahui kesalahannya ada dimana
+            var a = "Belajar JavaScript";
+            // let a = "Belajar JavaScript";
+        }
+
+        foo();
+        console.log("a di luar function: " + a);
+        */
+        
+        /**/
+        // proses diatas tersebut, sebenarnya diproses seperti ini:
+        var a = "Belajar Pemrograman Web";
+
+        function foo(){
+            var a; // pendeklarasian ini berasal dari var a, pada var a = "Belajar JavaScript"; yang diangkat naik ke atas pendeklarasiannya saja (var a), tidak dengan nilainya ()= "Belajar JavaScript";)
+            console.log("a di dalam function: " + a); // undefined 
+            a = "Belajar JavaScript";
+        }
+
+        foo();
+        console.log("a di luar function: " + a);
+        
+        /*
+            tambahan:
+            Cara paling efektif untuk menghindari efek JavaScript hoisting ini adalah, selalu mendefenisikan variabel di awal kode program.
+        */
+        
+    </script>
+</body>
+</html>

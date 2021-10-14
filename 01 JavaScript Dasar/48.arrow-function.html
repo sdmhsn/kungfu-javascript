@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow Function</title>
+</head>
+<body>
+    
+
+    <script>
+        /*
+            arrow function: 
+            - Arrow function adalah alternatif pembuatan function yang lebih sederhana dari function biasanya
+            - Salah satu fitur di ES6. Browser modern sudah mendukung ES6.
+            - Namun terdapat limitasi dan juga tidak bisa digunakan di semua situasi
+            - Dinamakan arrow function karena menggunakan tanda => (seperti panah)
+            - Berikut contoh beberapa kekurangan arrow function :
+                * tidak memiliki fitur arguments object
+                * tidak bisa menggunakan function generator
+                * tidak bisa mengakses this (yang nanti akan dibahas di function di object)
+                * tidak bisa mengakses super (yang nanti akan dibahas di JavaScript Object Oriented Programming)
+            - Jika sebuah arrow function isinya sederhana, misal hanya satu baris, maka kita dapat membuatnya tanpa menggunakan block (ditulis secara one line)
+            - Pada return value arrow function, ketika menggunakan one line, ditulis tanpa menggunakan keyword return (jika ada return akan error)
+            - Keyword return hanya digunakan pada arrow function yang menggunakan block function
+            - Jika parameter di arrow function hanya satu, kita bisa tidak menggunakan kurung pada parameter (parentheses). Namun, jika tidak ada parameter maka wajib menuliskan parentheses kosong ()
+            - Arrow function sama seperti anonymous function, dimana function didefinisikan / di assign ke dalam sebuah variable.
+            - Karena arrow function sama seperti anonymous function, maka kita juga bisa menggunakan arrow function sebagai parameter di function lain
+        */
+
+        // 1. Format arrow function secara umum
+        const sayHello = (name) => { // parentheses merupakan parameter
+            const say = `Hello ${name}`;
+            console.log(say);
+        }
+
+        sayHello('Saddam');
+        console.log(typeof(sayHello)); // bertipe data function
+        console.log(sayHello);  // output berupa perintah arrow function
+
+        // 2. Arrow function tanpa block function (one line)
+        const sayHello2 = (name) => console.log(`Hello ${name}`);  // Jika sebuah arrow function isinya sederhana, misal hanya satu baris, maka kita dapat membuatnya tanpa menggunakan block
+
+        sayHello2('Rahmat');
+
+        // 3. Return value pada arrow function
+        // a. menggunakan block
+        const sum1 = (first, second) => {
+            return first + second;
+        }
+
+        console.log(sum1(10, 20));
+        
+        // b. tanpa block
+        const sum2 = (first, second) => first + second;  // tanpa menggunakan return
+        
+        console.log(sum1(1, 20));
+
+        // 4. Arrow function tanpa kurung parameter parentheses
+        const sayHello3 = name => `Hello ${name}`;  // parameter name dapat ditulis tanpa parentheses karena berjumlah 1
+        
+        console.log(sayHello3('Fuad'));
+
+        // 5. Arrow function sebagai parameter (berada di argumen)
+        function giveName(callback) {
+            callback('Amin')
+        }
+
+        giveName(name => console.log(`Hello ${name}`)); // arrow function diisi ke dalam argument, untuk dijadikan sebagai parameter 
+        // kalau bentuk function declaration / function biasanya seperti ini:
+        // giveName(function(name) { console.log(`Hello ${name}`); })
+
+        // 6. experiment sendiri (arrow function sebagai parameter [berada di argumen]. semua function menggunakan arrow function)
+        const name1 = callback => callback('Fitri');
+
+        const sayHello4 = name => console.log(`Hello ${name}`);
+
+        name1(sayHello4); // pemanggilan function name1 menggunakan argumen dari function sayHello4. sayHello4 tidak diinvoke 
+
+        console.log(sayHello4); // bentuknya tanpa diinvoke dengan parentheses
+        sayHello4(); // bentuk yang diinvoke dengan parentheses. (tidak menggunakan console log karena di dalam function sudah menggunakan console log) 
+    </script>
+</body>
+</html>

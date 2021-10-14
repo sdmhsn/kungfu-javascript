@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variable const</title>
+</head>
+<body>
+    
+    <script>
+        /* 
+            Variable const: mirip dengan keyword var atau let, namun menggunakan keyword const dimana value / data tidak bisa diubah (konstan)
+            - untuk melihat kode error dapat melakukan inspect element lalu pilih tab console, akan terlihat pesan error. 
+        */
+
+        const application = 'Belajar Javascript Dasar';  // ketika diganti menjadi let, tidak akan terjadi error
+        document.writeln(application);
+        document.writeln('<br>');
+        
+        // coba dan efek mengubah variable const
+        application = 'Gak mau belajar'; // terjadi kode error karena const tidak bisa diubah. kode error menyebabkan programnya berhenti
+        document.writeln(application);  // karna terjadi error seperti diatas, data dibawah kode yang error tersebut tidak akan dieksekusi
+    </script>
+</body>
+</html>

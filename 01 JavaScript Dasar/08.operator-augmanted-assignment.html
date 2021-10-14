@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operator Augmanted Assignment</title>
+</head>
+<body>
+    
+    <script>
+        // Operator augmanted assignment: operator dapat disingkat (maximilian: shortcut operators) apabila suatu operator melakukan operasi terhadap dirinya sendiri
+        /* 
+            cth augmanted assingnment assignment:
+            result += 10 (result = result + 10)
+            result -= 10 (result = result - 10)
+            result *= 10 (result = result * 10)
+            result /= 10 (result = result / 10)
+            result **= 10 (result = result ** 10)
+            result %= 10 (result = result % 10)
+        */
+        let result = 2 + 1; // 3
+        document.writeln('<p>2 + 1 = ' + result + '</p>');
+        let originalResult = result; // 3
+
+        result *= 2; // Contoh augmanted operator perkalian
+        document.writeln('<p>' + originalResult + ' * 2 = ' + result + '</p>');
+        originalResult = result; // 6
+        
+        result -= 1; // Contoh augmanted operator pengurangan
+        document.writeln('<p>' + originalResult + ' - 1 = ' + result + '</p>');
+    </script>
+</body>
+</html>

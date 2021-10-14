@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Method</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            object method: function yang terdapat di dalam object
+            - karena function memiliki tipe data function, maka function tersebut dapat ditambah / dimasukkan / dijadikan property ke dalam data object. inilah yang dinamakan method
+            - method merupakan function yang terdapat di dalam object. ini biasa disebut object method
+            - cara pembuatannya adalah membuat sebuah property dan meng assign sebuah functionnya sebagai value dari property tersebut
+        */
+
+        /*
+        // 1. pembuatan object method
+        const person = {
+            name: 'Saddam',
+            sayHello: function(name) { // menggunakan anonymous function
+                alert(`Hello ${name}`); // name ini merujuk ke parameter bukan property name pada object person
+                // alert(`Hai ${person.name}`);  // tambahan: jika ingin menggunakan property name, maka harus ditulis secara pemanggilan property object. lebih disarankan menggunakan this (akan dibahas selanjutnya)
+            }
+        };
+
+        person.sayHello('Amin'); // cara pengaksesan / pemanggilan dan penambahan argumen
+        */
+
+        /*
+        // 2. dapat juga ditulis seperti ini
+        function sayHello(name) {
+            alert(`Hello ${name}`);
+        }
+
+        const person = {
+            name: 'Saddam',
+            sayHello: sayHello
+        };
+
+        person.sayHello('Amin');
+        */
+
+        /*
+        // 3. menambah property berupa method ke object
+        const person = {
+            name: 'Saddam'
+        }
+
+        // menambah 
+        person.umur = 31;
+        person.sayHello = function(name) { // anonymous function atau function biasa (declaration)
+            alert(`Hello ${name}`);
+        }
+
+        person.sayHello('Amin');
+
+        console.log(person);  // pembuktian
+        */
+
+        // 4. experiment sendiri (mengubah / menimpa method object)
+        const person = {
+            name: 'Saddam',
+            sayHello: function(name) {
+                alert(`Hello ${name}`);
+            }
+        };
+
+        person.sayHello('Amin');
+        person.sayHello('Rahmat');
+        person.sayHello = function() {  // mengubah ke value method lainnya. sayHello tidak diinvoke (dengan parentheses)
+            console.log('Hai :)');
+        }
+        person.sayHello();
+        person.sayHello = 'Hello'; // mengubah dari tipe data function ke tipe data string
+        // person.sayHello();  // pembuktian. sayHello bukan function lagi. tapi sudah berubah menjadi string
+        console.log(person.sayHello);
+    </script>
+</body>
+</html>

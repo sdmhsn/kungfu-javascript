@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rest parameter</title>
+</head>
+
+<body>
+
+    <script>
+        /*
+            rest parameter: fitur yang dapat digunakan untuk mengirim banyak data melalui satu parameter. data yang banyak tersebut secara otomatis dikonversi menjadi sebuah array
+            - ketentuan rest parameter adalah: 
+            * hanya boleh terdapat satu rest parameter dalam parameter function 
+            * data dari rest parameter harus berada di posisi paling akhir parameter (tidak boleh di depan atau di tengah)
+            - pada bahasa pemrograman lain disebut juga variable argument
+            - untuk membuat rest parameter di parameter function adalah menggunakan spread syntax / operator lalu diikuti nama parameternya (spread syntax dengan nama parameter akan menjadikannya rest parameter)
+            - saat ini lebih disarankan menggunakan rest parameter dibandingkan arguments object    
+            - pada rest parameter kita dapat mengisi parameter selain rest parameter itu sendiri
+        */
+
+        /*
+        // 1. contoh rest parameter
+        function sum(name, ...data) {  // ... (merupakan spread syntax / spread operator). ...data merupakan rest parameter (hanya boleh terdapat satu rest parameter dan berada di posisi paling akhir di dalam parameter dari suatu function). selain rest parameter terdapat parameter name, inilah yang menjadi kelebihan penggunaan rest parameter
+            let total = 0;
+
+            for (const element of data) {
+                total += element; // karena rest parameter kesemuanya berupa angka, maka dapat dilakukan operasi penambahan
+                // console.log(element)
+            }
+            console.log(`Name: ${name}. Total data: ${total}`)
+
+            console.log(data); // data rest parameter adalah berupa array
+            console.log(data[2]); // data rest parameter berdasarkan indexnya
+        }
+
+        sum('saddam', 1, 2, 3, 4, 5); // pada argument data pertama ('saddam'), dan data sisa adalah rest parameter dengan data 1,2,3,4,5
+        // sum('saddam', 'rahmat', 1, 2, 3, 4, 5); // pada argument data rest parameter adalah rahmat,1,2,3,4,5
+        // console.log('')
+        */ 
+
+        /*
+        // 2. mengirim data array ke rest parameter 
+        function sum(name, ...data) { 
+            let total = 0;
+
+            for (const element of data) {
+                total += element;
+            }
+            console.log(`Name: ${name}. Total data: ${total}`)
+        }
+
+        // apabila asal datanya sudah terlanjur berupa array spt berikut, maka kita dapat menggunakan spread syntax pada argument:
+        const values = [10, 10, 10, 10, 15];
+        // sum('saddam', values); // tanpa spread syntax
+        sum('saddam', ...values);  // dengan spread syntax
+        console.log('')
+        */
+
+        /*
+        // 3. sebelum adanya fitur rest parameter, masih menggunakan arguments object
+        function oldSum() {  
+            // console.log(arguments);
+            let total = 0;
+
+            for (const element of arguments) {  // menggunakan keyword arguments
+                total += element;
+            }
+            console.log(`Total data: ${total}`)
+        }
+        
+        oldSum(1, 2, 3); // semua yang terdapat di dalam argument dijadikan berbentuk array dengan keyword arguments
+        */
+
+        // 4. experiment sendiri (spread operator / bukan rest parameter)
+        function sum(a, b, c) {  // tidak terdapat rest parameter
+            return a + b + c;
+        }
+
+        const angka = [1, 2, 3];
+        console.log(sum(...angka));  // spread pada argument
+    </script>
+</body>
+
+</html>

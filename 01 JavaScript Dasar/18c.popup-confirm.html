@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup Confirm</title>
+</head>
+
+<body>
+
+    <script>
+        /*
+            confirm(): digunakan untuk meminta input boolean dari user dalam bentuk popup input pilihan konfirmasi pada browser
+        */
+        const masuk = confirm('Yakin mau masuk?');
+
+        if (masuk) {  // masuk = true (Ok). kondisi percabangan seperti ini berarti true
+            const nama = prompt('Siapa namamu?'); // penggunaan prompt() dan alert() agar aplikasi menjadi lebih interaktif
+            alert(`Halo ${nama}`);
+        } else { // masuk = false (Cancel)
+            alert('Lu sonde mau masuk na...');
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this</title>
+</head>
+<body>
+    
+
+    <script>
+        /*
+            this: mengacu (referensi) pada pemilik dari tempat kita mengakses this nya misalnya di function, global scope atau dimanapun.
+            - pada object method, this mereferensi / mengacu pada pemilik functionnya. Jadi untuk mengetahui pemilik function nya dapat menggunakan keyword this.
+            - object pada browser adalah window
+            - jika this berada di global scope, maka mengacu pada object window (global object)
+            - jika this berada di function, maka mengacu pada object window (global object). tambahan: satu tingkat?
+            - jika this berada di object method, maka mengacu pada object method
+            - jika this berada event (DOM), maka mengacu pada element yang menerima event 
+            - dalam emplementasinya kebanyakan this digunakan pada object method
+        */
+
+        // 1. this di global scope
+        console.log(this);  // hasil referensinya adalah window
+        document.writeln(`<h1>${this}</h1>`);
+
+        // 2. this di dalam function (local)
+        function sample() {
+            console.log(this);  // hasil referensinya adalah window
+        }
+
+        sample();
+
+        // 3. this di dalam nested function (local)
+        function sample() {
+            function inner() {
+                console.log(this); // hasil referensinya adalah window
+            }
+
+            inner();
+        }
+
+        sample();
+
+        // 4. this di object method
+        const person = {
+            name: 'Saddam',
+            sayHello: function(name) {
+                console.log(this); // pembuktian. referensi mengacu ke object person beserta property2 nya
+                document.writeln(`<h1>${this}</h1>`) // object Person
+                console.log(`Hello ${name}, my name is ${this.name}`);  // ${name} mengacu ke parameter name, bukan property name yang ada pada object person. referensi this nya adalah object (person) dengan property name
+                
+                // tambahan: 
+                // - referensi this pada nested function adalah window. bukan person
+                function hai() {
+                    console.log(this);
+                }
+                
+                // - namun referensi this pada nested function yang menggunakan arrow function adalah person. bukan window
+                // const hai = () => console.log(this);
+
+                hai();
+            }
+        };
+
+        person.sayHello('Amin');
+        // person.sayHello('fuad');
+
+    </script>
+</body>
+</html>

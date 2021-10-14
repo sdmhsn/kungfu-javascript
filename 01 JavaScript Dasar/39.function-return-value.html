@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function return value</title>
+</head>
+<body>
+    
+
+    <script>
+        /*
+            function return value: digunakan untuk menghasilkan / mengembalikan / mengeluarkan suatu value melalui function
+            - secara default, ketika dipanggil function tidak menghasilkan value apapun
+            - untuk menghasilkan value (mereturn value) dapat menggunakan keyword return, kemudian diikuti data yang ingin di return
+            - function return value hanya dapat mereturn sebanyak satu data. untuk mereturn banyak data dapat memanfaatkan array
+            - tipe data yang dapat direturn adalah semua tipe data 
+            - contoh built-in js function yang yang mereturn value spt prompt() berupa value string dan confirm berupa value boolean. sedangkan function yang tidak mereturn value seperti alert(), dimana ketika ditangkap valuenya melalui variable isinya adalah undefined
+            - kode dibawah / setelah keyword return tidak akan dieksekusi karena eksekusi program telah dihentikan oleh return tersebut
+            -
+        */
+
+        /*
+        // 1. contoh return value
+        function sayHello(firstName, lastName) {
+            const say = `Hello ${firstName} ${lastName}`;
+            return say;
+        }
+
+        // const result = sayHello('Saddam', 'Husein'); // value harus ditangkap. dalama contoh ini ditangkap dan disimpan ke dalam variable result terlebih dahulu
+        // document.writeln(`<h1>${result}</h1>`);
+        // dapat juga menangkap value tanpa menyimpannya ke dalam variable
+        document.writeln(`<h1>${sayHello('Rahmat', 'Hidayat')}</h1>`);
+        */
+
+        /*
+        // 2. sebuah function yang memiliki beberapa return value
+        function getResult(value) {
+            if (value > 90) {
+                return 'A';  // yang terpenting sebuah return berada di dalam masing2 kondisinya
+                // return 'AB'; // tidak akan pernah dieksekusi  
+            } else if (value > 80) {
+                return 'B';
+            } else if (value > 70) {
+                return 'C';
+            } else if (value > 60) {
+                return 'D';
+            } else {
+                return 'E';
+            }
+        }
+
+        const inputValue = Number(prompt('Input value:'));
+        const finalValue = getResult(inputValue);
+        document.writeln(`<h1>You got ${finalValue}</h1>`);
+        */
+
+        /*
+        // 3. menghentikan eksekusi dengan return
+        function isContains(array, searchValue) {
+            for (const element of array) {
+                console.log(element);  // iterasi element. sebagai pembuktian bahwa return menghentikan eksekusi
+                if (element === searchValue) {
+                    return true; // iterasi akan berhenti apabila ditemukan
+                }
+            }
+            return false;
+        }
+
+        const array =  [10,23,3,44,5,63,72,8,19,10]; 
+        const search = 5;  // true bila ditemukan dan false bila tidak ditemukan
+        const found = isContains(array, search);
+        document.writeln(`<h1>${found}</h1>`);
+        */
+
+
+        /*
+        // experiment sendiri
+        // 1. contoh built-in js function yang tidak mereturn value
+        let a = alert('say hello');
+
+        console.log(a);  // bernilai undefined
+
+        // 2. menghentikan eksekusi dengan return
+        function isContains(array, searchValue) {
+            for (const element of array) {
+                document.writeln(`<h1>${element}</h1>`);
+                if (element === searchValue) {
+                    return true;
+                }
+            }
+            
+            document.writeln('<h1>helllo</h1>');
+        }
+
+        isContains([1,2,3,4,5,6,7,8,9,10], 5);
+        */
+
+        // 3. mereturn array
+        function names() {
+            const users = ['saddam', 'rahmat', 'fuad', 'fitri'];
+            return users;
+        }
+
+        console.log(names());
+        console.log('');
+        console.log(names()[2]);
+        console.log('');
+        for (const name of names()) {
+            console.log(name);
+        }
+        console.log('');
+
+        const nama = names();
+        console.log(nama);
+        console.log('');
+        console.log(nama[1]);
+        console.log('');
+        for (const user of nama) {
+            console.log(user);
+        }
+
+    </script>
+</body>
+</html>

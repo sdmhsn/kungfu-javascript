@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipe Data Objet</title>
+</head>
+<body>
+    
+    <script>
+        /*
+        Tipe data Object: - merupakan tipe data yang memiliki property/attribut/key
+            - pada array disebut index, sedangkan pada object disebut property/atribut/key. property merupakan sebutan dari variable yang ada di dalam object
+            - property umumnya berupa string (selain number) dan value bisa berupa tipe data apa saja 
+            - tiap2 property memiliki value
+        */
+        // 1. Membuat object kosong
+        const person = {}; // dapat menggunakan const karena menambah / menghapus / mengubah property dari object masih dapat dilakukan. KECUALI mengubah valuenya yang bertipe object, ke tipe data lainnya seperti string / number yang tidak boleh dalam penerapan const pada object.
+
+        // 2. Menambah atau mengisi property / attribute / key ke object
+        person['nama'] = 'saddam';  // tambahan: menggunakan brackets notation. nama property dalam bracket menggunakan tanda petik karena dianggap string. bracket notation ini biasanya diperuntukkan untuk nama property yang tidak umum seperti menggunakan angka atau terdapat spasi pada dua suku kata nama. tidak sering digunakan
+        person['umur'] = 30;  // baik property maupun value bisa berisi tipe data apa saja
+        person['alamat rumah'] = 'kupang'; // menggunakan bracket notation karena nama property terdapat spasi / 2 suku kata. jika menggunakan dotted notation pada penamaan property yang mengandung spasi seperti ini, maka akan error
+        person.agama = 'islam',  // dapat juga menggunakan dotted notation
+
+        console.table(person);
+
+        // 3. Mengubah property (dengan cara menimpa property dengan value baru sesuai yang diinginkan)
+        person['nama'] = 'rahmat';  // menggunakan brackets notation
+        person.umur = 27; // menggunakan noted notation
+        console.table(person);
+
+        // 4. Menghapus property
+        delete person['umur'];
+        
+        console.table(person);
+
+        // 5. Membuat object langsung menset properties nya
+        const orang = {
+            'nama': 'fuad', // untuk property bisa tanpa tanda petik. tanda petik biasanya property/attribute/key dengan dua suku kata misalnya 'nama lengkap'. jika ingin menggunakan tanda petik, lebih amannya pakai tanda petik saja karena bisa untuk suku kata yang tunggal maupun dua suku kata dari key.
+            'nama lengkap': 'fuaddin husein',
+            'umur': 21,
+            'alamat': 'sandakan',
+        };
+
+        console.table(orang);
+        
+        orang['nama'] = 'fitri'; // mengubah value dari property nama
+        console.table(orang);
+
+        // 6. Mengakses property object
+        console.info(orang.nama);
+        console.table(orang.nama);  // pada umumnya menggunakan dotted notation
+        console.info(orang['nama']);  // bisa juga menggunakan brackets notation untuk mengakses object property. menggunakan ini biasanya pada nama property berupa angka atau nama property dengan dua suku kata misalnya ['nama lengkap'] seperti berikut:
+        console.info(orang['nama lengkap']);  
+
+        console.info(`Nama: ${orang.nama}`);
+        console.info(`Umur: ${orang.umur}`);
+        console.info(`Alamat: ${orang.alamat}`);
+
+        document.writeln(`<p>Nama: ${orang.nama}</p>`);
+        document.writeln(`<p>Umur: ${orang.umur}</p>`);
+        document.writeln(`<p>Alamat: ${orang.alamat}</p>`);
+        console.log('');
+
+        // 6. Nested object (experiment sendiri)
+        const data = {
+            mahaSiswa: {
+                namaLengkap: 'Saddam Husein',
+                umur: 31,
+                ipk: {
+                    1: 3.1,
+                    2: 3.0,
+                    3: 3.21
+                }
+            }
+        };
+        // penambahan dan pengaksesan data
+        data.status = 'Lulus';
+        data.mahaSiswa.agama = 'Islam';
+        data.mahaSiswa.ipk[4] = 3.5; // menambah property ke nested object. karena property di dalam ipk berupa angka, maka menggunakan bracket notation
+        console.log(data.mahaSiswa.ipk[4]);  // mengakses data yang sudah ditambah juga menggunakan bracket notation karena berupa angka
+        console.log(data.mahaSiswa.agama);
+        // data.mahaSiswa = {status: 'Aktif'}; // mengubah / menimpa nested object
+        // console.log(data.mahaSiswa.status);
+        console.log(data);
+    </script>
+</body>
+</html>

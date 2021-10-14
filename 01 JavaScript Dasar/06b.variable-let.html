@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variable let</title>
+</head>
+<body>
+    
+    <script>
+        /* 
+            Variable let: deklarasi variable menggunakan kata kunci var seperti sebelumnya merupakan kata kunci lama.
+            kata kunci tersebut terdapat masalah dalam desainnya yang berpengaruh terhadap penggunaannya, sehingga untuk saat ini tidak direkomendasikan lagi
+            untuk digunakan. deklarasi variable terbaru dapat menggunakan kata kunci let atau const.
+        */
+
+        // deklarasi / membuat variable
+        let fullName;
+        let firstName;
+        let middleName;
+        let lastName;
+
+        // mengisi variable
+        fullName = 'Saddam Bin Husein';
+        firstName = 'Saddam';
+        middleName = 'Bin';
+        lastName = 'Husein';
+
+        document.writeln(fullName);
+        document.writeln('<br>');
+
+        // mengubah value di variable
+        fullName = 'Rahmat Husein';
+        document.writeln(fullName); //sebelum diubah masih bernilai saddam karena kode program running dari atas ke bawah, sehingga ketika diubah akan menggunakan data terbaru
+        document.writeln('<br>');
+
+        // membuat variable langsung dengan isi valuenya
+        let fathersName = 'Bonda Husein';
+        document.writeln(fathersName);
+        document.writeln('<br>');
+
+        // penggunaan string concat
+        let newName = firstName + fathersName;
+        document.writeln(newName);
+        document.writeln('<br>');
+        document.writeln('My first name is ' + firstName);
+        document.writeln('<br>');
+
+        // mengakses variable
+        document.writeln(firstName);
+    </script>
+</body>
+</html>

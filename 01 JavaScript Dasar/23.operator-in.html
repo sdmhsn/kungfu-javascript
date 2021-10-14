@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operator in</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            operator in: sebuah operator yang digunakan untuk mengecek / memeriksa apakah suatu property pada index maupun object ada
+            - operator in hanya memeriksa property untuk object dan index untuk array, tidak dengan value dari object maupun array tersebut
+        */
+
+        /*
+        // object
+        const dataObject = {
+            firstName: 'Saddam',
+            lastName: 'Husein'
+        }
+
+        if ('firstName' in dataObject) { // pada object, pengecekan berdasarkan property object 
+            alert(`Hello ${dataObject.firstName}`);
+        } else {
+            alert('Hello');
+        }
+        */
+
+        /*
+        // array (experiment sendiri)
+        const dataArray = ['Saddam', 'Rahmat', 'Fuad'];
+        // const nama = 'Saddam';  // menggunakan value 'Saddam' tidak dapat diperksa oleh operator in
+        const nama = dataArray.indexOf('Rahmat'); // dikombinasi dengan method indexOf() untuk mendapat index dari 'Rahmat' di array dataArray
+        console.log(nama); // rahmat berada di index 1
+
+        if (nama in dataArray) { // pada array, pengecekan berdasarkan index array (bukan value array)
+            alert(`Hello ${dataArray[nama]}`);
+        } else {
+            alert('Bye');
+        }
+        */
+
+        // typeof undefined
+        const data = {
+            namaDepan: 'saddam',
+            namaBelakang: undefined
+        };
+
+        if ('namaBelakang' in data) {
+            alert(`Hello ${data.namaBelakang}`);
+        } else {
+            alert('Hello');
+        }
+    </script>
+</body>
+</html>

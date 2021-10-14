@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operator Logika</title>
+</head>
+<body>
+    
+    <script>
+        /* 
+            Operator logika: operator untuk operasi dua buah data boolean. hasil dari operator logika nya juga adalah boolean
+
+            operator logika yang ada pada js:
+            &&      : and (x) [dua buah data harus true untuk menghasilkan nilai true. selain dari itu menghasilkan false]
+            ||      : or (+) [salah satu data saja true akan menghasilkan nilai true. hasil false apabila kedua data adalah false]
+            !       : not (negasi / kebalikan) [hanya berlaku satu data. data yang awalnya true, dibalik menjadi false]
+        */
+        
+        let result = 4 > 5 && 20 != 10;  // percobaan perbandingan empat buah data
+        document.writeln(result);
+        document.writeln('<p>' + '--------------------------' + '</p>');
+        
+        const nilaiUjian = 90;
+        const nilaiAbsensi = 70;
+
+        const lulusUjian = nilaiUjian > 75; // nilaiUjian = true karena 90 > 75
+        document.writeln(lulusUjian);
+        document.writeln('<br>');
+        const lulusAbsensi = nilaiAbsensi > 75;  // nilaiAbsensi = false
+        document.writeln(lulusAbsensi);
+        document.writeln('<br>');
+
+        const lulus = lulusUjian && lulusAbsensi; // true && false = false
+        document.writeln(lulus);
+    </script>
+</body>
+</html>

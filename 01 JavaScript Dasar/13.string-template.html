@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Template</title>
+</head>
+<body>
+    
+    <script>
+        /* 
+            String template: mirip seperi menggunakan string concat (+), namun pada beberapa kasus penggunaan string concat justru meribetkan,
+            sehingga dapat menggunakan substitusi dari string template.
+            
+            temuan:
+            - menggunakan backtick (`: bukan tanda petik, samping kiri angka 1), $ dan {}
+            - pada alert() spasi kosong pada code editor, akan terbaca pada alert tersebut (baca: multiline string)
+            - pada python disebut format string, contoh: f"Nama: {nama}"
+        */
+        const name = 'Saddam Husein';
+        document.writeln(`Name: ${name}`); // menggunakan karakter backtick (`) yang berada pada sebelah angka 1 keyboard. bukan tanda petik satu. akan melakukan substitusi (mencari) variable name
+        document.writeln('<p>' + '--------------------------' + '</p>');
+
+        const template = 'Rahmat Husein';
+        console.info(`Name: ${template}`); // tampil di console
+
+        // contoh mengapa menggunakan + sangat meribetkan (cara js lama)
+        const firstName = 'Saddam';
+        const middleName = 'Bin';
+        const lastName = 'Husein';
+        const lama = firstName + ' ' + middleName + ' ' + lastName; // penulisan jadi cukup panjang
+        console.info(lama);
+
+        // dengan string template menjadi lebih mudah (cara js baru)
+        const baru = `${firstName} ${middleName} ${lastName}`;
+        console.info(baru);
+
+        // Expression di string template
+        const nilai = 90;
+        const template2 = `Name: ${name}, Lulus: ${nilai > 70}`; // ekspresi nilai > 70 (dalam string template) bernilai true
+        console.info(template2);
+
+        // multiline string dapat dibuat menggunakan string template
+        const multiline = `Nama saya saddam,
+        umur saya 30,
+        saya lahir di sandakan
+        `;  // penggunaan backtick (`) akan support multiline
+        document.writeln('<pre>');
+        document.writeln(multiline);
+        document.writeln('</pre>');
+        document.writeln(multiline);
+    </script>
+</body>
+</html>

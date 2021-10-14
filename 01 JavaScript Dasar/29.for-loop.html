@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For loop</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            for: salah satu keyword yang digunakan untuk melakukan perulangan (looping)
+            - blok kode ({}) di dalam for akan selalu diulangi apabila kondisi dari for terpenuhi (true), apabila tidak terpenuhi (false) maka stop perulangan tersebut. mirip percabangan if statement, bedanya if hanya dieksekusi sekali apabila terpenuhi (true), apabila tidak terpenuhi (false) maka else ke kondisi lainnya dan stop 
+
+            - sintaks for: 
+            for(init statement; kondisi; post statement) {
+                // loop / perulangan (isi didalam blok)
+            }
+
+            - terdapat 3 bagian yang dipisahkan oleh semicolon pada for loop:
+            * init statement: hanya dieksekusi sekali diawal sebelum melakukan perulangan (start counter). tambahan: karena berubah2, maka menggunakan keyword let dan var, tidak berlaku const yang bersifat konstan
+            * kondisi: akan dilakukan pengecekan setiap perulangan. lanjut perulangan apabila kondisi true dan stop perulangan ketika kondisi false. untuk menghentikan perulangan pastikan kondisi bernilai false.
+            * post statement: akan dieksekusi setiap akhir perulangan akan menaikkan kondisi (increment)
+            
+            - alur for:
+            init statement -> kondisi (true / false?) -> perulangan (blok) -> post statement
+                                    ^|_____________________________________________|
+
+            - 3 bagian pada parantheses (kurung) di for tersebut tidak wajib diisi (;;) / dapat dikosongkan. ini berarti kondisi for selalu bernilai true, sehingga perulangan tanpa henti (infinite loop)
+        */
+        
+        /*
+        // 1. perulangan tanpa henti (infinite loop)
+        for (;;) {
+            alert('Hello');  // menggunakan alert() agar browser tidak hang
+        }
+        */
+
+        /*
+        // 2. menambahkan kondisi ke for loop
+        let counter = 1; // init statement
+
+        for (; counter <= 5;) { // kondisi
+            document.writeln(`<h1>hello ke-${counter}</h1>`);
+            counter++; // post statement (increment)
+        }
+        */
+
+        /*
+        // 3. memindahkan init statement ke dalam paranthesis (kurung)
+        for (let counter = 1; counter <= 5;) { // init statement; kondisi
+            document.writeln(`<h1>hello ke-${counter}</h1>`);
+            counter++; // post statement (increment)
+        }
+        */
+
+        // 4. memindahkan post statement statement ke dalam paranthesis (kurung)
+        // for (let counter = 1; counter <= 5; counter++) { // init statement; kondisi; post statement
+        //     document.writeln(`<h1>hello ke-${counter}</h1>`);
+        // }
+    </script>
+</body>
+</html>

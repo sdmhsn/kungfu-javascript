@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fungsi setTimeOut() dan setInterval</title>
+</head>
+<body>
+    
+    <script>
+        // setTimeout("alert('Hello')", 5000);  // alert Hello akan dieksekusi SETELAH 5 detik
+        // setInterval("alert('Hello')", 5000);  // alert Hello akan dieksekusi SETIAP 5 detik
+
+        
+        function myAlert() {
+            alert('Hello');
+        }
+
+        setTimeout(myAlert, 5000);
+
+        // setInterval(() => {
+        //     alert('Hello ini muncul lagieee');
+        // }, 10000);
+    </script>
+</body>
+</html>

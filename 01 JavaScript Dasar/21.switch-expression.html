@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch Expression</title>
+</head>
+<body>
+    
+    <script>
+        /* 
+            Switch statement: statement yang sama seperti percabangan if statement
+            - percabangan sederhana yang hanya memanfaatkan perbandingan ==
+            - mudah dibaca jika dibandingkan menggunakan if statement
+            - berbeda dengan if statement yang bisa memanfaatkan seluruh operator perbandingan, switch statement hanya bisa memanfaatkan perbandingan ==
+            - nilai yang di compare (dibandingkan) harus bersifat pasti / sama persis dengan operand 
+        */
+
+        const nilai = 95; // harus sama persis. jika nilai tidak terdapat pada case, maka yang dieksekusi adalah default
+
+        switch (nilai) { // paranthesis berisi variable
+            case 85:
+                console.log('Nilai A');
+                break; // eksekusi program akan berhenti. jika tidak ada break, eksekusi program akan terus berlanjut
+            case 70:
+                console.log('Nilai B');
+                break;
+            case 60:
+                console.log('Nilai C');
+                break;
+            case 50:
+                console.log('Nilai D');
+                break;
+            default:
+                console.log('Coba lagi');
+                break;  // dapat juga opsional, karena dibawahnya sudah tidak ada lanjutannya
+        }
+    </script>
+</body>
+</html>

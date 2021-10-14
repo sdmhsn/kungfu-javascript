@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getter dan Setter</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            getter dan setter: kemampun membuat suatu object method untuk mengambil (getter) dan mengubah (setter) suatu data 
+            - getter dan setter dapat bermanfaat untuk membuat beberapa hal seperti menambah validasi dll
+            - seperti konsep getter pada php atau java
+            - mengambil data (getter) berarti tidak terdapat parameter
+            - getter dan setter tidak terlalu populer dikalangan javascript developer
+        */
+
+        /*
+        // 1. getter (mengambil datanya)
+        const person = {
+            firstName: 'Saddam',
+            lastName: 'Husein',
+            get fullName() {  // ditulis secara langsung dengan keyword get. secara otomatis function fullName() sudah menjadi property
+                return `${this.firstName} ${this.lastName}`;
+            }
+        }
+
+        console.log(person.fullName) // akses methodnya tidak menggunakan tanda kurung (parentheses)
+        person.fullName = 'Amin Bonda'; // merubah fullName
+        console.log(person.fullName) // fullName belum dapat dirubah, sehingga membutuhkan setter
+        */
+        
+        /**/
+        // 2. setter (merubah datanya)
+        const person = {
+            firstName: 'Saddam',
+            lastName: 'Husein',
+            get fullName() {  // getter
+                return `${this.firstName} ${this.lastName}`;
+            },
+            set fullName(value) {  // setter
+                const array = value.split(' ');  // value didapatkan pada string mengubah property dibawah. split() merupakan method yang berguna untuk mengkonversi string menjadi array. karakter spasi (' ') yang ada pada string yang sudah menjadi array, dirubah menjadi koma (,) untuk memisahkan tiap kata dari string yang sudah dirubah menjadi element array
+                // console.log(array); // pembuktian value yang masuk adalah dari string ubah property dibawah.
+                this.firstName = array[0]; // kata pertama
+                this.lastName = array[1]; // kata kedua
+            }
+        }
+
+        console.log(person.fullName); // fullName sudah dapat diakses / diambil karena terdapat getter. harus terdapat getter, sehingga dapat melakukan setter
+        person.fullName = 'Amin Bonda'; // mengubah (setter). masuk ke parameter value di set fullName(value) {...}
+        console.log(person.fullName) // property fullName sudah berubah
+
+        person.fullName = 'Muhammad Ali';
+        console.log(person.fullName);
+        console.log(person.firstName);
+
+        /*
+        // 3. experiment sendiri. tanpa getter dan setter semuanya harus dilakukan secara manual
+        const person = {
+            firstName: 'Saddam',
+            lastName: 'Husein',
+            fullName: function () {
+                return `${this.firstName} ${this.lastName}`;
+            }
+        }
+
+        console.log(person.fullName());
+        // jika ingin merubah harus secara manual:
+        person.firstName = 'Amin';
+        person.lastName = 'Bonda';
+        console.log(person.fullName()); // untuk mengakses menggunakan method, bukan property
+        */
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>While loop</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            while: merupakan versi perulangan yang lebih sederhana dibandingkan for loop
+            - init statement (start counter) dan post statement (increment) tidak diisi di dalam paranthesis while. murni hanya berisikan kondisi perulangan
+            - jika hanya membutuhkan kondisi suatu perulangan saja, maka gunakan while dibandingkan for loop
+        */
+        
+        let counter = 1;
+
+        while (counter <= 5) {
+            document.writeln(`<h1>Hello ke-${counter}</h1>`);
+            counter++;
+        }
+    </script>
+</body>
+</html>

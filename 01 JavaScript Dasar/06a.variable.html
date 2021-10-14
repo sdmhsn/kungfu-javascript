@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variable</title>
+</head>
+<body>
+    
+    <script>
+        /* 
+            variable: tempat untuk menyimpan data. 
+            manfaat penggunakan variable:
+            - dengan menyimpan ke dalam variable, data dapat digunakan kembali berkali-kali dengan menyebut nama dari variable tersebut
+            - dengan adanya variable perubahan dapat dilakukan sekaligus tanpa dilakukan satu persatu
+        */
+
+        // tanpa menggunakan variable:
+        /*
+        document.writeln('Saddam Husein');
+        document.writeln('<br>');
+        document.writeln('Saddam Husein');
+        document.writeln('<br>');
+        document.writeln('Saddam Husein');
+        document.writeln('<br>');
+        document.writeln('Saddam Husein');
+        */
+
+        // deklarasi / membuat variable
+        var fullName;  // gaya penulisan menggunakan camelCase
+        var firstName;
+        var middleName;
+        var lastName;
+
+        // mengisi variable
+        fullName = 'Saddam Bin Husein';
+        firstName = 'Saddam';
+        middleName = 'Bin';
+        lastName = 'Husein';
+
+        document.writeln(fullName);
+        document.writeln('<br>');
+
+        // mengubah value di variable
+        fullName = 'Rahmat Husein';
+        document.writeln(fullName); //sebelum diubah masih bernilai saddam karena kode program running dari atas ke bawah, sehingga ketika diubah akan menggunakan data terbaru
+        document.writeln('<br>');
+
+        // membuat variable langsung dengan isi valuenya
+        var fathersName = 'Bonda Husein';
+        document.writeln(fathersName);
+        document.writeln('<br>');
+
+        // penggunaan string concat
+        var newName = firstName + fathersName;
+        document.writeln(newName);
+        document.writeln('<br>');
+        document.writeln('My first name is ' + firstName);
+        document.writeln('<br>');
+
+        // mengakses variable
+        document.writeln(firstName);
+
+    </script>
+</body>
+</html>

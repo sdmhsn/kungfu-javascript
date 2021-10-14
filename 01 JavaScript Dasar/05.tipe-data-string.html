@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipe Data String</title>
+</head>
+
+<body>
+
+    <script>
+        // tipe data string: biasa juga disebut text, merupakan tipe data yang berupa teks yang diapit menggunakan quote
+
+        // penulisan string dapat menggunakan single quote atau double quote. yang penting konsisten
+        document.writeln('Menggunakan single quote');
+        document.writeln('<br>');
+        document.writeln("Menggunakan double quote");
+        document.writeln('<br>');
+        document.writeln('<br>');
+
+        // menambah string dengan string (string concatenation / concat) dapat menggunakan operator + (string concat hanya berlaku menggunakan operator +)
+        document.writeln('Nama: ' + 'Saddam ' + 'Husein');
+        document.writeln('<br>');
+        document.writeln('Channel: ' + 'Programmer Zaman Now');
+        document.writeln('<br>');
+        document.writeln('<br>');
+
+        // escape character / sequence
+        document.writeln('<textarea cols="100" rows="10">');  // awal elemen html
+        document.writeln('Saddam Husein1'); //ketika berada di dalam suatu elemen html, writeln akan membuat baris baru. penggunaan diluar elemen html, efek baris baru tersebut tidak akan kelihatan
+        document.write('Saddam Husein2');  // untuk menghilangkan baris gunakan write. penggunaan diluar elemen html, efek baris baru tersebut tidak akan kelihatan
+        document.write('Saddam Husein3');
+        document.writeln('Saddam \nHusein4'); // \n akan membuat enter (newline). karakter ini hanya berlaku pada write
+        document.writeln('Membuat slash \\'); // \\ membuat slash
+        document.writeln('Membuat \'petik satu\''); // membuat petik satu
+        document.writeln('Membuat \"petik dua\"'); // membuat petik dua
+        document.writeln('Membuat "petik dua"'); // dapat juga menggunakan cara ini untuk membuat petik dua yaitu dengan kolaborasi menggunakan single qoute dan double quote secara bersamaan
+        document.writeln('</textarea>');  // akhir elemen html
+        document.writeln('Saddam \nHusein4'); // jika tidak menggunakan <textarea>, efeknya tidak kelihatan
+        console.log('Saddam \nHusein4'); // namun di console.log kelihatan efeknya
+
+        // empty string / string kosong
+        document.writeln('');  // petik kosong dianggap sebagai string
+    </script>
+</body>
+
+</html>

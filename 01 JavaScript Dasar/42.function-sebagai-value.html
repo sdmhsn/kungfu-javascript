@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function sebagai value</title>
+</head>
+<body>
+    
+
+    <script>
+        /*
+            Function Sebagai Value:
+            -  Function tidak hanya bisa digunakan sebagai kode program yang dieksekusi, tapi bisa juga sebagai value
+            -  Artinya, function bisa disimpan di variable, bisa juga dikirim melalui parameter ke function lainnya
+            -  Function JS cukup fleksibel, dimana dapat dijadikan value dari sebuah variable
+            - ebook javascript uncover: Function: First-class Citizen
+        */
+        
+        /*
+        // 1. Function sebagai value dari sebuah variable
+        function sayHello(name) {
+            document.writeln(`<h2>Hello ${name}</h2>`);
+        }
+
+        sayHello('Saddam');  // pemanggilan cara 1
+        const say = sayHello; // function menjadi value. penulisan variable tanpa parentheses. menggunakan tanda kurung berarti memanggil function. tidak di invoke (pemanggilan function sayHello dengan tanda kurung)
+        console.log(say); // isi dari variable say sebenarnya deklarasi dari function sayHello()
+        say('Rahmat'); // pemanggilan cara 2
+        console.log(typeof(say)); // bertipe data function
+        */
+        
+        /* 
+        // 2. Function sebagai paramater dari function lainnya (berada di argumen)
+        function sayHello(name) {
+            document.writeln(`<h2>Hello ${name}</h2>`);
+        }
+
+        function giveMeName(callback) {
+            callback('Fuad'); // artinya seakan-akan sama dengan sayHello('Fuad')
+        }
+
+        giveMeName(sayHello); // tidak dipanggil / tidak diinvoke dengan parentheses. sayHello berisikan value berupa perintah function declarations. Inilah yang dinamakan function sebagai parameter
+        console.log(sayHello); // pembuktian
+        const say = sayHello;
+        giveMeName(say);
+        */
+        
+
+        /**/
+        // 3. experiment sendiri (buku javascript uncover: function expressions / function definition (es6: wegodev), ciri identik function diassign ke dalam sebuah variable / memiliki operator =. kalau function biasa seperti pada point 1, disebut function declarations)
+        // karena isi const say = sayHello; merupakan function, maka dapat juga ditulis seperti berikut
+        const say2 = function sayHello(name) { // jika nama sayHello tidak ada, maka akan menjadi anonymous function
+            return `Hello ${name}`;
+        }
+
+        console.log(say2('fitri')); // pemanggilannya menggunakan say2() bukan sayHello()
+        // console.log(sayHello('Saddam')); // pembuktian. menggunakan sayHello() akan error
+
+        // mengubah
+        const newSay = say2('Fitri');
+        console.log(newSay);
+        
+        const newSay2 = say2;  // tidak diinvoke. valuenya berupa perintah function sayHello(name)
+        console.log(newSay2); // bukti
+        console.log(typeof(newSay2)); // bukti 
+        console.log(newSay2('Amin'));
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anonymous function</title>
+</head>
+<body>
+    
+
+    <script>
+        /*
+            Anonymous function: function yang tidak memiliki nama
+            - function didefinisikan ke dalam sebuah variable
+        */
+
+        // 1. pemanggilan anonymous function sebagai value dari variable
+        const say = function (name) {
+            document.writeln(`<h1>Hello ${name}</h1>`);
+        }
+
+        say('Saddam');  // pemanggilannya melalui variable
+
+        // 2. anonymous function sebagai argument
+        function getMyName(callback) {
+            callback('Rahmat');
+        }
+
+        // getMyName(function (name) {
+        //     document.writeln(`<h1>Hi ${name}</h1>`);
+        // });
+
+        // atau 
+        // (experiment sendiri)
+        getMyName(say); // menggunakan function yang ada pada point 1
+
+        // 3. experiment sendiri
+        // pada arrow function
+        const say2 = (name) => {
+            document.writeln(`<h1>Hello ${name}</h1>`);
+        }
+
+        say2('Fuad');
+        const hai = say2;
+        console.log(hai);
+        
+    </script>
+</body>
+</html>

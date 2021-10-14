@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>falsy-truthy</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            falsy truthy:
+            - tidak dilakukan operasi perbandingan di dalam kondisi if else statement lagi / berada diluar kondisi boolean
+            - falsy: value boolean yang dianggap false
+            - truthy: value boolean yang dianggap true
+            - di python juga ada
+
+            data falsy:
+            - '' (string kosong / empty string)
+            - 0 (angka nol, namun bilangan negatif tidak)
+            - false (boolean false)
+            - null, NaN dan undefined
+
+            data truthy:
+            - kebalikan dari data falsy (data yang bukan bernilai falsy)
+        */
+        
+        /*
+        // 1. contoh falsy
+        // const data = '';
+        // const data = 0;
+        // const data = false;
+        // const data = null;
+        // const data = NaN;
+        const data = undefined; // atau let data; (deklarasi variable menggunakan keyword const tanpa assign suatu nilai akan menghasilkan error. sumber video: menit ke 7.00)
+
+        if (data) { // tempat true. tidak lagi dilakukan operasi perbandingan yang menghasilkan boolean true
+            console.log('data truthy');
+        } else { // tempat false
+            console.log('data falsy');
+        }
+        */
+        
+        // 2. contoh truthy
+        // const data = 'saddam';
+        // const data = -1;
+        // const data = true;
+        // const data = []; // baik kosong atau yang memiliki isi akan bernilai true
+        // const data = {}; // baik kosong atau yang memiliki isi akan bernilai true
+        const data = 'false'; // ini merupakan string
+
+        if (data) {
+            console.log('data truthy');
+        } else {
+            console.log('data falsy');
+        }
+    </script>
+</body>
+</html>

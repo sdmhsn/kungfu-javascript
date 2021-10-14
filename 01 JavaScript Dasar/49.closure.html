@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            closure: Dengan kemampuan closure, kita bisa membuat sebuah function di local scope dan referensi ke data di sekitar local scope tersebut, keluar scope nya
+        */
+
+        /*
+        // 1. closure secara umum
+        function outter(value) {
+            const firstVariable = 'first';
+
+            function inner(param) {  // nested function
+                console.log(firstVariable); // juga mereferensikan data di sekitar local scope untuk dikeluarkan ke global scope
+                return value + param;
+            }
+
+            return inner; // function inner yang berada di local scope, dikeluarkan dari local scope ke global scope
+        }
+
+        const myFunction = outter(2); // input ke dalam function outter: argumen 2, output dari function outter: return inner (function inner)
+        console.log(myFunction);  // pembuktian hasil return dari function outter().
+        // sehingga:
+        console.log(myFunction(10)); 
+        console.log(myFunction(3)); 
+        console.log(myFunction(100) + 1); // dapat juga dilakukan operasi lanjutan di global scope
+        */
+        
+        // 2. experiment sendiri
+        // a. tidak menyimpan nilai
+        /* */
+        // - pertama
+        const tambah = function() {
+            let counter = 0;
+            
+            counter += 1;
+            
+            return counter;
+        };
+
+        console.log(tambah());
+        console.log(tambah());
+        console.log(tambah());
+        console.log(tambah());
+        console.log(tambah()); // seberapa banyak pemanggilan tambah() nilai variable counter tetap direset menjadi 1
+        
+        /*
+        - kedua
+        const tambah = function() {
+            let counter = 0;
+
+            function inner() {
+                counter += 1;
+            }
+
+            inner();
+            inner();
+            return counter;
+        };
+
+        console.log(tambah());
+        console.log(tambah());
+        console.log(tambah());
+        console.log(tambah());
+        console.log(tambah()); // seberapa banyak pemanggilan tambah() dan inner() nilai variable counter tetap 2 (tidak berubah)
+        */
+        
+        
+        /*
+        // b. menyimpan nilai
+        const tambah = function() {
+            let counter = 0;
+            
+            function inner() {
+                counter += 1;
+                return counter;
+            }
+
+            return inner;
+        }();
+
+        console.log(tambah());  // tiap pemanggilan / invoke, nilai variable akan bertambah
+        console.log(tambah());
+        console.log(tambah());
+        console.log(tambah());
+        console.log(tambah());
+        */
+    </script>
+</body>
+</html>

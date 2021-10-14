@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipe Data Array</title>
+</head>
+<body>
+    
+    <script>
+        /*
+        Tipe data Array: digunakan untuk menyimpan kumpulan data. jadi daripada menggunakan beberapa variable untuk menyimpan kumpulan data, maka sebaiknya menggunakan array.
+            - urutan pertama data di array dimulai dari 0
+            - setiap menambahkan data akan disimpan di urutan paling akhir
+            - urutan data di array disebut dengan index 
+            - dalam sebuah array dapat berisikan data dengan tipe data apa saja (tidak ada batasan, baik sama ataupun berbeda karena js merupakan dynamic language)
+            - panjang array merupakan jumlah data dalam sebuah array
+            - berdasarkan klasifikasi javascript, tipe data array termasuk ke dalam tipe data object (dapat dicek menggunakan function / operator typeof())
+        */
+
+        let arrayKosong = [];
+
+        let arrayNama = ['Saddam', 'Bin', 'Husein'];  // index 0 bernilai 'Saddam' merupakan data pertama. panjang array adalah 3 data (bukan 2). 
+
+        // Operasi di array:
+        // 1. Manambah data di array
+        const names = [];
+        names.push('Saddam');
+        names.push('Bin', 'BHusein');
+        names.push('Budi', 'Joko', 'Bambang', 'Saddam'); // data / element yang sama tetap ditampilkan
+        names[9] = 'Atapukan';  // selain menambah, bisa juga untuk mengupdate / mengubah data
+
+        // 2. Menampilkan array di console
+        console.table(names); // menampilkan dalam bentuk table
+        console.info(names); // menampilkan dalam bentuk biasa atau log
+        
+        // 3. Mendapatkan panjang array
+        console.info(names.length);
+        
+        // 4. Mendapatkan data di posisi urutan index tertentu 
+        console.info(names[0]);
+        console.info(names[3]);
+        console.info(names[4]);
+
+        // 5. Mengupdate/mengubah data di posisi urutan index tertentu
+        console.info(names[2]);
+        names[2] = 'Husein';
+        console.info(names[2]);
+
+        // 6. Menghapus data di posisi urutan index tertentu, tanpa mengganti datanya (index tetap ada meskipun datanya hilang)
+        delete names[4];  // data di index 4 dihapus. data lainnya TIDAK AKAN BERGESER dan mengisi posisi dari data yang dihapus ini
+        console.table(names);
+        names.push('Tambah Lagi'); // akan berada pada posisi urutan paling akhir
+        console.table(names); // pada table terlihat index 4 yang dihapus tetap tidak terisi
+        console.info(names.length);  // meskipun ada index tertentu yang sudah dihapus (posisi tersebut menjadi empty), length tetap 9 bukan 8
+        console.info(names);  // posisi index yang dihapus menjadi empty
+        
+        // 7. Multidimensional array
+        names.push(['Rahmat', 'Fuad', 'Fitri']);  // akan berada pada posisi urutan paling akhir
+        console.table(names);
+        console.info(names);
+
+        // tambahan info:
+        // https://www.w3schools.com/js/js_array_const.asp
+    </script>
+</body>
+</html>
