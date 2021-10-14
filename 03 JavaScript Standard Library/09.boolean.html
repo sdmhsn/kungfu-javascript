@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boolean</title>
+</head>
+<body>
+    
+
+    <script>
+        /*
+            boolean:
+            - Boolean merupakan wrapper class untuk tipe primitif boolean
+            - Boolean memiliki method toString() untuk mengkonversi ke String
+            - Dan memiliki method valueOf() untuk mengkonversi ke tipe boolean primitif
+            - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean 
+            - tidak disarankan menggunakan class Boolean (new Boolean()) untuk membuat data boolean, karena akan menghasilkan tipe data object, bukan boolean
+        */
+
+        // 1. Instance method boolean
+        const bool = Boolean(true);
+
+        console.log(bool);
+        console.log(typeof bool);
+
+        // toString(): berfungsi untuk mengkonversi output boolean menjadi string
+        const boolToString = bool.toString();
+        console.log(boolToString);
+        console.log(typeof boolToString); // output bertipe data string
+        
+        // valueOf(): berfungsi untuk mengkonversi ke tipe boolean primitif
+        // console.log(bool.valueOf());
+        const boolValueOf = bool.valueOf();
+        console.log(boolValueOf);
+        console.log(typeof boolValueOf);
+
+        // 2. Perbedaan Boolean() dengan new Boolean()
+        const boolObject = new Boolean(true); // tidak disarankan menggunakan class Boolean (new Boolean()) untuk membuat data boolean, karena akan menghasilkan tipe data object, bukan boolean
+
+        console.log(boolObject);
+        console.log(typeof boolObject);
+    </script>
+</body>
+</html>

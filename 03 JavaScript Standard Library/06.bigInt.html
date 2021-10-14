@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BigInt</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            BigInt: data angka yang lebih dari jangkauan Number.MAX_SAFE_INTEGER atau Number.MIN_SAFE_INTEGER
+            - jika data masih mencakup angka jangkauan dari Number.MAX_SAFE_INTEGER atau Number.MIN_SAFE_INTEGER, maka kita masih bisa menggunakan Number()
+            - namun apabila angka jangkauan yang kita gunakan melebihi jangkauan dari Number.MAX_SAFE_INTEGER atau Number.MIN_SAFE_INTEGER, maka kita harus menggunakan BigInt()
+            - format penggunaan: BigInt(); (kalau number biasa Number())
+            - seluruh operasi yang dapat dilakukan pada Number() seperti operasi matematika dsb, dapat dilakukan pada BigInt()
+            - lihat juga materi tentang number Javascript standard library dan tentang konversi string number pada Javascript dasar
+        */
+
+        // 1. Contoh penggunaan
+        const a = BigInt(Number.MAX_SAFE_INTEGER);
+        const b = BigInt(Number.MAX_SAFE_INTEGER);
+        const c = a + b; // dapat dilakukan operasi layaknya pada Number(). operasi penambahan dari 2 angka dengan value paling tinggi dari Number()
+
+        console.log(c);  // ciri bigint ada huruf n diakhir angka
+        console.log(typeof c);  // tipe datanya adalah bigint
+
+        // perbedaan dengan Number():
+        const d = Number(Number.MAX_SAFE_INTEGER);
+        console.log(d);
+        console.log(typeof d);
+    </script>
+</body>
+</html>

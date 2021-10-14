@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+</head>
+<body>
+    
+
+    <script>
+        /*
+            - perulangan array selain menggunakan for in atau for of, dapat juga menggunakan method forEach()
+            - saat ini iterasi perulangan lebih populer menggunakan forEach() dibandingkan for in atau for of
+        */
+
+        /*
+        // 1. array loop
+        // - melakukan iterasi menggunakan method forEach(). tiap2 function dimasukkan ke dalam method forEach() / function sebagai parameter
+        const names = ['Saddam', 'Rahmat', 'Fuad', 'Fitri'];
+        
+        names.forEach((elemen, index) => console.log(`index ke ${index}: ${elemen}`));  // arrow function oneline dengan 2 parameter (elemen dan index)
+        
+        names.forEach(elemen => console.log(elemen));  // arrow function oneline dengan parameter elemen (jika hanya membutuhkan data elemen saja / tidak membutuhkan data index nya)
+
+        names.forEach(function (elemen, index) {  // menggunakan function declaration berupa anonymous function
+            console.log(`index ke ${index}: ${elemen}`); 
+        })
+        */
+
+        /*
+        // 2. struktur data array queue (antrian. First In First Out (FIFO) / sistem antrian dimana yang masuk pada antrian pertama akan keluar terlebih dahulu. dapat dianalogikan seperti antrian di bank) / siapa yang datang paling pertama, dialah yang keluar pertama
+        const queue = [];
+
+        queue.push('Saddam');  // karena data array queue adalah kosong, maka penambahan element array 'Saddam' berada pada urutan pertama / jadi element paling depan adalah 'Saddam'. element selanjutnya akan mengantri di belakang Saddam dan seterusnya. pada prinsipnya push memasukkan data pada urutan paling belakang
+        console.log(queue);
+        queue.push('Rahmat');
+        console.log(queue);
+        queue.push('Fuad');
+        console.log(queue);
+        queue.push('Fitri');
+        console.log(queue);
+
+        console.log(queue.shift());  // menghapus array pada antrian pertama / paling depan (Saddam)
+        console.log(queue);
+        console.log(queue.shift());
+        console.log(queue);
+        console.log(queue.shift());
+        console.log(queue);
+        console.log(queue.shift());
+        console.log(queue);
+        console.log(queue.shift()); // jika data array sudah tidak ada di dalam antrian, maka hasilnya undefined
+        console.log(queue); // array sudah habis dihapus
+        */
+
+        /*
+        // 3. struktur data array stack (tumpukan / kebalikan dari queue.  Last In First Out (LIFO) / memasukkan data dari urutan paling belakang, kemudian akan diambil data paling belakang terlebih dahulu. dapat dianalogikan seperti tumpukan kartu. paling atas itulah belakangnya) / siapa yang datang paling terakhir, dialah yang keluar pertama
+        const stack = [];
+
+        stack.push('Saddam');  // karena dimasukkan dari urutan belakang maka tetap menggunakan method push(), untuk menambah data
+        console.log(stack);
+        stack.push('Rahmat');
+        console.log(stack);
+        stack.push('Fuad');
+        console.log(stack);
+        stack.push('Fitri');
+        console.log(stack);
+
+        stack.pop();  // karena yang dihapus (diambil lalu dihapus) adalah data terakhir, maka menggunakan method pop()
+        console.log(stack);
+        stack.pop();
+        console.log(stack);
+        stack.pop();
+        console.log(stack);
+        stack.pop();
+        console.log(stack);
+        */
+
+        /*
+        // 4. array search (method2 yang digunakan untuk melakukan pencarian. jadi tidak perlu lagi dilakukan pencarian secara manual menggunakan looping)
+        const source = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5];
+
+        // find(): untuk mendapatkan element dari suatu kondisi:
+        console.log(source.find(elemen => elemen > 3)); // kondisi lebih dari 3 adalah 4 (bukan 5). yang ditampilkan adalah data pertama yang didapat (angka 4 yang pertama, bukan yang kedua)
+        
+        // findIndex(): untuk mendapatkan index dari suatu kondisi:
+        console.log(source.findIndex(elemen => elemen > 3)); // kondisi elemen =  4, ditumukan elemen 4 yang berada di index ke 3
+
+        // includes(): untuk mengetahui apakah suatu elemen terdapat di dalam array:
+        console.log(source.includes(7)); // false. tidak ada elemen 7 di dalam array source
+
+        // indexOf(): untuk mengetahui index suatu elemen yang pertama didapatkan:
+        console.log(source.indexOf(5)); // yang diambil adalah data pertama. elemen 5 yang pertama berada di index ke 4
+        
+        // lastIndexOf(): untuk mengetahui index suatu elemen yang terakhir:
+        console.log(source.lastIndexOf(5)); // yang diambil adalah data terakhir. elemen 5 yang terakhir berada di index ke 9
+        */
+
+        /*
+        // 5. array filter
+        const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        console.log(numbers);
+        
+        // filter(): akan memfilter suatu array sesuai kondisi. apabila kondisi tersebut terpenuhi, maka akan diciptakan sebuah array baru sesuai dengan kondisi tersebut. tidak perlu lagi dilakukan secara manual menggunakan looping. cukup menggunakan method
+        console.log(numbers.filter(elemen => elemen % 2 === 1));  // filter bilangan ganjil
+        console.log(numbers.filter(elemen => elemen % 2 === 0));  // filter bilangan genap
+        */
+
+        // 6. array transform
+        // map(): melakukan perulangan dan perulangan tersebut ditransformasi. dengan perulangan menggunakan map() tiap2 elemennya dapat ditransformasi menjadi sebuah array yang diinginkan
+        const names = 'Saddam Bin Husein'.split(' '); // method split() digunakan agar string menjadi array dengan karakter spasi yang akan dipotong menjadi tanda koma
+        console.log(names);
+
+        const hurufKapital = names.map(elemen => elemen.toUpperCase()); // di dalam map tiap2 elemen dirubah karakter hurufnya menjadi huruf kapital
+        console.log(hurufKapital);
+        const hurufKecil = names.map(elemen => elemen.toLowerCase()); // di dalam map tiap2 elemen dirubah karakter hurufnya menjadi huruf kecil
+        console.log(hurufKecil);
+
+        // reduce(): berfungsi untuk mengakumulasikan total berdasarkan seluruh element di dalam array
+        const numbers = [1, 2, 3, 4, 5];
+        
+        const hitunganMaju = numbers.reduce((x, y) => x + y);  // 1 + 2 + 3 + 4 + 5 = 15
+        console.log(hitunganMaju);
+
+        // reduceRight(): berfungsi untuk mengakumulasikan total dimulai dari belakang (kanan), berdasarkan seluruh element di dalam array
+        const hitungMundur = numbers.reduceRight((x, y) => x - y); // 5 - 4 - 3 - 2 - 1 = -5
+        console.log(hitungMundur);
+
+        const reduceString = names.reduce((a, b) => `${a} ${b}`);  // penerapan reduce() pada string
+        console.log(reduceString);
+        const reduceRightString = names.reduceRight((a, b) => `${a} ${b}`);  // penerapan reduceRight() pada string
+        console.log(reduceRightString);
+    </script>
+</body>
+</html>

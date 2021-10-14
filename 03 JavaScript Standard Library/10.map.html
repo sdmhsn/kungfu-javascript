@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map</title>
+</head>
+<body>
+    
+
+    <script>
+        /*
+            Map: 
+            - Map berbeda dengan instance object .map()
+            - Map merupakan class 
+            - Map merupakan representasi dari struktur data key-value
+            - Map mirip dengan data bertipe data Object. Hanya saja pada Map, semua method untuk manipulasi data sudah disediakan
+            - dapat diiterasi layaknya tipe data object
+        */
+
+        // 1. Map instance method
+        // - new Map(): berfungsi untuk membuat instance object menggunakan Map
+        const dataMap = new Map();
+
+        // - dataMap.set(): Mengisi data ke instance object Map yang sudah dibuat, dengan key = value
+        dataMap.set('Name', 'Saddam Husein'); // data 1. key: 'Name' value: 'Saddam Husein'
+        dataMap.set('Address', 'Kupang, NTT'); // data 2
+        console.log(dataMap);
+
+        // - dataMap.get(): Mendapatkan data Map yang sudah diisi menggunakan key
+        console.log(dataMap.get('Name'));
+        console.log(dataMap.get('Address'));
+
+        // - melakukan iterasi (looping) pada object map
+        // a. menggunakan for of
+        for (const element of dataMap) {
+            // console.log(element); // tiap2 data berbentuk array
+            console.log(`${element[0]}: ${element[1]}`);
+        }
+
+        // b. menggunakan forEach()
+        dataMap.forEach((value, key) => console.log(`${key}: ${value}`));
+    </script>
+</body>
+</html>

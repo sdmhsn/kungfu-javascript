@@ -1,0 +1,10 @@
+{
+    "firstName": "Saddam",
+    "lastName": "Husein",
+    "age": 31,
+    "address": {
+        "street": "Keuangan Negara St.",
+        "number": 4,
+        "province": "East Nusa Tenggara"
+    }
+}

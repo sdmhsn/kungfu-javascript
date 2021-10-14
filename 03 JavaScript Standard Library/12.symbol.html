@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symbol</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            Symbol:
+            - merupakan tipe data yang dijamin memiliki data yang unique (tidak sama), ketika datanya (symbol) dibuat
+            - symbol banyak digunakan untuk membuat key pada object, karena bersifat unique
+            - referensi: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol 
+        */
+
+        /*
+        // 1. Membuat Symbol
+        const dataSym = Symbol(); // tidak mendukung new Symbol(). jika menggunakan new Symbol() akan error
+        console.log(dataSym);
+        console.log(typeof dataSym);  // bertipe data symbol
+        */
+
+        /*
+        // 2. Symbol bersifat unique
+        let satu = 'saya';
+        let dua = 'saya';
+
+        console.log(satu === dua);  // string ketika di compare (dibandingkan) akan bernilai true
+
+        // namun berbeda dengan symbol
+        let sym1 = Symbol('foo');  // foo: merupakan description
+        let sym2 = Symbol('foo');
+
+        console.log(sym1 === sym2);  // meskipun memiliki description yang sama, tetap akan bernilai false. ini karena sifat unique yang ada pada symbol
+        console.log(Symbol('foo') === Symbol('foo'));
+        */
+        
+        /*
+        // 3. Membuat key pada data bertipe data object menggunakan Symbol
+        const firstName = Symbol('firstName'); // jika ingin key dapat lebih mudah dibaca/didebug pada console.log, maka di dalam parentheses ditambahkan description dari masing2 keynya
+        const lastName = Symbol('lastName');
+
+        const person = {};
+
+        person[firstName] = 'Saddam';
+        person[lastName] = 'Husein';
+
+        console.log(person);  // memanggil data object
+        console.log(person[firstName]);  // memanggil data object menggunakan key yang sudah dibuat
+        console.log(person[lastName]); // memanggil data object menggunakan key yang sudah dibuat
+        */
+        
+        // 4. static method pada Symbol
+        // - Symbol.for(key): digunakan untuk membuat Symbol selain menggunakan variable seperti pada point 1 diatas
+        
+        const person2 = {};
+        person2[Symbol.for('firstName')] = 'Amin';
+        person2[Symbol.for('lastName')] = 'Bonda';
+        
+        console.log(person2);
+        console.log(person2[Symbol.for('firstName')]);
+        console.log(person2[Symbol.for('lastName')]);
+
+        // console.log(Symbol.for("firstName") === Symbol.for("firstName")); // akan bernilai true
+    </script>
+</body>
+</html>

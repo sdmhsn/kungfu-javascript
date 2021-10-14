@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            date: 
+            - library pada javascript yang berfungsi unuk representasi waktu dan tanggal
+            - di bahasa pemrograman lainnya juga memiliki representasi waktu sesuai dengan formatnya. untuk di javascript menggunakan library date
+            - date merupakan representasi milisecond sejak tanggal 1 Januari 1970, atau dikenal dengan Epoch & Unix Timestamp
+            - untuk membuat Object date dapat menggunakan perintah: new Date().
+            - di dalam parameter new Date(), terdapat constructor parameter yang dapat digunakan seperti year, month dan date untuk menentukan tanggal sesuai yang diinginkan
+            - untuk constructor bulan, januari dimulai dari 0, bulan desember adalah 11. -1 bulan desember pada tahun sebelumnya. sumber: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/setMonth 
+            - menggunakan epoch & unix timestamp millis, agar pewaktuan menjadi lebih terstandar
+            - epoch & timestamp lebih direkomendasikan karena sudah menjadi standar yang didukung oleh semua bahasa pemrograman, sehingga lebih tepat untuk digunakan apabila terintegrasi dengan aplikasi lain dengan bahasa pemrograman yang berbeda2. contoh epoch yang dapat digunakan: https://currentmillis.com/
+            - menggunakan standar format waktu bawaan dari bahasa pemrograman tidak direkomendasikan, karena tiap2 bahasa pemrograman memiliki format waktu yang berbeda2 sehingga akan sulit dimengerti untuk bahasa pemrograman yang satu dengan yang lainnya apabila berada dalam kondisi terintegrasi.
+            - apabila dilakukan Setter terlebih dahulu, maka informasi yang didapatkan pada Getter adalah informasi dari Setter, bukan informasi date dari new Date(), yang menampilkan informasi tanggal dan waktu saat ini / secara realtime dari device
+        */
+
+        // 1. Membuat Object date
+        // new Date(): membuat date default saat ini sesuai device
+        const date1 = new Date();
+        console.log(date1); // menampilkan date saat ini
+
+        // new Date(year, month, date): menentukan date sesuai diinginkan
+        const date2 = new Date(1990, 08, 28); // format: YYYY: MM: DD. untuk bulan januari dimulai dari 0, bulan desember adalah 11. -1 bulan desember pada tahun sebelumnya. sedangkan waktunya menjadi 0 semua. sumber: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/setMonth. date merupakan opsional, tanpa date akan ditetapkan tanggal 1.
+        console.log(date2);  // waktunya diset menjadi nol
+
+        // new Date(year, month, date?, hour?, minute?, second?, milis?): menentukan date lebih detil (tanggal dan jam) sesuai diinginkan dengan beberapa parameter constructor opsional seperti yang terdapat tanda (?)
+        const date3 = new Date(1990, 08, 28, 15, 20, 03, 123); // format: YYYY: MM: DDTHH: mm: ss: sss. untuk milisecond (sss) tidak kelihatan tapi sebenarnya ada. T sebagai pemisah tanggal dan jam
+        console.log(date3);
+
+        // new Date(timestamp): menggunakan epoch & unix timestamp millis, agar pewaktuan menjadi lebih terstandar (https://currentmillis.com/)
+        const date4 = new Date(1634023775426);   // epoch yang digunakan tidak secara realtime, epoch dengan waktu dan tanggal yang tertera adalah saat epoch dicopy dari situs https://currentmillis.com/
+        // const date4 = new Date(Date.now()); // epoch yang ditampilkan secara realtime. penjelasan ada dibawah
+        console.log(date4);
+
+        // 2. Tambahan epoch & unix timestamp
+        const date5 = new Date();
+
+        // - mendapatkan millis
+        console.log(date5.getTime()); // instance method. waktu yang didapatkan secara realtime. 
+        console.log(date2.getTime());  // instance method. getTime() juga dapat diterapkan pada waktu yang sudah ditentukan, untuk mendapatkan millisnya
+        console.log(date3.getTime());  // instance method. getTime() juga dapat diterapkan pada waktu yang sudah ditentukan, untuk mendapatkan millisnya
+        console.log(Date.now());  // static method. mendapatkan epoch millis waktu secara realtime, sama seperti date5.getTime()
+        
+        const timestamp = Date.now(); // mendapatkan epoch millis
+        const dateEpoch = new Date(timestamp);  // instance object date, agar epoch millis saat ini diubah ke dalam date 
+        console.log(dateEpoch);
+        console.log(dateEpoch.getTime());  // instance object date diubah ke epoch millis
+
+        // 3. Parsing date (menggunakan waktu dalam bentuk string)
+        const time = Date.parse('2021-10-12T12:39:45.123+08:00'); // static method. T sebagai pemisah tanggal dan jam. tanda colon (:) sebagai pemisah antar  jam, menit dan detik. tanda titik (.) sebagai pemisah antara detik dan mili detik (millisecond). tanda plus (+) dan seterusnya adalah timezone. jika tidak menggunakan timezone, otomatis akan diset timezone sesuai device
+        console.log(time); // hasilnya adalah epoch & unix timestamp millis
+
+        const date6 = new Date(time); // untuk membaca epoch nya
+        console.log(date6);
+
+        // 4. Instance method Getter dan Setter:
+        const date7 = new Date();
+        date7.setFullYear('1990'); // tahun, bulan, tanggal dan sebagainya masih bisa diset / diatur
+        date7.setMonth('08');
+
+        console.log(date7);
+        console.log(date7.getFullYear());
+        console.log(date7.getMonth()); // untuk bulan januari dimulai dari 0, bulan desember adalah 11. -1 bulan desember pada tahun sebelumnya. sumber: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/setMonth 
+        console.log(date7.getDate());
+        console.log(date7.getHours());
+        console.log(date7.getMinutes());
+        console.log(date7.getSeconds());
+        console.log(date7.getMilliseconds());
+        console.log(date7.getTimezoneOffset());  // menit timezone saat ini dikurangi dengan UTC
+    </script>
+</body>
+</html>

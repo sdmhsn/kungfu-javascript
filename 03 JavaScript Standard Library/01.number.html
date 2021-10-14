@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            Number: merupakan function yang digunakan untuk mengkonversi ke tipe data number
+            - Jika data tidak bisa dikonversi ke number, secara otomatis hasilnya adalah NaN
+            - static property dan static method, yaitu property dan method yang melekat ke Class, bukan ke object hasil instance class tersebut.
+            - tambahan: property tidak menggunakan parentheses (tanda kurung) sedangkan method menggunakan parentheses    
+        */
+
+        // 1. flashback materi tentang function Number dan konversi (javascript dasar)
+        const input = "12345";  // karena seluruh karakter string berupa angka, maka dapat dikonversi menjadi angka. jika tidak (misalkan karakter berisikan huruf atau gabungan huruf dan angka), maka akan menghasilkan NaN
+        console.log(input);
+        console.log(typeof input);
+
+        const number = Number(input);  // konversi dari string ke number. tambahan: dalam teori oop, const number merupakan instance object, sedangkan Number() merupakan class nya. cara ini merupakan mengisi variable menggunakan object (ebook js uncover).
+        console.log(number);
+        console.log(typeof number);
+
+        console.log(Number('saddam')) // karena karena karakter string berupa huruf, maka tidak dapat dibaca dan menghasilkan NaN (Not a Number)
+
+        // 2. contoh number static properties (penggunaan library langsung melalui class. baca static property pada oop)
+        console.log(Number.MIN_VALUE);  // mendapatkan angka positif terendah / terkecil yang bisa ditampung di dalam JavaScript, nilai pecahan yang sangat mendekati nol, tapi bukan nol. tambahan: MIN_VALUE merupakan property yang langsung dipanggil melalui class Number (static property / field. lihat materi static field pada oop)
+        console.log(Number.MAX_VALUE);  // mendapatkan number maximal dari function Number / mendapatkan angka tertinggi / terbesar yang bisa ditampung di dalam JavaScript
+        console.log(Number.MIN_SAFE_INTEGER); // membuat number dengan range yang paling aman adalah menggunakan ini. baik min atau max
+        console.log(Number.MAX_SAFE_INTEGER);
+        console.log(Number.NaN);  // berisi nilai khusus yang menyatakan not a number. Ini adalah cara untukmembuat nilai NaN
+
+        // 3. contoh number static method
+        // - Number.isNaN(value): untuk mengetahui suatu data adalah NaN atau bukan
+        const data1 = Number('12345');
+        const data2 = Number('saddam');
+        console.log(Number.isNaN(data1));  // false. isNaN() merupakan method yang langsung dipanggil melalui class Number (static method. lihat materi static method pada oop)
+        console.log(Number.isNaN(data2));  // true
+        console.log(Number.isNaN(NaN));  // true
+        const dataNaN = isNaN('saddam') // tambahan: Menampung isNaN ke dalam sebuah variable
+        console.log(dataNaN);  // memanggil melalui variable yang sudah menggunakan method isNaN
+
+        // - Number.isNaN(value): untuk mengetahui suatu data integer atau bukan
+        console.log(Number.isInteger('123'));  // false
+        console.log(Number.isInteger(123));  // true
+
+        // 4. number instance method (penggunaan library melalui instance object)
+        // - Number.toLocaleString(locale): merubah angka biasa menjadi string dengan format indonesia (local)
+        const data3 = Number(12345);  // data3 sebagai instance object, sedangkan Number() sebagai class
+        console.log(data3.toLocaleString('id-ID')); // pemisah ribuannya dengan format indonesia menggunakan tanda titik. tambahan: instance method yang dipanggil melalui instance object data3. 
+        console.log(data3.toLocaleString('en-US')); // pemisah ribuannya dengan format US menggunakan tanda koma
+
+        // - Number.toString(radix): merubah number menjadi string sesuai radix (binary, hexadesimal)
+        console.log(data3.toString(2)); // menjadi binary
+        console.log(data3.toString(16)); // menjadi hexa
+    </script>
+</body>
+</html>

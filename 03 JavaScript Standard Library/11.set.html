@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            set:
+            - Set merupakan implementasi dari struktur data yang berisikan data-data unique (tidak sama)
+            - mirip array, namun pada set tidak ada data yang sama di dalam suatu instance set
+            - Jika kita menambahkan data yang sama, maka data hanya akan diterima satu saja
+            - Set mengimplementasikan kontrak iterable, sehingga bisa diiterasi secara default
+        */
+
+        const dataSet = new Set(); // class Set
+        console.log(dataSet);
+        
+        // instance method dari Set:
+        // - add(): menambah data ke dalam Set
+        dataSet.add('Saddam');
+        dataSet.add('Saddam');  // Jika kita menambahkan data yang sama, maka data hanya akan diterima satu saja. Set menjamin tidak ada data yang sama atau tidak terjadi duplikasi
+        dataSet.add('Bin');
+        dataSet.add('Husein');
+
+        console.log(dataSet);
+
+        // iterasi Set:
+        dataSet.forEach(element => console.log(element));
+    </script>
+</body>
+</html>

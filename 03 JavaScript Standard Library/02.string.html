@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            String: 
+            - Tipe data String sudah kita bahas pada materi JavaScript Dasar
+            - Namun kita belum membahas instance method atau juga instance properties yang terdapat di String
+            - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String 
+            - String sendiri memiliki banyak sekali instance method dan properties
+            - Hal ini menjadikan untuk memanipulasi data String sangat mudah di JavaScript, seperti mengubah menjadi lowercase, UPPERCASE, memotong string menjadi array dan lain-lain
+            - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#instance_methods 
+            - ketika menggunakan method, string aslinya tidak berubah. Penggunaan method tersebut akan menciptakan string baru
+        */
+
+        // string instance method dan properties
+        const name = 'Saddam Bin Husein'; // tambahan: mengisi variable menggunakan tipe data primitif (ebook javascript uncover)
+        // atau
+        // const name = String('Saddam Bin Husein'); // mengisi variable menggunakan object (ebook javascript uncover)
+
+        console.log(name.length);  // untuk mengetahui panjang dari karakter string name
+        console.log(name.toLowerCase());  // membuat seluruh karakter string menjadi huruf kecil
+        console.log(name.toUpperCase());  // membuat seluruh karakter string menjadi huruf besar
+        console.log(name.split(' ')); // memotong / mengkonversi string menjadi array, dan menukarkan spasi yang terdapat pada string menjadi koma. sehingga tiap kalimat menjadi index / element dari array
+        const name2 = '    rahmat   bonda     '
+        console.log(name2.trim());  // menghapus whitespace pada sisi kiri dan sisi kanan suatu string (yang dihapus bukan karakter spasi)
+        console.log(name2.trimRight()); // menghapus whitespace pada sisi kanan pada suatu string
+
+        console.log(name);  // data asli tidak akan berubah
+        console.log(name2);
+    </script>
+</body>
+</html>

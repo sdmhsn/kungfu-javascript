@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            Object: static property dan method untuk data Object
+            - secara default, property pada suatu object dapat dihapus, ditambah atau diubah valuenya
+            - freeze() static method yang berfungsi agar property pada suatu object tidak dapat dihapus, ditambah atau diubah valuenya
+            - seal() static method yang berfungsi agar property pada suatu object tidak dapat dihapus, ditambah, namun masih dapat diubah valuenya (mirip freeze() tapi berbeda)
+            - object assign digunakan untuk mengcopy semua atribut / property dari suatu object ke object yang lain. format: Object.assign(target, source). jika terdapat property yang sama pada 2 object tersebut, maka akan ditimpa menggunakan object source
+            - dengan static method object property name & value, kita dapat mengambil hanya nama property atau hanya nama value dari property suatu object. Object.values() dan Object.getOwnPropertyNames(person). hasilnya berbentuk string yang dibungkus ke dalam array
+        */
+
+        // 1. Static method freeze() & seal() pada Object
+        /*
+        const person = {
+            firstName: 'Saddam',
+            lastName: 'Husein'
+        }
+        */
+        
+        /*
+        // - freeze(): secara default, property pada suatu object dapat dihapus / diubah valuenya. freeze() digunakan agar property pada suatu object tidak dapat dihapus, ditambah atau diubah valuenya
+        console.log(person);  // sebelum
+        console.log(person.firstName);
+
+        Object.freeze(person);  // dengan adanya static method freeze(), suatu property pada object tidak akan dapat diubah, dihapus atau ditambah property baru
+        person.firstName = 'Amin';  // meskipun diubah propertinya, datanya tidak berubah karena freeze()
+        delete person.lastName;  // begitu juga dihapus. tidak akan mempengaruhi
+        person.age = 31; // tidak dapat menambah property baru
+
+        console.log(person); // sesudah
+        console.log(person.firstName);
+        */
+
+        /*
+        // - seal(): seperti freeze(), akan tetapi perbedaannya static method seal() masih dapat merubah property suatu object, namun property pada object tidak dapat dihapus atau ditambah
+        console.log(person);  // sebelum
+        console.log(person.firstName);
+
+        Object.seal(person);  // masih dapat dirubah property
+        person.firstName = 'Amin'; // dapat dirubah
+        person.age = 31; // tidak dapat menambah property baru
+        delete person.lastName; // tidak dapat dihapus
+        console.log(person);
+        console.log(person.firstName)
+        */
+
+        /*
+        // 2. static method object assign
+        // mengcopy semua atribut / property dari suatu object ke object yang lain
+        // format: Object.assign(target, source)
+        const target = {firstName: 'Saddam', lastName: 'Husein'};
+        const source = {lastName: 'Bonda', age: 31}; 
+
+        Object.assign(target, source); // semua property yang terdapat didalam source dipindahkan ke target. jika terdapat property yang sama di kedua object tersebut, maka akan ditimpa menggunakan property pada source
+        console.log(target); // object target sudah bertambah property dari source
+        */
+
+        // 3. static method object property name & value
+        const person = {
+            firstName: 'Saddam',
+            lastName: 'Husein'
+        }
+
+        // - Object.values(): mendapatkan hanya value dari property pada suatu object
+        console.log(person);
+        console.log(Object.values(person)); // yang diambil cuma value dari property. hasilnya berbentuk string yang dibungkus ke dalam array
+
+        // - Object.getPropertyNames(): mendapatkan hanya nama dari property pada suatu object
+        console.log(Object.getOwnPropertyNames(person)); // yang diambil cuma nama dari property. hasilnya berbentuk string yang dibungkus ke dalam array
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RegExp</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            RegExp:
+            - bersifat case sensitive
+            - pola regex dapat digunakan untuk memanipulasi suatu data, selain menggunakan string
+
+        */
+
+        /*
+        // 1. Membuat RegExp
+        const regex1 = /saddam/;
+        console.log(regex1);
+        const regex2 = new RegExp('saddam');
+        console.log(regex2);
+        const regex3 = new RegExp(/saddam/);
+        console.log(regex3);
+        */
+
+        /*
+        // 2. Instance method regex
+        const regex4 = new RegExp(/saddam/); // regex
+        const data = 'my name is saddam bin husein'; // data
+        
+        // - exex(data): mereturn posisi index dari regex terhadap suatu value dari data
+        console.log(regex4.exec(data)); // regex ditemukan di posisi index ke 11 dan ditampilkan dalam array. jika tidak ditemukan, maka akan menghasilkan null
+
+        // - test(data): memeriksa apakah regex terdapat didalam suatu value dari data
+        console.log(regex4.test(data)); // jika regex ditemukan akan bernilai true. jika tidak ditemukan bernilai false
+        */
+
+        // 3. RegExp modifier (mengubah sifat pencarian)
+        const name = 'saddam husein\nAmin Bonda\nSaddam bonda';
+        console.log(name);
+
+        const regex1 = /saddam/g; // flag g: global. Pencarian dilakukan secara global, secara default setelah menemukan data, pencarian akan berhenti. pada looping, tanpa g akan terjadi infinity looping karena pencarian berada di data yang sama
+        const regex2 = /bonda/ig; // flag ig: i, mengabaikan case sensitive, sedangkan g, global
+
+        // console.log(regex2.exec(name));
+
+        let result;
+
+        while((result = regex1.exec(name)) !== null) {
+            console.log(result); // regex1 hanya menggunakan flag g
+        }
+        while((result = regex2.exec(name)) !== null) {
+            console.log(result); // jika  menggunakan flag regex ig, maka hasilnya 2, yaitu saddam (s huruf kecil) dan Saddam (s huruf besar)
+        }
+
+
+
+
+    </script>
+</body>
+</html>
