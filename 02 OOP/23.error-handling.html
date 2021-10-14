@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Handling</title>
+</head>
+<body>
+    
+
+    <script>
+        /*
+            - penggunaan throw error pada materi sebelumnya, akan menyebabkan eksekusi program berhenti secara total
+            - dengan adanya error handling, setelah menampilkan error program tidak berhenti secara total namun bisa dilanjutkan ke eksekusi perintah selanjutnya
+            - block catch akan dieksekusi jika terjadi error di dalam block try. jika tidak terjadi error maka block catch tidak akan dieksekusi
+            - Kadang kita ingin melakukan sesuatu entah itu terjadi error ataupun tidak
+            - Dalam try catch, kita bisa menambahkan block finally
+            - Block finally ini akan selalu dieksekusi setelah try catch selesai, entah terjadi error atau tidak, block finally akan selalu dieksekusi
+            - salah satu contoh fungsi dari block finally adalah menutup koneksi dari database, yang seharusnya ditutup.
+            - penggunaan try, finally (tanpa harus menggunakan catch) biasanya digunakan pada kasus spesifik dan bukan pada error handling
+        */
+
+        /*
+        // 1. try dan catch
+        class MathUtil {
+            static sum(...numbers) {
+                if (numbers.length === 0) {
+                    const eror = new Error('Total parameter harus lebih dari 0!');
+                    throw eror;
+                }
+                
+                let x = 0;
+                for (const number of numbers) {
+                    x += number;
+                }
+
+                return x;
+            }
+        }
+
+        try {
+            // console.log(MathUtil.sum());  // error. namun pesan error pada throw error diatas tidak dieksekusi. lalu dilempar ke block catch
+            console.log('Tambah'); // tidak dieksekusi karena terjadi error
+            console.log(MathUtil.sum(1,1,1,1,1)); // jika tidak terjadi error, maka block catch tidak dieksekusi
+        } catch (error) {  // menampilkan pesan errornya. error adalah bagian dari throw error diatas. analoginya, jika terjadi error mau ngapain sih di catch.
+            console.log(`Terjadi error kawans...: ${error.message}`);  // jika ingin menangkap pesan errornya dapat memasukkan variable error pada catch. sampai disini, eksekusi program tidak dihentikan. perintah2 dibawahnya masih tetap dieksekusi. error.message: pada message merupakan property / field dari class error, dan message nya diambil dari throw error diatas.
+            // dapat juga berupa alert();
+            // alert(`Terjadi error kawans...: ${error.message}`);
+        }
+
+        console.log('Halllo program masih dilanjutkan')
+        */
+
+        /*
+        // 2. try, catch dan finally
+        class MathUtil {
+            static sum(...numbers) {
+                if (numbers.length === 0) {
+                    const eror = new Error('Total parameter harus lebih dari 0!');
+                    throw eror;
+                }
+                
+                let x = 0;
+                for (const number of numbers) {
+                    x += number;
+                }
+
+                return x;
+            }
+        }
+
+        try {
+            console.log(MathUtil.sum()); 
+            console.log('Tambah'); // tidak dieksekusi karena terjadi error
+        } catch (error) {
+            console.log(`Terjadi error kawans...: ${error.message}`);
+        } finally {  // entah terjadi error ataupun tidak error, block finally tetap dieksekusi
+            console.log('Halllo program masih dilanjutkan')
+        }
+        */
+
+        // try, finally (tanpa harus menggunakan catch, biasanya digunakan pada kasus spesifik dan bukan error handling).
+        class Counter {
+            /*
+            // - menggunakan property / field diletakkan pada constructor
+            constructor() {
+                this.counter = 1;
+            }
+
+            getCounter() {
+                try {
+                    return this.counter; // tidak terjadi error. didalam block try, perintah dibawah return tidak akan dieksekusi. sehingga digunakanlah block finally
+                    // console.log('Hello'); // tidak akan dieksekusi.
+                } finally { // tetap dieksekusi
+                    this.counter++; // melakukan increment dari value property counter diatas
+                }
+            }
+            */
+
+            // - property / field menggunakan private field
+            #counter = 1;
+
+            getCounter() {
+                try {
+                    return this.#counter; // tidak terjadi error.  didalam block try, perintah dibawah return tidak akan dieksekusi. sehingga digunakanlah block finally
+                    // console.log('Hello'); // tidak akan dieksekusi
+                } finally { // tetap dieksekusi
+                    this.#counter++; // melakukan increment dari value property counter diatas
+                }
+            }
+        }
+
+        const count = new Counter();
+        console.log(count.getCounter());
+        console.log(count.getCounter());
+        console.log(count.getCounter());
+        console.log(count.getCounter());
+        console.log(count.getCounter());
+    </script>
+</body>
+</html>

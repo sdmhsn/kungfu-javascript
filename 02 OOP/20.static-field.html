@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static Field</title>
+</head>
+<body>
+    
+
+    <script>
+        /*
+        // 1. biasa. field / property melekat pada instance object
+        class Configuration {
+            name = 'Belajar JavaScript OOP';
+            version = 1.0;
+            author = 'Saddam Husein';
+        }
+
+        const config = new Configuration();
+        console.log(config); // terlihat field2 menempel pada instance object
+        console.log(config.author);
+        */
+
+        /**/
+        // 2. menggunakan static field
+        class Configuration {
+            static name = 'Belajar JavaScript OOP'; // tiap2 field ditambahkan keyword static
+            static version = 1.5;
+            static author = 'Saddam Husein';
+        }
+
+        console.log(Configuration.name);  // secara otomatis field2 menjadi milik class (tersimpan di dalam class prototype). bukan instance object / instance prototype lagi
+        console.log(Configuration.version);
+        console.log(Configuration.author);
+        
+        Configuration.author = 'Saddam Bonda' // static field dapat juga diassign ke value baru, melalui class
+        console.log(Configuration.author);
+
+        const config = new Configuration();
+        console.log(config); // terlihat field2 static diatas, menempel pada / didalam class prototype (Configuration). bukan ke instance object.
+    </script>
+</body>
+</html>

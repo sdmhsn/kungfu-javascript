@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Method</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            - mengakses method melalui prototype di class parentnya
+        */
+
+        /*
+        // 1. super method
+        class Shape {
+            paint() {
+                console.log('Paint shape');
+            }
+        }
+
+        class Circle extends Shape {  // inherit ke Shape
+            paint() { // adanya method paint() Circle ini, akan menimpa method paint() yang ada pada parent Shape (karena sudah diinherit / extends). sehingga ini yang akan digunakan.
+                console.log('Paint circle'); 
+                super.paint(); // sehingga untuk dapat mengakses method yang ada pada parent Shape kembali, dapat menggunakan keyword super.method yang ada pada parent Shape, jika ingin mengakses method parent nya
+            }
+        }
+
+        const circle = new Circle();
+        circle.paint();
+        */
+
+        /**/
+        // 2. experiment sendiri
+        class Employee {
+            constructor(firstName) {
+                this.firstName = firstName;
+            }
+
+            sayHello() {
+                console.log(`Hello ${name}, my name is employee ${this.firstName}`);
+            }
+        }
+
+        class Manager extends Employee {
+            constructor(firstName, lastName) { 
+                super(firstName); 
+                this.lastName = lastName;
+            }
+
+            sayHello(name) {  // terdapat parameter
+                super.sayHello(name);  // reference ke parent prototype, mirip seperti __proto__. akan memanggil method yang ada pada parent class (Employee)
+                console.log("Now, i'm a manager");
+            }
+        }
+
+        const saddam = new Employee('Saddam');
+        const rahmat = new Manager('Rahmat', 'Bonda');
+        rahmat.sayHello('Amin');
+
+        console.log(saddam);
+        console.log(rahmat);
+    </script>
+</body>
+</html>

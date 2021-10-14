@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            - fitur error pada javascript. dengan adanya fitur ini, suatu petunjuk error dapat dibuat sehingga memudahkan debugging. 
+            - menggantikan pembuatan error secara manual seperti menggunakan if else dan alert()
+            - petunjuk error dapat dilihat pada console.log()
+            - Error bagian daripada class. Sehingga error dapat diolah sesuai keinginan
+            - Pesan error ditampilkan sesuai keinginan, dan terdapat petunjuk line keberapa terdapat error, sehingga dapat dilakukan debugging
+            - Saat kita membuat instance object dari class Error, tidak lantas otomatis terjadi error
+            - Kita perlu memberitahu program kita, bahwa kita akan mentrigger sebuah error terjadi, atau istilahnya adalah melempar error (throw error)
+            - Untuk melempar error, kita bisa gunakan kata kunci throw, diikuti dengan instance object error nya
+            - Jika terjadi error, maka otomatis kode program kita akan terhenti, dan kita bisa melihat detail errornya di console di aplikasi browser kita
+        */
+        
+        class MathUtil {
+            static sum(...numbers) {
+                // dicek rest parameter numbers terlebih dahulu
+                if (numbers.length === 0) {  // artinya jika tidak ada data pada parameter
+                    // throw new Error('Total parameter harus lebih dari 0');  // akan dibuat error (throw error)
+                    // bentuk lainnya (ditampung ke dalam sebuah variable):
+                    const eror = new Error('Total parameter harus lebih dari 0');  // karena Error bagian bagian daripada class, maka dapat diolah menggunakan instance object
+                    throw eror;
+                }
+                
+                let x = 0;
+                for (const number of numbers) {
+                    x += number;
+                }
+
+                return x;
+            }
+        }
+
+        // console.log(MathUtil.sum()); // tidak ada data. otomatis program dihentikan dan perintah2 dibawahnya tidak dieksekusi
+        console.log(MathUtil.sum(1,1,1,1,1,1));  // ada data
+    </script>
+</body>
+</html>

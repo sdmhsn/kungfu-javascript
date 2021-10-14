@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Method</title>
+</head>
+<body>
+    
+
+    <script>
+        class Person {
+            get(name) {  // masuk ke instance prototype. bukan melekat ke instance object
+                if (name) {
+                    this.#withName(name);
+                } else {
+                    this.#withOutName();
+                }
+            }
+
+            #withName(name) { // private method melekat ke instance object
+                console.log(`Hello ${name}`);
+            }
+
+            #withOutName() {
+                console.log('No name');
+            }
+        }
+
+        const saddam = new Person();
+        saddam.get();
+        
+        console.log(saddam);
+        // saddam.#withName('saddam'); // ketika mengakses private method akan error
+
+        
+    </script>
+</body>
+</html>

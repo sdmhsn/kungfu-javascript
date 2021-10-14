@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Error</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            - membuat class error sendiri secara manual, dengan membedakan jenis error
+            - membuat class error secara manual, cukup menginherit class Error pada JavaScript
+            - tiap2 class error yang dibuat, biasanya disesuaikan dengan kebutuhan, misalnya class validation error untuk validation error, class database error untuk database error, class API error untuk API error dsb 
+        */
+
+        // 
+        class ValidationError extends Error {
+            constructor(message, field) {
+                super(message);
+                this.field = field;
+            }
+        }
+
+        class MathUtil {
+            static sum(...numbers) {
+                if (numbers.length === 0) {
+                    // throw new ValidationError('Total parameter harus lebih dari nol', 'numbers'); // 'Total parameter harus lebih dari nol', 'numbers' merujuk ke parameter (message, field) dari constructor class ValidationError diatas
+                    // sebenarnya throw new ValidationError() merupakan instance. bentuk lengkapnya adalah sebagai berikut:
+                    const eror = new ValidationError('Total parameter harus lebih dari nol', 'numbers'); // 'Total parameter harus lebih dari nol', 'numbers' merujuk ke parameter (message, field) dari constructor class ValidationError diatas
+                    throw eror;
+                }
+
+                let counter = 0;
+
+                for (const number of numbers) {
+                    counter += number;
+                }
+
+                return counter;
+            }
+        }
+        
+        try {
+            console.log(MathUtil.sum());
+        } catch(error) {
+            if (error instanceof ValidationError) {  // errornya berupa ValidationError (pada throw new diatas)
+                console.log(`Terjadi error di field: ${error.field} dengan error: ${error.message}`); // merujuk ke pemanggilan value dari parameter (message, field) diatas
+            } else {
+                console.log(`Terjadi eror: ${error.message}`);
+            }
+        } finally {
+            console.log('Program selesai');
+        }
+    </script>
+</body>
+</html>

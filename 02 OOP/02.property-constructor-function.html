@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property di Constructor Function</title>
+</head>
+<body>
+
+    <script>
+        /*
+            - penambahan property dilakukan seperti penambahan property pada tipe data object
+        */
+        // 1. menambah property pada constructor function
+        // membuat class (constructor function)
+        function Person() {
+            // menambahkan property untuk object. penambahan property di Person() menggunakan this dan nama propertynya, agar tiap2 object memiliki property yang sama dan konsisten
+            this.firstName = '';  // sekarang kedua object dibawah sudah memiliki property firstName dan lastName. nantinya string kosong pada property akan diisi sesuai object masing2
+            this.lastName = '';
+        }
+        
+        const saddam = new Person(); // membuat instance object
+        saddam.firstName = 'Saddam'; // mengisi / menimpa property. hanya menempel ke instance object saddam. sedangkan instance object rahmat tidak.
+        saddam.lastName = 'Husein'; 
+        saddam.age = 31;  // tambahan: menambah property baru ke dalam instance object saddam
+        
+        const rahmat = new Person(); // membuat object       
+        rahmat.firstName = 'Rahmat'; // mengisi / menimpa property
+        rahmat.lastName = 'Husein';
+
+        // melihat isi dari intance objectnya
+        console.log(saddam);
+        console.log(rahmat);
+        // console.log(typeof(saddam));
+
+        // mengakses property dari instance object
+        console.log(saddam.firstName);  // property firstName dari instance object saddam
+        console.log(rahmat.lastName);  // property lastName dari instance object rahmat
+    </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konsep Prototype di JavaScript</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            prototype: erat kaitannya dengan inheritance.
+            - object pada constructor functions disebut instance. 
+            - semua property dan method akan berada / menempel di dalam instance. bukan berada di constructor functions nya.
+            - setiap constructor functions dibuat, maka secara otomatis akan dibuatkan prototype nya (Format: Constructor.prototype). contoh constructor function Person(), akan dibuatkan prototype Person.prototype.
+            - pada instance object, terdapat prototype yang merupakan turunan (inheritance) dari prototype constructor functions nya. jadi prototype pada constructor functions terdapat pada instance nya, dan prototype pada instance yang satu dengan yang lainnya adalah sama karena turunan dari prototype constructor functions. ketika prototype pada constructor diubah, maka prototype pada instance juga akan berubah.
+            - di dalam prototype constructor functions, terdapat juga prototype lainnya yang merupakan turunan dari Object (bukan object instance) yaitu Object.prototype. Object.prototype ini merupakan prototype paling ujung.
+            - contoh visualisasi:
+                Object.prototype (parent / induk)
+                |____ Person.prototype (constructor functions)
+                    |____ saddam.prototype (instance)
+                    |____ rahmat.prototype (instance)
+            - sehingga, masing2 instance diatas memiliki prototype constructor functions (Person.prototype) dan object prototype (Object.prototype)
+            - karena mirip tipe data object, maka kita dapat menambahkan property dan method ke dalam prototype. Saat ditambahkan ke prototype constructor function, maka setiap instance object juga memiliki prototype tersebut
+            - selain suatu property dan method langsung ditambahkan / ditulis di dalam constructor functions (yang menempel ke instance object), cara lainnya kita dapat menambahkannya kedalam prototype constructor functions seperti teori diatas. penambahan property dan method melalui prototype constructor functions tersebut ditulis diluar constructor functions. penambahan property dan method melalui prototype constructor functions juga tersimpan didalam prototype constructor functions, bukan ke object instancenya (dapat dilihat pada console.log())
+            - untuk mengakses sebuah prototype dari instance yang sudah dibuat, dapat membuka tiap2 property Prototype  kemudian dicek property dan method yang sudah dibuat di dalam prototyepe di dalam instance tersebut
+            - pengakses property dan method diprioritaskan dari paling bawah hingga ke paling atas (ujung). paling bawah adalah instance object (paling bawah) -> instance prototype -> constructor functions prototype (kalau menggunakan class berarti class prototype) -> object prototype (ujung)
+        */
+
+        /*
+        // 1. menambah property dan method ke dalam instance object seperti materi sebelumnya
+        function Person(firstName, lastName) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.sayHello = function (name) {
+                console.log(`Hello ${name}, my name is ${this.firstName}`);
+            }
+        }
+
+        const saddam = new Person('Saddam', 'Husein');  // instance object. instantiate (prosesnya)
+        const rahmat = new Person('Rahmat', 'Husein');
+
+        console.log(saddam);
+        console.log(rahmat);
+        */
+
+        // 2. menambah property dan method ke dalam prototype object (bukan ke dalam instance object)
+        function Person(firstName, lastName) {
+            this.firstName = firstName;  // property dan method yang ditulis di dalam constructor functions ini akan tersimpan / berada / menempel ke dalam instance object, bukan constructor functions. dapat dilihat pada console.log
+            this.lastName = lastName;
+            this.sayHello = function (name) {
+                console.log(`Hello ${name}, my name is ${this.firstName}`);
+            }
+        }
+
+         // a. menambah property dan method ke dalam prototype
+        Person.prototype.age = 31;  // secara otomatis property terdapat di dalam prototype dari semua instance object
+        Person.prototype.sayBye = function () {  // secara otomatis method terdapat di dalam prototype dari semua instance object
+            console.log('Bye2');
+        }
+        Person.prototype.run = function () {
+            console.log(`${this.firstName} is running`);
+        }
+
+        const saddam = new Person('Saddam', 'Husein');
+
+        // b. menambah property dan method ke dalam instance (seperti point 1 diatas):
+        // saddam.age = 31;  // penambahan property age ini hanya berlaku untuk ini hanya berlaku untuk instance object saddam
+        // saddam.sayBye = function () {  // penambahan method sayBye() ini hanya berlaku untuk instance saddam
+            // console.log('Bye2');
+        // }
+
+        const rahmat = new Person('Rahmat', 'Husein');
+        
+        console.log(saddam);
+        console.log(rahmat);
+        
+        // cara akses property dan method prototype
+        saddam.sayBye();  // jika method tidak terdapat di instance object, maka secara otomatis dicek didalam instance prototype. jika method ada didalam instance prototype, maka gunakan
+        Person.prototype.sayBye = function () {  // value di dalam prototype dapat juga ditimpa dengan value baru
+            console.log('Sampai jumpa');
+        }
+        saddam.sayBye();
+        
+        saddam.run();
+        rahmat.run();
+
+        // property dan method pada instance lebih diprioritaskan untuk diakses terlebih dahulu dibandingkan property dan method yang ada pada prototype
+        saddam.sayBye = function () {  // jika method sayBye() ada pada instance, maka akses method tersebut. sedangkan pada prototype diabaikan. namun method sayBye() ini hanya ada pada instance object saddam, tidak pada instance object rahmat
+            console.log('Bye... Ini yang ada pada instance (bukan prototype)');
+        }
+        saddam.sayBye();  // yang diakses method sayBye() pada instance object, bukan method sayBye() pada prototype
+    </script>
+</body>
+</html>

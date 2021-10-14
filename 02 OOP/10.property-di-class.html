@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property di Class</title>
+</head>
+<body>
+    
+
+    <script>
+        /*
+            - Sama seperti pada constructor function, dalam class pun kita bisa menambahkan property
+            - Karena hasil akhirnya adalah sebuah object, jadi menambahkan property di class bisa juga dilakukan di instance object nya. namun property tersebut hanya menempel ke instance object terkait, tidak untuk seluruh instance object.
+            - tambahan: dengan menambahkan property ke constructor() yang terdapat di dalam class, secara otomatis seluruh instance object memiliki property tersebut. itulah alasan mengapa disebut cetakan / blueprint
+        */
+
+        /*
+        // 1. property di class
+        class Person {
+            constructor(firstName, lastName) {
+                this.firstName = firstName;  // harus menambahkan this (mengacu ke instance object yang dibuat. dapat dilihat pada console.log dari instance object / baca ttg prototype). yang sebenarnya terjadi adalah sbb: this.firstName = firstName adalah sama dengan saddam.firstName = firstName. property ditambahkan ke dalam class constructor, dan value property berasal dari parameter pada constructor() diatas
+                this.lastName = lastName;
+            }
+        }
+
+        const saddam = new Person('Saddam', 'Husein');  // membuat instance object saddam, yang berisikan argumen untuk diisi ke parameter constructor()
+        // saddam.firstName = 'Amin'; seperti ini jika ingin menambahkan / menimpa (mengubah) suatu property dari instance object, yang dilakukan diluar class. namun ini hanya akan berlaku untuk instance object saddam saja, sedangkan instance object rahmat tidak
+        const rahmat = new Person('Rahmat', 'Bonda');
+
+        console.log(saddam);
+        console.log(saddam.firstName);  // mengakses property firstName
+        console.log(rahmat);
+        console.log(rahmat.lastName);  // mengakses property lastName
+        */
+
+        // 2. experiment sendiri
+        class Mobil {
+            constructor(merkMobil, tipeMobil, hargaMobil) {
+                this.merk = merkMobil;
+                this.tipe = tipeMobil;
+                this.harga = hargaMobil;
+            }
+        }
+
+        const mobilSaddam = new Mobil('Toyota', 'MPV', 120000000);
+        const mobilRahmat = new Mobil('Suzuki', 'APV', 240000000);
+
+        console.log(mobilSaddam.merk);
+        console.log(mobilSaddam.tipe);
+        console.log(mobilSaddam.harga);
+
+        console.log(mobilRahmat.merk);
+        console.log(mobilRahmat.tipe);
+        console.log(mobilRahmat.harga);
+
+        console.log(mobilSaddam);
+        console.log(mobilRahmat);
+        </script>
+</body>
+</html>

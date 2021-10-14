@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constructor Function</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            - pada tipe data object, masing2 object yang dibuat memiliki property dan method masing2 (bebas dan unik), karena tidak ada aturannya
+            - pada oop, hal pertama yang dibuat adalah class. setelah itu baru dibuat object2 nya
+            - sebelum es6, pembuatan class dibuat menggunakan function. ini dikarenakan javascript bukan bahasa yang fokus berbasis ke oop. namun berbasis functional
+            - pada es6, sudah terdapat sintaks2 baru yang mendukung oop, namun implementasinya mirip dengan javascript versi lama
+            - pembuatan class menggunakan function di javascript versi lama tersebut, disebut constructor function
+            - pada constructor function, untuk membuat class dapat dibuat seperti pembuatan function biasa, namun nama function diawali dengan huruf besar. Cth: Person. jika terdapat 2 suku kata dapat dibuat sbb: PremiumMember
+            - untuk membuat object dari constructor function, kita dapat menggunakan keyword new lalu diikuti nama constructor function nya
+        */
+
+        /*
+        // 1. membuat object dengan tipe data object seperti sebelumnya (object biasa)
+        // dua buah variable yang disebut object saddam dan object rahmat
+        const saddam = { 
+            firstName: 'Saddam',
+            lastName: 'Husein'
+        }
+
+        const rahmat = {
+            firstName: 'Rahmat',
+            lastName: 'Husein'
+        }
+        */
+
+        // 2. implementasi oop sebelum es6 / javascript lama (constructor function)
+        // membuat class (blueprint) pada js versi lama (constructor function)
+        function Person() { //huruf pertama nama function diawali dengan huruf besar. Cth: Person. jika terdapat 2 suku kata dapat dibuat sbb: PremiumMember
+
+        }
+
+        // membuat object
+        const saddam = new Person();  
+        const rahmat = new Person();
+        // const fuad = {} // pembuatan object tidak seperti ini (menggunakan kurung kurawal {}). ini pembuatan object biasa (bukan constructor function)
+    </script>
+</body>
+</html>

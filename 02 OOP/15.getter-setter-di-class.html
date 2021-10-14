@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getter dan Setter</title>
+</head>
+<body>
+    
+
+    <script>
+        /*
+            getter dan setter di class mirip dengan getter dan setter di object method
+        */
+        class Person {
+            constructor(firstName, lastName) {
+                this.firstName = firstName;
+                this.lastName = lastName;
+                // meskipun terdapat property fullName pada instance object di console.log, itu akan menginvoke / memanggil getter yang ada di dalam instance prototype 
+            }
+
+            get fullName() { // tersimpan di dalam instance prototype. bukan melekat di instance object
+                return `${this.firstName} ${this.lastName}`;
+            }
+
+            set fullName(value) { // tersimpan di dalam instance prototype. bukan melekat di instance object
+                const array = value.split(' ');
+                this.firstName = array[0];
+                this.lastName = array[1];
+            }
+        }
+
+        const saddam = new Person('Saddam', 'Husein');
+        console.log(saddam);
+        console.log(saddam.fullName);
+
+        const rahmat = new Person('Rahmat', 'Bonda');
+        console.log(rahmat);
+        console.log(rahmat.fullName);
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototype Inheritance</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            - Sekarang kita sudah tahu, bahwa prototype selalu memiliki parent, artinya dia adalah turunan, parent tertinggi adalah Object prototype
+            - Pertanyaannya bagaimana jika kita ingin melakukan inheritance ke Prototype lain?
+            - Hal ini juga bisa dilakukan, namun agak sedikit tricky, karena hal ini, sebenarnya untuk JavaScript modern, tidak direkomendasikan lagi praktek OOP menggunakan Prototype, karena di ES6 sudah dikenalkan kata kunci class yang akan nanti dibahas di chapter tersendiri
+
+        */
+
+        /*
+        // 1. prototype inheritance salah
+        function Employee(name) {
+            this.name = name;
+        }
+
+        function Manager(name) {
+            this.name = name;
+        }
+
+        Employee.prototype = Manager.prototype; // titik salah. meskipun dibalik menjadi Manager.prototype = Employee.prototype akan tetap salah.
+
+        Employee.prototype.sayHello = function(name) {
+            console.log(`Hello ${name}, my name is employee ${this.name}`);
+        }
+
+        Manager.prototype.sayHello = function(name) {
+            console.log(`Hello ${name}, my name is manager ${this.name}`); // tiap2 instance menggunakan method sayHello() terakhir ini (prototype Manager). harusnya menggunakan sayHello() masing2. Jika dipindahkan ke atas, maka yang digunakan adalah method prototype Employee
+        }
+
+        const eko = new Employee('Eko');
+        eko.sayHello('Joko')
+        const budi = new Manager('Budi');
+        budi.sayHello('Joko')
+
+        console.log(eko);
+        console.log(budi);
+        */
+
+        // 2. prototype inheritance benar
+        function Employee(name) {
+            this.name = name;
+        }
+
+        function Manager(name) {
+            this.name = name;
+        }
+
+        Employee.prototype = Object.create(Manager.prototype);  // jadi harus dibuatkan prototype di dalam Manager (atau Employee). dapat juga dibalik Manager.prototype = Object.create(Employee.prototype).
+        
+        Employee.prototype.sayHello = function(name) {
+            console.log(`Hello ${name}, my name is employee ${this.name}`);
+        }
+
+        Manager.prototype.sayHello = function(name) {
+            console.log(`Hello ${name}, my name is manager ${this.name}`); 
+        }
+
+        const eko = new Employee('Eko');
+        eko.sayHello('Joko')
+        const budi = new Manager('Budi');
+        budi.sayHello('Joko')
+
+        console.log(eko);
+        console.log(budi);
+
+    </script>
+</body>
+</html>

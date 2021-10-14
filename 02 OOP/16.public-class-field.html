@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Class Field</title>
+</head>
+<body>
+    
+
+    <script>
+        /*
+            - Biasanya, saat kita ingin menambahkan field (property yang berisi value), kita biasanya tambahkan di constructor
+            - Namun, ada proposal di EcmaScript yang mengajukan pembuatan public class field ditempatkan diluar constructor, selevel dengan penempatan  method
+            - Proposal ini masih belum final, namun beberapa browser sudah mendukung nya
+            - https://github.com/tc39/proposal-class-fields 
+            - Dalam proposal tersebut juga disebutkan bahwa EcmaScript akan mendukung access modifier public dan private
+            - Public artinya bisa diakses dari luar class, dan private hanya bisa diakses dari dalam class saja
+            - Private class field akan kita bahas di chapter selanjutnya
+            - Untuk membuat public class field, kita bisa langsung buat nama field dengan value nya selevel dengan method
+            - Jika kita tidak memasukkan value ke dalam field tersebut, artinya field tersebut memiliki value undefined
+        */
+
+        class Customer {
+            // public class field. field disebut juga property. melekat di instance object (bukan instance prototype). biasanya ditambahkan ke di dalam constructor(). dimateri2 sebelum ini disebut property 
+            firstName;  // field tanpa value, nantinya akan ditimpa oleh value yang ada pada constructor
+            lastName;
+            balance = 0;
+
+            // class constructor
+            constructor(firstName, lastName, balance) { // public class field diatas dapat ditimpa valuenya menggunakan constructor
+                this.firstName = firstName;  // keyword this mewakili public class field diatas. sedangkan valuenya merujuk ke parameter di dalam parentheses constructor()
+                this.lastName = lastName;
+                this.balance = balance;
+            }
+
+            // class method
+            sayHello() {
+                console.log('Hello');
+            }
+        }
+
+        // 1. ciri dari public class field dapat diakses dari luar class spt berikut:
+        // const saddam = new Customer();
+        // saddam.firstName = 'Saddam';
+        // saddam.lastName = 'Husein';
+        // saddam.balance = 1200;
+
+        // 2. cara ini mengakses public class melalui constructor:
+        const saddam = new Customer('Saddam', 'Husein', 1200);
+        console.log(saddam);
+    </script>
+    
+</body>
+</html>

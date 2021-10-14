@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operator Instanceof</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            operator instanceof: digunakan untuk mengecek suatu instance dibuat oleh class apa.
+            - berlaku juga pada class inheritance, sehingga suatu instance dapat diketahui dibuat oleh class apa, dan class tersebut diinherit (extends) dari class mana
+            - hasilnya berupa string boolean (true atau false)
+         */
+
+        class Employee {
+
+        }
+
+        class Manager extends Employee {  // berlaku juga pada class inheritance
+
+        }
+
+        const saddam = new Employee();
+        const rahmat = new Manager();
+
+        // menggunakan operator typeof hanya mendeteksi tipe data dari instance. kita tidak dapat mengetahui suatu instance object terbuat dari class apa
+        // console.log(typeof saddam);
+
+        // menggunakan operator instanceof kita dapat mengetahui suatu instance object terbuat dari class apa
+        // console.log(saddam instanceof Employee); // true
+        // console.log(saddam instanceof Manager);  // false
+        // console.log(rahmat instanceof Employee); // false
+        // console.log(rahmat instanceof Manager); // true
+
+        // operator instanceof berlaku juga pada class inheritance
+        console.log(saddam instanceof Employee);  // true
+        console.log(saddam instanceof Manager);  // false
+        console.log(rahmat instanceof Employee); // true. karena class Manager sudah di inherit (extends) ke class Employee
+        console.log(rahmat instanceof Manager)  // true
+    </script>
+</body>
+</html>

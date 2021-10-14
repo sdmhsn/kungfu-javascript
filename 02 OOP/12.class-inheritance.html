@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Inheritance</title>
+</head>
+<body>
+    
+
+    <script>
+
+        /*
+        // 1. class inheritance
+        class Employee {
+            sayHello(name) {
+                console.log(`Hello ${name}, my name is Employee ${this.name}`);
+            }
+        }
+        
+        class Manager extends Employee {
+            sayHello(name) {
+                console.log(`Hello ${name}, my name is Manager ${this.name}`);
+            }
+        }
+
+        const saddam = new Employee();
+        saddam.name = 'Saddam';
+        saddam.sayHello('Amin');
+
+        const rahmat = new Manager();
+        rahmat.name = 'Rahmat';
+        rahmat.sayHello('Amin');
+
+        console.log(saddam);
+        console.log(rahmat);
+        */
+
+        /**/
+        // 2. experiment sendiri
+        class Employee {
+            constructor(firstName, lastName) {
+                this.firstName = firstName;
+                this.lastName = lastName;
+            }
+
+            sayHello(name) {
+                console.log(`Hello ${name}, my name is ${this.firstName}`);
+            }
+        }
+        
+        class Manager extends Employee {
+            // karena sudah diinherit (extends) ke class Employee, maka class Manager ini sudah terdapat property firstName, lastName (di dalam instance object karena berada di dalam constructor class Employee) dan method sayHello() (di dalam instance prototype dari class Employee)
+            // penambahan constructor() untuk menampung property instance object dari class Manager (child class) akan menghasilkan error. Status class Manager saat ini sudah diinherit (extends) dari class Employee, yang di dalam class Employee tersebut sudah terdapat constructor(). Apakah hal tersebut yang membuat error ketika ditambah constructor() di dalam class Manager?
+        }
+
+        const saddam = new Employee('Saddam', 'Husein');
+        saddam.sayHello('Amin');
+
+        const rahmat = new Manager('Rahmat', 'Bonda');
+        rahmat.age = 31; // sehingga penambahan property harus dilakukan diluar class. property ini hanya terdapat di instance object rahmat
+        rahmat.sayHello('Amin');
+
+        console.log(saddam);
+        console.log(rahmat);
+    </script>
+</body>
+</html>

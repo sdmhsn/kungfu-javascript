@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Method di Class</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            - Membuat method di class sebenarnya bisa dilakukan dengan cara seperti menambahkan method di constructor function
+            - Namun, hal tersebut sebenarnya menambahkan method ke dalam instance object
+            - Khusus untuk method SEBAIKNYA (direkomendasikan) kita menambahkan ke prototype, bukan ke instance object
+            - Untung nya di class, ada cara mudah menambahkan method dan secara otomatis ditambahkan ke prototype
+        */
+
+        /*
+        // 1. method di class (melekat ke dalam instance object) / tidak direkomendasikan
+        class Person {
+            constructor(firstName, lastName) {
+                this.firstName = firstName;
+                this.lastName = lastName;
+                this.sayHello = function(name) {  // untuk methodnya ditambahkan ke dalam constructor(). namun menempel di dalam instance object
+                    console.log(`Hello ${name}, my name is ${this.firstName}`);
+                }
+            }
+        }
+
+        const saddam = new Person('Saddam', 'Husein');
+        saddam.sayHello('Amin');
+        console.log(saddam);
+        */
+
+        /**/
+        // 2. method di prototype (melekat di dalam prototype) / direkomendasikan
+        class Person {
+            constructor(firstName, lastName) {
+                this.firstName = firstName;
+                this.lastName = lastName;
+            }
+
+            sayHello(name) {  // berdiri sendiri diluar constructor(). langsung berupa function declarations. menempel / melekat di dalam instance prototype. bukan instance object
+                console.log(`Hello ${name}, my name is ${this.firstName}`); // this.firstName sama dengan saddam.firstName. this mengacu ke property firstName pada instance object
+            }
+        }
+
+        const saddam = new Person('Saddam', 'Husein');
+        saddam.sayHello('Amin');
+        const rahmat = new Person('Rahmat', 'Bonda');
+        rahmat.sayHello('Amin');
+
+        console.log(saddam);
+        console.log(rahmat);
+        
+        /*
+        // 3. experiment sendiri 
+        // - method di class
+        class Person {
+            constructor(firstName, lastName) {
+                this.firstName = firstName;
+                this.lastName = lastName;
+            }
+
+            sayHello = function(name) {  // berupa functions expressions / definition. untuk methodnya tidak ditambahkan ke dalam constructor(). namun menempel di dalam instance object
+                console.log(`Hello ${name}, my name is ${this.firstName}`);
+            }
+        }
+
+        const saddam = new Person('Saddam', 'Husein');
+        saddam.sayHello('Amin');
+        console.log(saddam); // pada console.log() terlihat method sayHello('') terdapat pada instance object bersama2 dengan property firstName dan lastName.
+        */
+        
+        /*
+        // - method di prototype
+        class Person {
+            constructor(firstName, lastName) {
+                this.firstName = firstName;  // property ini melekat ke instance object. sehingga semua instance memiliki property yang sama
+                this.lastName = lastName;
+            }
+        }
+
+        Person.prototype.sayHello = function(name) {  // sebaiknya penambahan / pembuatan method ditambahkan ke dalam prototype, bukan instance. seperti property diatas, semua method berlaku / terdapat pada instance saddam dan rahmat (semua instance), hanya saja terdapat di dalam prototype bukan instance object
+            console.log(`Hello ${name}, my name is ${this.firstName}`);
+        }
+
+        const saddam = new Person('Saddam', 'Husein');  // instantiate
+
+        console.log(saddam); // pengaksesan instance. pada console.log() terlihat method sayHello('') terdapat di dalam prototype. begitu juga dengan instance object rahmat
+        console.log(saddam.firstName); // pengaksesan property
+        saddam.sayHello('Amin');  // pengaksesan method
+
+        const rahmat = new Person('Rahmat', 'Bonda');
+        console.log(rahmat);
+        */
+    </script>
+</body>
+</html>

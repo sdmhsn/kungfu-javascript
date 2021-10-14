@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Constructor</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            - Class Inheritance sifatnya seperti Prototype Inheritance
+            - Bagaimana dengan Constructor Inheritance? Sebenarnya Constructor Inheritance hanyalah melakukan eksekusi constructor lain dengan tujuan agar property di constructor lain bisa ditambahkan ke instance object ini
+            - Dalam kasus ini, jika kita ingin mencapai hasil yang sama, kita bisa menggunakan kata kunci super di dalam constructor
+            - Kata kunci super digunakan untuk memanggil constructor super class
+            - Jika di child class kita membuat constructor, maka kita wajib memanggil parent constructor, walaupun di parent tidak ada constructor
+            - agar dapat menambahkan constructor di dalam class Manager (child class), maka kita dapat memanfaatkan super constructor
+        */
+
+        class Employee {
+            constructor(firstName) {
+                this.firstName = firstName;
+            }
+
+            sayHello(name) {
+                console.log(`Hello ${name}, my name is employee ${this.firstName}`);
+            }
+        }
+
+        class Manager extends Employee {
+            constructor(firstName, lastName) { // meskipun class Manager sudah diinherit ke class Employee (extends), kita masih bisa menambahkan constructor menggunakan super constructor. penambahan constructor() untuk menampung property instance object dari class Manager (child class) akan menghasilkan error, sehingga dibutuhkan keyword super untuk menghindari error tersebut
+                super(firstName);  // memanggil constructor yang ada di class induk / parent (Employee), beserta parameternya. Jika di child class kita ingin membuat constructor, maka kita wajib memanggil parent constructor. setiap pembuatan constructor di child, wajib menyertakan keyword super() di dalam constructor tersebut, meskipun di dalam class parent (Employee) tidak terdapat constructor, hal ini dikarenakan class Manager sudah di extends (diinherit) ke class Employee
+                this.lastName = lastName;
+            }
+
+            sayHello(name) {
+                console.log(`Hello ${name}, my name is manager ${this.firstName} ${this.lastName}`);
+            }
+        }
+
+        const saddam = new Employee('Saddam');
+        saddam.sayHello('Amin');
+        const rahmat = new Manager('Rahmat', 'Bonda');
+        rahmat.sayHello('Amin');
+
+        console.log(saddam);
+        console.log(rahmat);
+    </script>
+</body>
+</html>

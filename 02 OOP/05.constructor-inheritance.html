@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constructor Inheritance</title>
+</head>
+<body>
+    
+
+    <script>
+        /*
+            constructor inheritance: pewarisan / di dalam constructor function kita memanggil constructor function lain, sehingga kita bisa mewarisi semua property dari constructor function lain tersebut
+            - bukan inheritance murni. lebih kepada mengcopy property dan method (isi) dari suatu constructor function lainnya.
+            - format perintah: NamaConstructor.call(this, parameter)
+            - dengan adanya constructor inheritance, setiap perubahan cukup diubah pada parent / induknya (constructor function yang dicopy), maka pada constructor yang memanggil juga akan menyesuaikan perubahan. tidak lagi diubah secara manual satu persatu pada tiap2 constructor
+        */
+        
+        function Employee(firstName) {
+            this.firstName = firstName;
+            this.sayHello = function (name) {
+                console.log(`Hello ${name}, my name is ${this.firstName}`)
+            }
+        }
+
+        function Manager(firstName, lastName) {  // pada manager terdapat parameter lastName, yang akan diisi ke property lastName
+            // mengcopy seluruh isi (property dan method) yang terdapat di dalam constructor function Employee() ke dalam constructor function Manager():
+            Employee.call(this, firstName);  // this: 'saya akan mengacu / membawa object constructor function yang saat ini digunakan (Employee()). firstName merujuk ke parameter constructor Employee(firstName). dengan adanya perintah ini, property firstName dan method sayHello di constructor Employee() dicopy dan di paste ke constructor Manager()
+            this.lastName = lastName; // property lastName ini bukan inheritance dari constructor Employee()
+            // console.log(this) // referensi this yang berada di dalam constructor ini mengacu ke constructor Manager()
+        }
+
+        const rahmat = new Manager('Rahmat', 'Bonda');
+        rahmat.sayHello('Amin');  // pembuktian bahwa method juga di copy ke dalam constructor Manager() melalui parameter this pada Employee.call(this, firstName);
+        console.log(rahmat);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Class Field</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            private class field: field yang hanya bisa diakses di dalam class saja. field tidak dapat diakses dari luar class
+            - Secara default, saat kita menambahkan field, maka field tersebut bisa diakses dari manapun (public class field)
+            - Jika kita ingin membuat field yang bersifat private (hanya bisa diakses di dalam class), kita bisa menggunakan tanda # sebelum nama field nya
+            - Ini dinamakan private class field, dan hanya bisa diakses dari dalam class saja
+            - Private class field digunakan agar field yang ada di dalam class tidak dapat diubah oleh seseorang dari luar. Jika dapat diakses dari luar, maka orang lain dapat mengubahnya
+
+        */
+
+        class Counter {
+            #counter = 0;  // private class field. menggunakan tanda crash / sharp / hash (#). melekat ke instance object
+
+            increment() {
+                this.#counter++;
+            }
+
+            decrement() {
+                this.#counter--;
+            }
+
+            get() {
+                return this.#counter;
+            }
+        }
+
+        const price = new Counter();
+        price.increment();
+        price.increment();
+        price.increment();
+        price.increment();
+        price.increment();
+
+        price.decrement();
+
+        console.log(price);
+
+        // console.log(price.#counter); // private class field tidak dapat diakses dari luar class
+        // price.#counter = 100;  // juga tidak dapat diubah
+        price.counter = 100;  // field baru yang hanya melekat pada instance object price. tidak sama dengan #counter
+        console.log(price.get());  // untuk mengaksesnya diluar class, harus melalui method
+    </script>
+</body>
+</html>

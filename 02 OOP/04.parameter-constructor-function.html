@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parameter di Constructor Function</title>
+</head>
+<body>
+    
+    <script>
+        // 1. menambah parameter pada constructor function
+        // membuat class (constructor function)
+        function Person(firstName, lastName) { // karena constructor function ini merupakan function biasa, maka pada parentheses dapat diisi parameter
+            this.firstName = firstName; // valuenya menggunakan parameter dari constructor function
+            this.lastName = lastName;
+            this.sayHello = function(name) {
+                alert(`Hello ${name}, my name is ${this.firstName}`);
+            } 
+        }
+        
+        const saddam = new Person('Saddam', 'Husein'); // membuat object dengan argumen yang akan diisi ke parameter constructor Person(). argumen ini berisikan value dari firstName dan lastName yang akan diisi ke property constructor function. sehingga tidak lagi dibuat secara manual seperti saddam.firstName = 'Saddam'; dan saddam.lastName = 'Husein';
+        saddam.sayHello('Amin'); 
+        
+        const rahmat = new Person('Rahmat', 'Husein'); // membuat object  
+        rahmat.sayHello('Amin');
+
+        console.log(saddam);
+        console.log(rahmat);
+    </script>
+</body>
+</html>
