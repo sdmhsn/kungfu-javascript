@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoList</title>
+</head>
+<body>
+    <form name="todoForm">
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        <label for="todo">Todo:</label>
+                    </td>
+                    <td>
+                        <input type="text" id="todo">
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" value="Add">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+
+    <h1>Todolist</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Filter:
+                </th>
+                <th>
+                    <input type="search" name="cari" id="search">
+                </th>
+            </tr>
+        </thead>
+        <tbody id="todolistBody">
+            <tr>
+                <td>
+                    <input type="button" value="Done">
+                </td>
+                <td>Todo Description</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        // 1. Membuat data untuk menampung seluruh todolist nya
+        const todolist = [
+            'Belajar JavaScript',
+            'Belajar OPP JS'
+        ];
+
+        // 3c. Function untuk menghapus tombol Done dan Todo Description default sekaligus menghapus data sebelumnya sehingga tidak terjadi duplikasi data ketika ditampilkan
+        function clearTodolist() {
+            const todolistBody = document.getElementById('todolistBody');
+            
+            while(todolistBody.firstChild) {  // selama first child pada todolistBody nya masih ada,
+                todolistBody.removeChild(todolistBody.firstChild);  // maka hapus first child pada todolistBody tersebut
+            }
+        }
+
+        // 4c. Komponen pembuatan <tr>, <td>, <input type="button">
+        function addTodoList(todo, index) {
+            const tr = document.createElement('tr');
+            const tdButton = document.createElement('td');
+            tr.appendChild(tdButton);
+
+            const buttonDone = document.createElement('input');
+            buttonDone.type = 'button';
+            buttonDone.value = 'Done';
+            buttonDone.id = `buttonDelete${index}`;
+            tdButton.appendChild(buttonDone);
+
+            const tdTodo = document.createElement('td');
+            tdTodo.textContent = todo;
+            tr.appendChild(tdTodo);
+
+            const todolistBody = document.getElementById('todolistBody');
+            todolistBody.appendChild(tr);
+        }
+
+        // 3. Function untuk menampilkan data-data todolist ke bagian Todo Description (pemanggilan function terdapat di dalam point 2)
+        function displayTodolist() {
+            // 3b. Digunakan untuk menghapus tombol Done dan Todo Description default. Selain itu, pemanggilan function clearTodolist() juga berfungsi untuk menghapus data sebelumnya sehingga tidak terjadi duplikasi data yang ditampilkan
+            clearTodolist()
+
+            // 3a. Setiap Add data pada kotak input Todo, maka akan ditambah ke element <tbody id="todolistBotbodydy"> sehingga muncul data yang sudah diinput ke bagian element tersebut. Namun permasalahannya, setiap Add data, data yang sebelumnya juga ikut muncul karena setiap form di Add akan dilakukan looping yang membuat element2 seperti tr dan td dibuat kembali. Hal ini membuat duplikasi data. Oleh karena itu, dibuat function clearTodolist() yang pemanggilannya diletakkan diluar looping untuk menghapus data sebelumnya sehingga tidak terjadi duplikasi data yang ditampilkan
+            todolist.forEach((element, index) => {
+                const todo = element;
+                // 4b. Hasil search langsung ditampilkan pada bagian Todo Description 
+                const searchText = document.getElementById('search').value.toLowerCase();
+
+                if (todo.toLowerCase().includes(searchText)) {  // dilakukan compare. apakah di dalam todo terdapat text seperti pada searchText
+                    addTodoList(todo, index); // semua komponen pembuatan <tr>, <td>, <input type="button"> dipindahkan kedalam sebuah function addTodoList(todo)
+                }
+            });
+        }
+
+        // 2. Submit / Add data yang diketik pada Todo form input
+        document.forms['todoForm'].onsubmit = function (event) {  // menggunakan global event handler
+            event.preventDefault();
+
+            const todo = document.forms['todoForm']['todo'].value;  // berisikan apa yang diketik pada form input Todo
+            todolist.push(todo); // menambah data yang diketik pada from input Todo kedalam array todolist
+
+            document.forms['todoForm'].reset(); // membersihkan kembali kotak input form Todo setelah di klik Add
+
+            displayTodolist(); // pemanggilan function displayTodolist() pada point 3 diatas
+        }
+
+        displayTodolist();  // agar langsung menghapus tombol Done dan Todo Description default dan menampilkan data default pada array todolist diatas
+
+        // 4. Search data yang tersimpan
+        const searchInput = document.getElementById('search');
+        // 4a. jadi untuk kolom search input form menggunakan kombinasi dari okeyup dan onkeydown
+        searchInput.onkeyup = function () {  // event onkeyup akan bereaksi apabila kita melepas tombol ketikan keyboard
+            displayTodolist();
+        }
+        
+        searchInput.onkeydown = function () {
+            displayTodolist();
+        }
+
+        // 5. Delete data yang tersimpan
+        const deleteInput = document.getElementById('todolistBody');
+        // console.log(deleteInput.childNodes[1]);
+        
+        deleteInput.onclick = function (event) {
+            // console.log(event.currentTarget)
+            // console.log(event.target.parentNode)
+            // document.getElementById(event.target.id).remove();  // hanya menghapus button
+            event.target.parentNode.parentNode.remove();  // menghapus button dan description list
+            displayTodolist();
+        };
+        
+        
+
+        // deleteInput.onclick = function () {
+
+        // }
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tes Todolist</title>
+</head>
+<body>
+    <h1>My Simple Todolist App</h1>
+    <form id="listForm">
+        <div>
+            <label for="list">Buat List:</label>
+            <input type="text" id="list">
+            <input type="submit" value="Post">
+        </div>
+    </form>
+
+    <form id="cariList">
+        <div>
+            <label for="searchList">Filter List:</label>
+            <input type="search" name="data" id="searchList">
+        </div>
+    </form>
+    
+    <ol id="allList"></ol>
+
+    <script>
+        const listForm = document.forms['listForm'];
+        const cariList = document.forms['cariList'];
+        const allList = document.querySelectorAll('#allList');
+
+
+        listForm.addEventListener('submit', function(event){
+            const list = document.getElementById('list').value;
+            
+            if (list === '') {
+                alert('Form buat list tidak bisa kosong!');
+            } else {
+                const listItem = document.createElement('li');
+                const allList = document.getElementById('allList');
+
+                listItem.textContent = `${list}`;
+                allList.appendChild(listItem);
+            }
+
+            listForm.reset();
+            event.preventDefault();
+        });
+
+        cariList.addEventListener('keyup', function(event){
+            const dataKetik = event.target.value.toLowerCase();
+            // console.log(dataKetik);
+
+            allList.forEach(element => {
+                const arrayList = element.innerText.toLowerCase().split('');
+                // console.log(arrayList);
+                
+                if (arrayList.indexOf(dataKetik) != -1) {
+                    console.log(element.children);
+                }
+                // arrayList.filter(elm => elm === dataKetik);
+                // console.log(arrayList);
+                // console.log(arrayList.filter(list => list % 2 === 1));  // filter bilangan ganjil
+
+            });
+
+        });
+        
+        // console.log(allList);
+    </script>
+</body>
+</html>

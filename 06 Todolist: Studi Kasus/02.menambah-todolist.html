@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoList</title>
+</head>
+<body>
+    <form name="todoForm">
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        <label for="todo">Todo:</label>
+                    </td>
+                    <td>
+                        <input type="text" id="todo">
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" value="Add">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+
+    <h1>Todolist</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Filter:
+                </th>
+                <th>
+                    <input type="search" name="cari" id="search">
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <input type="button" value="Done">
+                </td>
+                <td>Todo Description</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        // 1. Membuat data untuk menampung seluruh todolist nya
+        const todolist = [];  // data2 yang di Add pada form Todo akan tersimpan ke dalam array kosong ini
+
+        // 2. Submit / Add data yang diketik pada Todo form input
+        document.forms['todoForm'].onsubmit = function (event) {  // menggunakan global event handler
+            event.preventDefault();
+
+            const todo = document.forms['todoForm']['todo'].value;  // berisikan apa yang diketik pada form input Todo
+            todolist.push(todo); // menambah data yang diketik pada from input Todo kedalam array todolist
+
+            document.forms['todoForm'].reset(); // membersihkan kembali kotak input form Todo setelah di klik Add
+            // console.log(todolist); // setiap tombol Add diklik, terlihat todolist sudah terisi dengan data yang di sudah di Add di form input Todo
+        }
+    </script>
+</body>
+</html>
