@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise Method</title>
+  </head>
+  <body>
+    <table>
+      <tbody>
+        <tr>
+          <td>Id</td>
+          <td>:</td>
+          <td id="id"></td>
+        </tr>
+        <tr>
+          <td>Name</td>
+          <td>:</td>
+          <td id="name"></td>
+        </tr>
+        <tr>
+          <td>Price</td>
+          <td>:</td>
+          <td id="price"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script>
+      /*
+        - Promise memiliki tiga method yang bisa kita gunakan 
+        - then() untuk mendapatkan value atau mengubah data ketika Promise sukses
+        - catch() untuk mendapatkan data error ketika Promise gagal
+        - finally() akan dieksekusi ketika terjadi sukses atau gagal pada Promise (sama seperti finally di try catch)
+        - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods  
+        - then() jika lebih dari satu akan dianggap adanya konversi suatu data
+      */
+
+      /* 1. Promise Method 
+      // a. Method .then(), .catch() dan .finally():
+      function getProduct() {
+        return new Promise(function (resolve, reject) {
+          const ajax = new XMLHttpRequest();
+          // ajax.open('GET', 'api/product.json'); // contoh fullfilled / sukses
+          ajax.open('GET', 'api/salah.json'); // contoh rejected / eror
+          ajax.addEventListener('load', function () {
+            if (ajax.status === 200) {
+              resolve(ajax.responseText);
+            } else {
+              reject(`Error Get Product with response: ${ajax.status}`);
+            }
+          });
+          ajax.send();
+        });
+      }
+
+      getProduct()
+        .then(response => JSON.parse(response)) // parameter response merupakan representasi dari ajax.responseText. karena ajax.responseText pada resolve() berbentuk string json, maka dikonversi menjadi javascript object menggunakan JSON.parse() pada .then(), untuk mendapatkan properti id, name dan price
+        .then(json => { // then kedua dianggap untuk menggolah data yang sudah dikonversi
+          document.getElementById('id').innerText = json.id,
+          document.getElementById('name').innerText = json.name,
+          document.getElementById('price').innerText = json.price
+        })
+        .catch(error => { // parameter error merupakan representasi dari 'Error Get Product with response: ${ajax.status}'
+          document.getElementById('id').innerText = error,
+          document.getElementById('name').innerText = error,
+          document.getElementById('price').innerText = error
+        })
+        .finally(() => console.log('Finally'));
+        
+      // b. Menggunakan argumen dan parameter dan promise:
+      function getProduct(product) {
+        return new Promise(function (resolve, reject) {
+          const ajax = new XMLHttpRequest();
+          ajax.open('GET', `api/${product}.json`);
+          ajax.addEventListener('load', function () {
+            if (ajax.status === 200) {
+              resolve(ajax.responseText);
+            } else {
+              reject(`Error Get Product with response: ${ajax.status}`);
+            }
+          });
+          ajax.send();
+        });
+      }
+
+      getProduct('product')
+        .then(response => JSON.parse(response)) // parameter response merupakan representasi dari ajax.responseText. karena ajax.responseText pada resolve() berbentuk string json, maka dikonversi menjadi javascript object menggunakan JSON.parse() pada .then(), untuk mendapatkan properti id, name dan price
+        .then(json => { // then kedua dianggap untuk menggolah data yang sudah dikonversi
+          document.getElementById('id').innerText = json.id,
+          document.getElementById('name').innerText = json.name,
+          document.getElementById('price').innerText = json.price
+        })
+        .catch(error => { // parameter error merupakan representasi dari 'Error Get Product with response: ${ajax.status}'
+          document.getElementById('id').innerText = error,
+          document.getElementById('name').innerText = error,
+          document.getElementById('price').innerText = error
+        })
+        .finally(() => console.log('Finally'));
+      */
+
+      /* 2. Promise Static Method 
+        - Promise juga memiliki beberapa static method
+        - Promise.all() digunakan untuk mengeksekusi beberapa promise sekaligus dan menunggu semua hasil promise nya
+        - Promise.any() digunakan untuk mengeksekusi beberapa promise sekaligus dan mengambil hasil promise paling cepat
+        - Dan lain-lain (Promise.race())
+        - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#static_methods 
+      */
+      
+      function getProduct(product) {
+        return new Promise(function (resolve, reject) {
+          const ajax = new XMLHttpRequest();
+          ajax.open('GET', `api/${product}.json`);
+          ajax.addEventListener('load', function () {
+            if (ajax.status === 200) {
+              resolve(ajax.responseText);
+            } else {
+              reject(`Error Get Product with response: ${ajax.status}`);
+            }
+          });
+          ajax.send();
+        });
+      }
+
+      // a. Promise.all():
+      /* Jika menggunakan promise dengan cara manual:
+      getProduct('product');
+      getProduct('product1');
+      getProduct('product2');
+      getProduct('product3');
+      */
+
+      /* cara manual diatas dapat diganti menggunakan Promise.all() yang ditampung ke dalam sebuah array seperti berikut: */
+      const promise = Promise.all([ // Promise.all() akan memanggil seluruh data product di server, sesuai dengan nama yang ada pada argumen getProduct(). Satu hal yang harus diperhatikan adalah, seluruh data yang ingin dipanggil harus sukses, jika terdapat satu yang error maka kesemuanya akan error 
+        getProduct('product'),
+        getProduct('product1'),
+        getProduct('product2'),
+        getProduct('product3'),
+      ]);
+
+      promise.then(products => console.log(products)) // terlihat seluruh data dapat dipanggil sesuai yang diinginkan seperti ditulis dalam static method Promise.all(). selanjutnya dapat diisi ke dalam tabel sesuai yang diinginkan
+      
+      
+      /* b. Promise.any():
+      const promise = Promise.any([ // Promise.any() akan memanggil data product dari hasil yang muncul paling cepat. karena yang muncul paling cepat adalah product.json, maka data product tersebut yang akan ditampilkan. data .json yang paling cepat munculnya dapat dilihat pada tab Timing yang sebaris dengan tab Headers, Response dll
+        getProduct('product'),
+        getProduct('product1'),
+        getProduct('product2'),
+        getProduct('product3'),
+      ]);
+
+      promise.then(products => console.log(products))
+      */
+
+
+      /* 3. Experiment sendiri:
+      const promise = new Promise(function (resolve, reject) {
+        const ajax = new XMLHttpRequest();
+        // ajax.open('GET', 'api/product.json'); // contoh fullfilled
+        ajax.open('GET', 'api/salah.json');  // contoh rejected
+        ajax.addEventListener('load', function () {
+          if (ajax.status === 200) {
+            // jika lupa memanggil resolve atau reject, maka statenya akan pending (PromiseState: "pending")
+            resolve(ajax.responseText); // statenya akan fullfilled (PromiseState: "fullfilled")
+          } else {
+            reject(`Error Get Product with response: ${ajax.status}`); //  // statenya akan fullfilled (PromiseState: "rejected")
+          }
+        });
+        ajax.send();
+      });
+
+      // menggunakan promise
+      // console.log(promise);
+      promise
+        .then((response) => console.log(response))
+        .catch((error) => console.log(error))
+        .finally(console.log('Finally'));
+      */
+    </script>
+  </body>
+</html>

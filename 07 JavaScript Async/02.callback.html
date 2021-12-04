@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback</title>
+</head>
+<body>
+    <h1 id="tanggal"></h1>
+
+    <script>
+        /*
+            callback:
+            - Callback, merupakan mekanisme untuk memanggil kembali kode yang ada di program dari proses Async
+            - Callback biasanya dibuat dalam bentuk function as parameter, dan parameter function tersebut akan dieksekusi saat proses Async selesai
+            - Dengan menggunakan Callback, program bisa menerima informasi yang dibutuhkan dari proses yang berjalan secara Async
+        */
+
+        /*
+        // 1. setTimeout(): hanya dilakukan sekali dengan rentang waktu yang ditentukan
+        const addElement = () => { // function akan membuat element baru (h1) yang akan diletak pada halaman body
+            const header = document.createElement('h1');
+            header.innerText = 'Hello';
+            document.body.appendChild(header);
+        };
+
+        setTimeout(addElement, 5000); // dalam 5 detik, maka function addElement akan dieksekusi.
+        console.log('Program selesai'); // pembuktian bahwa proses yang dilakukan setTimeout() adalah asynchronous. terlihat teks ini lebih dahulu muncul sebelum elemen h1 diatas, padahal secara posisi ini dibawah. proses asynchronous diatas berjalan secara mandiri, sehingga kode lainnya tidak harus menunggu sampai selesai
+        */
+        
+        /*
+        // 2. setInteval(): dieksekusi berkali2 sesuai interval waktu yang ditentukan secara periodik
+        const addElement = () => {
+            const header = document.createElement('h1');
+            header.innerText = 'Hello';
+            document.body.appendChild(header);
+        };
+
+        // setInterval(addElement, 2000);  // dalam setiap 2 detik, maka function addElement akan terus dieksekusi.
+        console.log('Program selesai');  // pembuktian bahwa proses yang dilakukan setInterval() adalah asynchronous
+        */
+
+        // 3. membuat date yang berkedip setiap 1 detik dengan DOM, date dan setInterval()
+        const addDate = () => {
+            const header = document.getElementById('tanggal');
+            header.innerText = new Date().toString();
+        };
+
+        setInterval(addDate, 1000);
+
+        /*
+        // experiment sendiri:
+        const data = (name) => { alert(`Hello ${name}`)};
+        
+        const helloName = () => { data('Amin'); };
+
+        // setTimeout(function () {
+        //     data('Saddam');
+        // }, 5000);
+        
+        setTimeout(helloName, 5000);
+        */
+    </script>
+</body>
+</html>

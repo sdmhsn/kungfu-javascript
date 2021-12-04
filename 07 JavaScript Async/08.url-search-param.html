@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Search Param</title>
+</head>
+<body>
+    <form>
+        <label for="search">Search:</label>
+        <input type="search" id="search" name="search">
+        <br>
+        <input type="button" id="searchButton" value="Search">
+    </form>
+
+    <script>
+        /*
+            - Selain format JSON, kadang saat mengirim data menggunakan AJAX, kita hanya mengirim dalam bentuk Query Parameter
+            - Pada kasus ini, kita bisa saja mengubah url nya dengan menambahkan Query Parameter, namun ada cara yang lebih mudah, yaitu menggunakan object URLSearchParam
+            - Kita bisa memanfaatkan object URLSearchParam sebelum membuat URL
+            - https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams 
+        */
+        function doSearch() {
+            const ajax = new XMLHttpRequest();
+            const param = new URLSearchParams();
+            param.append('search', document.getElementById('search').value);
+            param.append('filter', document.getElementById('search').value);
+            ajax.open('GET', `https://hookb.in/je2pyj0VNbS9dlMMd6w3?${param.toString()}`); 
+            ajax.send();
+        }
+        
+        document.getElementById('searchButton').addEventListener('click', doSearch);
+
+    </script>
+</body>
+</html>

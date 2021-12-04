@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            AJAX:
+            - AJAX singkatan dari Asynchronous JavaScript and XML
+            - AJAX biasanya digunakan untuk mengambil atau mengirim data ke URL lain
+            - Untuk membuat AJAX, kita bisa menggunakan class XMLHttpRequest
+            - https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest 
+
+            tambahan:
+            http method
+            1. GET: digunakan untuk melakukan mengambil data untuk diterima (request), bukan untuk mengirim data ke server, sehingga tidak memiliki body
+            2. POST: digunakan untuk mengirim data baru ke server, sehingga memiliki body
+        */
+        
+        const ajax = new XMLHttpRequest();
+        ajax.open('GET', 'api/hello.json');  // GET: merupakan http method yang digunakan untuk melakukan request data. Request GET hanya menerima data, bukan untuk mengirim data
+        ajax.send();
+    </script>
+</body>
+</html>

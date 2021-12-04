@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penggunaan URL Search Param (Query String) Pada Fetch API</title>
+</head>
+<body>
+    <form>
+        <label for="search">Search:</label>
+        <input type="search" id="search" name="search">
+        <br>
+        <input type="button" id="searchButton" value="Search">
+    </form>
+
+    <h1 id="response"></h1>
+
+
+    <script>
+        function doSearch() {
+            const param = new URLSearchParams();
+            param.append('search', document.getElementById('search').value);
+            param.append('filter', document.getElementById('search').value);
+
+            const request = new Request(`https://hookb.in/je2pyj0VNbS9dlMMd6w3?${param.toString()}`, {
+                method: 'GET' // biasanya method GET tidak terdapat body
+            });
+
+            const response = fetch(request);
+            response
+                .then(response => response.json()) // response merupakan representasi dari const response diatas. .json() merupakan method dari response fetch api, yang berisikan {"success":true} pada hookbin 
+                .then(function (json) {
+                    document.getElementById('response').innerText = json.success;
+                })
+                .catch(function (error) {
+                    document.getElementById('response').innerText = error;
+                })
+        }
+        
+        document.getElementById('searchButton').addEventListener('click', doSearch);
+
+    </script>
+</body>
+</html>

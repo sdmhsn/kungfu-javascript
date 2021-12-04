@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <h1 id="title"></h1> -->
+    <!-- <p id="body"></p> -->
+    <ol id="list">
+
+    </ol>
+
+    <script>
+        /* 1. 
+        function loadData(url) {
+            const ajax = new XMLHttpRequest();
+            ajax.open('GET', url);
+            ajax.addEventListener('load', function () {
+                console.log(ajax.responseText); // data dari responseText berbentuk string JSON
+                const json = JSON.parse(ajax.responseText);  // string JSON dikonversi menjadi JavaScript Object
+                console.log(json);
+                document.getElementById('title').innerText = json.title;
+                document.getElementById('body').innerText = json.body;
+                // document.writeln(this.responseText);
+            });
+            ajax.send();
+        }
+
+        loadData('https://jsonplaceholder.typicode.com/posts/1');
+
+        // document.writeln('loading...');
+        document.getElementById('title').textContent = 'loading...';
+        */
+
+        /* 2. */
+        function loadData(url) {
+            const ajax = new XMLHttpRequest();
+            ajax.open('GET', url);
+            ajax.addEventListener('load', function () {
+                // console.log(ajax.responseText);
+                const json = JSON.parse(ajax.responseText);
+                // console.log(json);
+                json.forEach(element => {
+                    // console.log(element.title);
+                    const orderedList = document.getElementById('list');
+                    const list = document.createElement('li');
+                    const header = document.createElement('h1');
+                    const content = document.createElement('p');
+                    list.innerText = element.title;
+                    content.innerText = element.body;
+                    header.appendChild(list);
+                    orderedList.appendChild(header);
+                    orderedList.appendChild(content);
+                });
+            });
+            ajax.send();
+        }
+
+        loadData('https://jsonplaceholder.typicode.com/posts');
+
+        /* buku modern react
+        function load(url, callback) {
+            let xhr = new XMLHttpRequest()
+            xhr.onload = function () {
+                callback(this.responseText)
+            }
+            xhr.open('GET', url, true)
+            xhr.send()
+        }
+        // pemanggilan fungsi
+        load('https://jsonplaceholder.typicode.com/todos/1', data => {
+            document.writeln(data)
+        })
+        document.writeln('loading ...')
+        */
+    </script>
+</body>
+
+</html>

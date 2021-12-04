@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise</title>
+  </head>
+  <body>
+
+    <script>
+      /*
+        - Promise merupakan proxy untuk sebuah nilai di masa depan (Future) yang belum diketahui saat pembuatan Promise tersebut.
+        - Biasa Promise digunakan sebagai proxy untuk proses Async.
+        - Penggunaan Promise sangat mudah, dan lebih mirip dengan kode Synchronous.
+        - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise 
+        - Digunakan untuk menghindari masalah callback hell pada penggunaan callback.
+        - Callback hell adalah suatu masalah dimana suatu kondisi penggunaan callback yang cukup banyak pada suatu data (membentuk segitiga pada suatu function karena penggunaan callback yang cukup banyak), sehingga menyebabkan kode menjadi sulit untuk dibaca dan dimengerti
+      */
+
+      // membuat promise
+      const promise = new Promise(function (resolve, reject) {
+        const ajax = new XMLHttpRequest();
+        ajax.open('GET', 'api/product.json'); // contoh fullfilled
+        // ajax.open('GET', 'api/salah.json');  // contoh rejected
+        ajax.addEventListener('load', function () {
+          if (ajax.status === 200) { // jika lupa memanggil resolve atau reject, maka statenya akan pending (PromiseState: "pending")
+            resolve(ajax.responseText);  // statenya akan fullfilled (PromiseState: "fullfilled")
+          } else {
+            reject(`Error Get Product with response: ${ajax.responseText}`);  //  // statenya akan fullfilled (PromiseState: "rejected")
+          }
+        });
+        ajax.send();
+      });
+
+      // menggunakan promise
+      console.log(promise);
+    </script>
+  </body>
+</html>

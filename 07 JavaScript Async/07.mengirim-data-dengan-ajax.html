@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mengirim Data dengan AJAX</title>
+</head>
+<body>
+    <form>
+        <label for="name">Username:</label>
+        <input type="text" id="name" name="username">
+        <br>
+        <label for="pass">Password:</label>
+        <input type="password" id="pass" name="password">
+        <br>
+        <!--<input type="button" id="login" value="Login"> --> <!-- harus bertype button -->
+        <button type="button" id="login">Login</button> <!-- atau menggunakan button seperti ini. harus menambahkan type button -->
+    </form>
+
+    <h1 id="response"></h1>
+    <script>
+        /*
+            - Saat kita menggunakan AJAX, biasanya bukan hanya untuk mengambil data dari Server
+            - Kadang kita juga ingin mengirim data dari Client ke Server, misalnya kita membaca semua data di Web Form, lalu mengirimkan ke Server menggunakan AJAX
+            - Untuk melakukan ini, kita bisa menambahkan parameter data yang akan kita kirim pada method send() milik XMLHttpRequest
+            - hookbin merupakan layanan gratis yang digunakan sebagai server simulasi untuk menerima data. selengkapnya dapat dilihat pada slide tentang hookbin.
+            - https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/send 
+        */
+        
+        function doLogin() {
+            const ajax = new XMLHttpRequest();
+            ajax.open('POST', 'https://hookb.in/XkKRQbQokNhDYMQQYxrK');  // url hookbin harus secara realtime. url yang digunakan adalah pada kolom Your Hookbin Endpoint.
+            ajax.addEventListener('load', function () {  // menangkap responseText untuk ditulis ke h1
+                console.log(ajax.responseText);
+                const response = document.getElementById('response');
+                response.innerText = ajax.responseText;
+            });
+            ajax.setRequestHeader('Content-Type', 'application/json'); // digunakan untuk memberitahu ke server kalo data yang dikirim ke server adalah data json
+            const json = {
+                username: document.getElementById('name').value,
+                password: document.getElementById('pass').value
+            };
+            ajax.send(JSON.stringify(json));  // dikirim sebagai string json, bukan javascript object
+        }
+        
+        document.getElementById('login').addEventListener('click', doLogin);  // menggunakan Event Target
+        // document.getElementById('login').onclick = doLogin;  // menggunakan Global Event
+    </script>
+</body>
+</html>

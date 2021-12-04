@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>State di AJAX</title>
+</head>
+<body>
+    <h1 id="response"></h1>
+
+    
+    <script>
+        /*
+            - AJAX memiliki tahapan yang namanya state, dimana kita bisa mendapatkan banyak sekali state di Ajax menggunakan property readyState
+            - Property readyState mengembalikan nilai number, dimana tiap number merupakan representasi dari statenya
+        */
+
+        function displayResponse(text) {
+            const header = document.getElementById('response');
+            header.innerText = text;
+            document.body.appendChild(header);
+        }
+        
+        const ajax = new XMLHttpRequest();
+        ajax.addEventListener('readystatechange', function () {
+            console.log(`Ready State Change: ${ajax.readyState}`);
+        });
+        ajax.open('GET', 'api/hello.json');
+        ajax.addEventListener('load', function () {
+            if (ajax.status !== 200) {
+                displayResponse(`Koneksi ke API gagal! Status Code: ${ajax.status}`);
+            } else {
+                displayResponse(`Koneksi ke API berhasil! Status Code: ${ajax.status}`);
+            }
+        })
+        ajax.send();
+        
+    </script>
+</body>
+</html>

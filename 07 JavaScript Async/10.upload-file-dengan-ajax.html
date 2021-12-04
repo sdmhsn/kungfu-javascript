@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload File dengan AJAX</title>
+</head>
+<body>
+    <h1>Register</h1>
+    <form>
+        <label for="username">Username:</label>
+            <input type="text" id="username" name="username">
+        <br>
+        <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+        <br>
+        <label for="profile">Profile:</label>
+            <input type="file" id="profile" name="profile">
+        <br>
+        <input type="button" id="register" value="Register">
+    </form>
+
+    <h1 id="response"></h1>
+
+    <script>
+        /*
+            - Selain menggunakan JSON, Query Param, Form, kadang kita butuh mengirim file ke Server
+            - Untuk mengirim file ke Server, kita perlu menggunakan object Form Data, lalu kita perlu menambahkan object File ke dalam FormData tersebut
+            - https://developer.mozilla.org/en-US/docs/Web/API/FormData 
+            - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file 
+            - https://developer.mozilla.org/en-US/docs/Web/API/File 
+            - https://developer.mozilla.org/en-US/docs/Web/API/FileList
+        */
+        
+        function doRegister() {
+            const ajax = new XMLHttpRequest();
+            ajax.open('POST', 'https://hookb.in/XkKRQbQokNhDYMQQYxrK');
+            ajax.addEventListener('load', function () {
+                document.getElementById('response').innerHTML = ajax.responseText;
+            });
+
+            // ajax.setRequestHeader('Content-Type', 'multipart/form-data');  // pada FormData() tidak perlu lagi Content-Type diberitahukan ke server, karena secara otomatis menjadi multipart/form-data data ketika mengirim form data. dapat dilihat pada content-type di hookbin.  
+
+            const form = new FormData();
+            form.append('username', document.getElementById('username').value);
+            form.append('name', document.getElementById('name').value);
+            form.append('profile', document.getElementById('profile').files.item(0));  // files.item(0): file list untuk mengambil file yang pertama
+
+            ajax.send(form);
+        }
+
+        document.getElementById('register').addEventListener('click', doRegister);
+    </script>
+</body>
+</html>

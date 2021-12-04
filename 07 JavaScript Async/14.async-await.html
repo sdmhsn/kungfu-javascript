@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async Await</title>
+</head>
+<body>
+    
+
+    <script>
+        /*
+            Async Await:
+            - Async Await adalah fitur di JavaScript yang digunakan untuk mempermudah proses pembuatan kode Promise.
+            - Dengan menggunakan Async Await, kita bisa membuat kode Asynchronous dengan gaya Synchronous
+            - Banyak devoloper menggunakan Async Await karena lebih mudah dibaca dan lebih sederhana, jika dibandingkan menggunakan promise manual
+        */
+
+        /* 1. Async
+        Async:
+            - Async digunakan untuk menandakan bahwa Function tersebut adalah Async, dan mengembalikan Promise
+            - Dengan menggunakan Async, kita tidak perlu membuat Promise secara manual lagi (jika tidak ingin ribet dalam membuat Promise)
+        
+        // a. Promise Biasa / Manual
+        function getNamePromise() {
+            return new Promise(function (resolve, reject) {  // untuk mengembalikan promise harus membuat object Promise terlebih dahulu
+                resolve('Saddam');
+            });
+        }
+
+        getNamePromise()
+            .then(name => console.log(name));
+        
+        // b. Async function yang mengembalikan Promise
+        async function getNameAsync() {  // hanya menggunakan keyword asyn akan mengembalikan promise tanpa membuat object Promise
+            return 'Amin';
+        }
+
+        getNameAsync()
+            .then(name => console.log(name));  // pembuktian
+        */
+
+        /* 2. Await 
+        - Await digunakan untuk mendapatkan value hasil dari Promise
+        - Await hanya bisa digunakan dalam Async Function
+        */
+
+        /* Data */
+        function getProduct() {
+            const request = new Request('api/product.json', {
+            // const request = new Request('api/productsalah.json', {  // error
+                method: 'GET'
+            });
+
+            const response = fetch(request);
+            return response.then(response => response.json());
+        }
+        
+
+        /*
+        // a. Promise Biasa / Manual
+        function getProductNamePromise() {
+            return new Promise(function (resolve, reject) {  // Menggunakan promise akan memiliki langkah yang cukup panjang dan ribet
+                getProduct()
+                    .then(product => resolve(product.name)) // menggunakan chain
+                    .catch(error => reject(error)); // menggunakan chain
+            });
+        }
+        
+        getProductNamePromise()
+        .then(productName => console.log(productName));
+        
+
+        /*
+        // b. Await yang mengembalikan Promise
+        async function getProductNameAwait() { // Await hanya bisa digunakan dalam Async Function
+            const product = await getProduct();  // maka data product ini adalah data product yang ada didalam promise getProduct(). atau await ini istilahnya menunggu sampai data product nya ada. setelah ada, maka akan masuk ke dalam variable product
+            return product.name;
+        }
+
+        getProductNameAwait()
+            .then(productName => console.log(productName)); // maka hasilnya sama seperti penggunaan promise biasa pada point a diatas, namun terlihat lebih sederhana
+        */
+        
+        /* 3. Error Handler di Async Await 
+        - Saat kita menggunakan Promise, kita bisa menggunakan catch() ketika terjadi error
+        - Bagaimana pada kasus Async Await?
+        - Pada Async Await, kita bisa menggunakan try catch untuk melakukan penanganan error
+        */
+
+        async function getProductNameAwait() {
+            try {
+                const product = await getProduct();
+                return product.name;
+            } catch (error) {
+                return 'Product Not Found';
+            }            
+        }
+
+        getProductNameAwait()
+            .then(productName => console.log(productName));
+
+    </script>
+</body>
+</html>

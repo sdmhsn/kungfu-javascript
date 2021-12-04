@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Data Dengan AJAX</title>
+</head>
+<body>
+    <form>
+        <label for="name">Username:</label>
+        <input type="text" id="name" name="username">
+        <br>
+        <label for="pass">Password:</label>
+        <input type="password" id="pass" name="password">
+        <br>
+        <input type="button" id="login" value="Search">
+    </form>
+
+    <h1 id="response"></h1>
+
+    <script>
+        /*
+            - Selain JSON dan Query Param, kadang kita juga mengirim Form Data dari Client ke Server menggunakan AJAX
+            - Untuk kasus ini kita tetap bisa menggunakan URLSearchParam
+            - Namun object URLSearchParam nya kita kirim di method send()
+        */
+        
+        function doLogin() {
+            const ajax = new XMLHttpRequest();
+            ajax.open('POST', 'https://hookb.in/XkKRQbQokNhDYMQQYxrK');
+            ajax.addEventListener('load', function () {  // menangkap responseText untuk ditulis ke h1
+                const response = document.getElementById('response');
+                response.innerText = ajax.responseText;
+            });
+            ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');  // // digunakan untuk memberitahu ke server kalo data yang dikirim ke server adalah data application/x-www-form-urlencoded (url form / enctype)
+            const form = new URLSearchParams();
+            form.append('username', document.getElementById('name').value);
+            form.append('password', document.getElementById('pass').value);
+            ajax.send(form);
+        }
+        
+        document.getElementById('login').addEventListener('click', doLogin);
+    </script>
+</body>
+</html>
