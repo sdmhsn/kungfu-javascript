@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Module Loading</title>
+</head>
+<body>
+    <input type="text" id="name">
+    <input type="button" value="Say" id="sayButton">
+    
+    <script type="module">
+        /*
+            Dynamic Module Loading:
+            - tidak langsung meload module
+            - Secara default saat kita menggunakan module dengan cara import, maka semua module akan di load (didownload)
+            - Pada kenyataannya, kadang kita tidak ingin meload semua module diawal, kita ingin meload module ketika dibutuhkan saja, ini akan menghemat bandwith jaringan juga, karena kita tidak perlu download semua module diawal
+            - JavaScript mendukung dynamic module loading, caranya kita bisa menggunakan function import(), dimana hasilnya berupa Promise<ModuleObject> (Promise adalah materi yang kompleks, ini akan dibahas di kelas JavaScript Async)
+        */
+        
+        /*
+        // 1. secara default, module akan langsung terload (didownload) apabila di import
+        import {alertHello} from './scripts/dynamic-module.js';  // module langsung di download. dapat dilihat pada tab Sources, module dynamic-module.js di load secara langsung. meskipun function pada module tersebut tidak dipanggil/diinvoke, namun ketika di import otomatis module langsung di download,
+
+        alertHello('Saddam');
+        */
+
+        /**/
+        // 2. menggunakan dynamic module loading. Pada kenyataannya, kadang kita tidak ingin meload semua module diawal, kita ingin meload module ketika dibutuhkan saja, ini akan menghemat bandwith jaringan juga, karena kita tidak perlu download semua module diawal
+        document.getElementById('sayButton').onclick = function () {
+            import('./scripts/dynamic-module.js').then(module => { // function import(). module akan diload apabila tombol say diklik. return nya berupa promise yang akan dibahas pada materi tentang javascript asynchronous nantinya
+                const name = document.getElementById('name').value;
+                // console.log(name);// terlihat variable name menangkap value yang diketik pada atribut id name pada tag input text
+                module.alertHello(name);
+            })
+        }
+        
+    </script>
+</body>
+</html>

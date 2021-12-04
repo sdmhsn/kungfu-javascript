@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Module</title>
+</head>
+<body>
+    
+    <script type="module">
+        /*
+            Class Module:
+            - cara menggunakan module yang berisikan class
+            - class tersebut tinggal diexpose (export) di dalam module
+            - class kemudian tinggal ditangkap / digunakan menggunakan import di file lainnya
+        */
+        
+        import {Person} from './scripts/class-module.js'; // penggunaan / penangkapan class di module
+
+        const saddam = new Person('Saddam');
+        saddam.sayHello('Amin');
+
+        console.log(saddam);
+        console.log(saddam.firstName)
+    </script>
+</body>
+</html>

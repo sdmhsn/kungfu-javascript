@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variable Module</title>
+    <!--<script type="module" src="scripts/variable-module.js"></script> --> <!-- 1 --> 
+    <!--<script type="text/javascript" src="scripts/variable-module.js"></script>  --> <!-- 2 --> 
+    <!--<script type="text/javascript" src="scripts/variable-module2.js"></script>  --> <!-- 2 --> 
+</head>
+<body>
+    
+    <!-- menggunakan module -->
+    <script type="module">
+        /*
+            variable module:
+            - menggunakan variable yang terdapat pada module
+            - masalah akan terjadi ketika menggunakan variable dengan nama yang sama di beberapa module yang berbeda
+        */
+        
+        /*
+        // 1. berisikan string kosong apabile variable tidak di export pada file module dan variable tidak dilakukan import
+        console.log(name);
+        */
+        
+        /*
+        // 3. cara menggunakan variable di module
+        import {name} from './scripts/variable-module.js';  // harus mengimport variable name untuk menangkap variable yang sudah di export pada module. ketika sudah menggunakan import, script dengan atribut src sudah tidak digunakan lagi.
+
+        console.log(name);
+        */
+        
+        // 4. masalah akan terjadi ketika menggunakan variable dengan nama yang sama di beberapa module yang berbeda
+        import {name} from './scripts/variable-module.js';
+        import {name} from './scripts/variable-module2.js'; // karena menggunakan nama variable yang sama, maka harus menggunakan salah satu dari import variable nya
+
+        console.log(name);  // akan terjadi error, karena memiliki nama variable yang sama di 2 module yang berbeda. untuk mengatasinya akan dibahas pada chapter alias
+    </script>
+    
+
+
+    <!-- tanpa module 
+    <script>
+        /**/
+        // 2. secara default menggunakan javascript biasa dengan atribut type = 'text/javascript', kita bisa memanggil suatu variable dari file js lain (bukan module)
+        console.log(name); // namun sangat beresiko akan terjadi error jika pada file js lainnya tersebut, terdapat nama variable yang sama. apabila pada file variable-module.js tidak menggunakan keyword const, let atau var akan bisa, value dari variable bisa ke replace / menimpa dengan variable name pada file variable-module2
+        
+    </script>
+    -->
+</body>
+</html>

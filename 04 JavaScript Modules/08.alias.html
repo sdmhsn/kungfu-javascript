@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alias</title>
+</head>
+<body>
+    
+
+    <script type="module">
+        /*
+            alias:
+            - menghindari masalah nama yang sama pada variable, function, class dll pada module
+            - alias dapat dibuat di export pada module, namun tidak direkomendasikan
+            - alias dapat dibuat di import, lebih direkomendasikan (idealnya), karena tidak merubah nama pada module (tetap sama di module)
+            - untuk membuat alias, dapat menggunakan keyword as lalu diikut nama alias nya. contoh {variableName as varName, myFunction as myFunc, myPersonClass as mpc}
+            - alias memang bagus digunakan, namun terkadang tidak juga direkomendasikan karena dikhawatirkan nama baru yang dibuat menggunakan alias memiliki kesamaan dengan nama dari variable, function, class dll yang lainnya.
+        */
+
+        /*
+        // 1. alias pada export (tidak direkomendasikan)
+        import {nama, hello, Orang} from './scripts/alias-export.js';  // jadi yang di import adalah nama alias, bukan nama aslinya
+
+        console.log(nama);
+        hello('saddam');
+        console.log(Orang.firstName);
+        */
+
+        /*
+        // 2. alias pada import (direkomendasikan)
+        import {name as nama, sayHello as hello, Person as Orang} from './scripts/alias-export.js';  // disinilah alias digunakan (pada import)
+
+        console.log(nama);
+        hello('saddam');
+        console.log(Orang.firstName);
+        */
+
+        // 3. tambahan: penanganan masalah yang akan terjadi ketika menggunakan variable dengan nama yang sama di beberapa module yang berbeda (05.variable-module)
+        import {name as nama1} from './scripts/variable-module.js';
+        import {name as nama2} from './scripts/variable-module2.js';
+
+        console.log(nama1);
+        console.log(nama2);
+    </script>
+</body>
+</html>

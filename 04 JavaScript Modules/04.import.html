@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Import</title>
+    <script type="module" src="scripts/say-export.js"></script> <!-- ketika sudah menggunakan import, script ini sudah tidak diperlukan lagi, karena pada perintah import sudah terdapat source alamat dari module nya-->
+</head>
+<body>
+    
+    <script type="module">
+        /*
+            import:
+            - menangkap / mengakses / menggunakan suatu variable, function atau class dari suatu module yang sudah di expose (export)
+            - Saat menggunakan import, kita tidak perlu lagi menambahkan script module src satu per satu, karena sudah di handle oleh Browser secara otomatis ketika menggunakan module
+        */
+        
+        import {sayHello, sayGoodbye} from './scripts/say-export.js';
+
+        sayHello('Saddam');
+        sayGoodbye('Saddam');
+        console.log(name);   // tidak tampil karena variable name tidak di import, dan pada file say-export.js variable name tersebut tidak di export (expose). variable name juga tidak error (hanya menampilkan string kosong), karena variable tersebut ada di file say-export.js, berbeda dengan function yang akan menampilkan error meskipun function tersebut ada di file say-export.js
+    </script>
+</body>
+</html>

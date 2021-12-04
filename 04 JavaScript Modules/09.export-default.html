@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Export Default</title>
+</head>
+<body>
+    
+    <script type="module">
+        /*
+            Export Default:
+            - tidak boleh dalam satu module, membuat lebih dari satu export default
+            - rekomendasi: 
+                * Bedakan antara default dan named di dalam sebuah module, karena jika digabungkan kadang akan membingungkan ketika melakukan import
+                * Sebisa mungkin selalu gunakan export named dibandingkan export default 
+        */
+
+        /*
+        // 1. export default function
+        import sayHello from './scripts/export-default.js';  // module export-default seakan2 dianggap sebagai function. sedangkan nama default function dibuat pada import ini (sayHello) yang penamaannya bebas
+
+        sayHello('Saddam'); // seakan2 memanggil default functionnya
+        */
+
+        /*
+        // 2. export default variable
+        // import name from './scripts/export-default.js'; 
+        import {default as name} from './scripts/export-default.js';  // dapat juga menggunakan cara seperti ini
+
+        console.log(name);
+        */
+
+        /*
+        // 3. export default class
+        // import Person from './scripts/export-default.js'; // nama class dibuat pada import ini
+        import {default as Person} from './scripts/export-default.js'; // dapat juga menggunakan cara seperti ini
+
+        console.log(Person);
+        const saddam = new Person('Saddam');
+        console.log(saddam.firstName);
+        saddam.sayHello('Amin');
+        console.log(Person.fullName);  // static property / field
+        */
+
+        // 4. export default dan named export (digabung)
+        import penulis, {title, content} from './scripts/export-default.js'; // export default [penulis], named export [title], named export (export multiple) [content]
+        // import {default as penulis, title, content} from './scripts/export-default.js';  // dapat juga menggunakan cara seperti ini
+
+        console.log(title);
+        console.log(content);
+        console.log(penulis);
+    </script>
+</body>
+</html>

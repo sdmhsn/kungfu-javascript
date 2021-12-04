@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>With Modules</title>
+    <script type="module" src="scripts/say.js"></script><!-- harus menyertakan atribut module. selain ekstensi .js, dapat juga menggunakan extensi module dari javascript yaitu .mjs -->
+</head>
+<body>
+    
+    <script>
+        /*
+            with modules:
+            - salah satu kerentanan menjalankan kode javascript tanpa modules adalah rentan terhadap bentrokan data karena terjadi kesamaan nama variable, function atau class yang terekspose dengan sendirinya
+            - pada latihan ini, hanya memperlihatkan bagaimana mengakses suatu file module dari javascript, sehingga masih terjadi error
+        */
+
+        sayHello('Saddam');
+        sayGoodbye('Saddam');
+        console.log(name);
+    </script>
+</body>
+</html>

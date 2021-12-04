@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aggregating Module</title>
+</head>
+<body>
+    
+    <script type="module">
+        /*
+            Aggregating Module:
+            - menyatukan beberapa module
+            - module - module dikumpulkan ke dalam sebuah aggregate module
+            - jika ada nama variable, function, class dll yang sama, maka dapat ditangani menggunakan alias
+            - direkomendasikan apabila module sudah semakin banyak, sehingga tidak diimport satu persatu dari tiap-tiap module secara manual
+        */
+        
+        import {name, sayHello, Person} from './scripts/aggregate-module.js';  // pengaksesan
+
+        console.log(name);
+        sayHello('Saddam');
+        const saddam = new Person('Rahmat');
+        console.log(saddam.firstName);
+        saddam.sayHello('Amin');
+    </script>
+</body>
+</html>
