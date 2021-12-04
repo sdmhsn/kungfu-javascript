@@ -29,12 +29,12 @@
         })
         */
 
-        /*
+        /**/
         // 2. struktur data array queue (antrian. First In First Out (FIFO) / sistem antrian dimana yang masuk pada antrian pertama akan keluar terlebih dahulu. dapat dianalogikan seperti antrian di bank) / siapa yang datang paling pertama, dialah yang keluar pertama
         const queue = [];
 
         queue.push('Saddam');  // karena data array queue adalah kosong, maka penambahan element array 'Saddam' berada pada urutan pertama / jadi element paling depan adalah 'Saddam'. element selanjutnya akan mengantri di belakang Saddam dan seterusnya. pada prinsipnya push memasukkan data pada urutan paling belakang
-        console.log(queue);
+        console.log(queue); // penggunaan method push() akan merubah value asli dari array nya
         queue.push('Rahmat');
         console.log(queue);
         queue.push('Fuad');
@@ -52,7 +52,7 @@
         console.log(queue);
         console.log(queue.shift()); // jika data array sudah tidak ada di dalam antrian, maka hasilnya undefined
         console.log(queue); // array sudah habis dihapus
-        */
+        
 
         /*
         // 3. struktur data array stack (tumpukan / kebalikan dari queue.  Last In First Out (LIFO) / memasukkan data dari urutan paling belakang, kemudian akan diambil data paling belakang terlebih dahulu. dapat dianalogikan seperti tumpukan kartu. paling atas itulah belakangnya) / siapa yang datang paling terakhir, dialah yang keluar pertama
@@ -107,6 +107,7 @@
         console.log(numbers.filter(elemen => elemen % 2 === 0));  // filter bilangan genap
         */
 
+        /*
         // 6. array transform
         // map(): melakukan perulangan dan perulangan tersebut ditransformasi. dengan perulangan menggunakan map() tiap2 elemennya dapat ditransformasi menjadi sebuah array yang diinginkan
         const names = 'Saddam Bin Husein'.split(' '); // method split() digunakan agar string menjadi array dengan karakter spasi yang akan dipotong menjadi tanda koma
@@ -131,6 +132,7 @@
         console.log(reduceString);
         const reduceRightString = names.reduceRight((a, b) => `${a} ${b}`);  // penerapan reduceRight() pada string
         console.log(reduceRightString);
+        */
     </script>
 </body>
 </html>

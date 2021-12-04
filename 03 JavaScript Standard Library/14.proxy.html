@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proxy</title>
+</head>
+
+<body>
+
+
+    <script>
+        /*
+            proxy:
+            - perantara sebelum mengakses data
+            - Dengan ini, kita bisa melakukan apapun sebelum interaksi dilakukan ke data yang dituju
+            - referensi: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy 
+            - Pembuatan Proxy perlu menggunakan handler, dimana dalam handler, kita bisa membuat function yang dinamakan interceptor yang digunakan ketika mengambil data atau mengubah data ke target
+            - Untuk membuat Proxy, kita bisa menggunakan new Proxy(target, handler)
+        */
+
+        /*
+        // 1. Membuat Proxy Handler
+        const target = {
+            midlleName: 'Bin'
+        };
+
+        const handler = {
+            get: function(target, property) {
+                return target[property];
+            },
+            set: function(target, property, value) {
+                target[property] = value;
+            }
+        };
+
+        const proxy = new Proxy(target, handler);
+        proxy.firstName = 'Saddam';
+        proxy.lastName = 'Husein';
+
+        console.log(proxy.firstName);  // memanggil property dengan melewati proxy
+        console.log(proxy.lastName);
+        console.log(target); // pembuktian. data2 yang melewati proxy juga maksud ke dalam object target
+        console.log(proxy.midlleName);  // middleName yang terdapat pada object target, juga dapat dibaca melalui proxy
+        */
+
+        /**/
+        // 2. Log Proxy Handler
+        const target = {};
+
+        const handler = {
+            get: function(target, property) {
+                console.log(`Access property ${property}:`);
+                return target[property];
+            },
+            set: function(target, property, value) {
+                console.log(`Change property ${property}: ${value}`);
+                target[property] = value;
+            }
+        };
+
+        const proxy = new Proxy(target, handler);
+
+        // set (change property):
+        proxy.firstName = 'Saddam';  // mengganti dari property object target yang kosong dengan penambahan property
+        proxy.lastName = 'Husein';  // setiap dilakukan set, akan dicatat sebagai log pada bagian set
+        proxy.fullName = 'Saddam Bin Husein';
+        
+
+        /*
+        // 3. validasi dengan proxy handler
+        const target = {};
+
+        const handler = {
+            get: function(target, property) {
+                console.log(`Access property ${property}:`);
+                return target[property];
+            },
+            set: function(target, property, value) {
+                console.log(`Change property ${property}: ${value}`);
+                target[property] = value;
+
+                if (value === null) {
+                    target[property] = '';
+                } else {
+                    target[property] = value;
+                }
+            }
+        };
+
+        const proxy = new Proxy(target, handler);
+
+        // set (change property):
+        proxy.firstName = 'Saddam';  // mengganti dari property object target yang kosong dengan penambahan property
+        proxy.lastName = null;
+
+        // get (access property)
+        console.log(proxy.firstName);
+        console.log(proxy.lastName);
+        console.log(target);
+        */
+
+        /*
+        // 4. Validasi dengan proxy handler + error handling
+        const target = {};
+
+        const handler = {
+            get: function (target, property) {
+                console.log(`Access property ${property}:`);
+                return target[property];
+            },
+            set: function (target, property, value) {
+                console.log(`Change property ${property}: ${value}`);
+                target[property] = value;
+
+                if (value === null) {
+                    throw new Error('Tidak boleh null');  // jika tidak menggunakan try catch, maka program langsung terhenti
+                } else {
+                    target[property] = value;
+                }
+            }
+        };
+
+        const proxy = new Proxy(target, handler);
+        
+        try {
+            proxy.firstName = 'Saddam';
+            proxy.lastName = null;
+        } catch (error) {
+            console.log(error.message);
+        }
+
+        console.log(proxy.firstName);
+        console.log(proxy.lastName);
+        console.log(target);
+        */
+    </script>
+</body>
+
+</html>

@@ -11,18 +11,20 @@
     <script>
         /*
             RegExp:
-            - bersifat case sensitive
-            - pola regex dapat digunakan untuk memanipulasi suatu data, selain menggunakan string
-
+            - RegExp merupakan fitur untuk mencari suatu text dengan menggunakan pola yang kita tentukan, selain menggunakan string
+            - Hampir semua bahasa pemrograman memiliki implementasi dari RegExp, kesemuanya hampir memiliki kemiripan dalam pembuatan RegExp
+            - Membuat regular expression di JavaScript bisa dilakukan dengan dua cara, yaitu menggunakan literal notation atau membuat object RegExp
+            - referensi: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp 
+            - Secara default RegExp bersifat case sensitive
         */
 
         /*
         // 1. Membuat RegExp
-        const regex1 = /saddam/;
+        const regex1 = /saddam/;  // cara 1: contoh pembuatan RegExp menggunakan literal notation. Pola RegExp tersebut adalah text yang ingin dicari. Dapat dianalogikan "saya ingin mencari text saddam"
         console.log(regex1);
-        const regex2 = new RegExp('saddam');
+        const regex2 = new RegExp('saddam');  // cara 2: contoh pembuatan RegExp menggunakan object RegExp (class) 1
         console.log(regex2);
-        const regex3 = new RegExp(/saddam/);
+        const regex3 = new RegExp(/saddam/);  // cara 3: contoh pembuatan RegExp menggunakan object RegExp (class) 2
         console.log(regex3);
         */
 
@@ -33,32 +35,157 @@
         
         // - exex(data): mereturn posisi index dari regex terhadap suatu value dari data
         console.log(regex4.exec(data)); // regex ditemukan di posisi index ke 11 dan ditampilkan dalam array. jika tidak ditemukan, maka akan menghasilkan null
+        const dataRegex4 = regex4.exec(data);
+        console.log(dataRegex4);
+        console.log(dataRegex4[0]);
+        console.log(dataRegex4['index']);
+        console.log(dataRegex4['input']);
+        console.log(dataRegex4['groups']);
 
-        // - test(data): memeriksa apakah regex terdapat didalam suatu value dari data
+        // - test(data): memeriksa apakah regex terdapat didalam suatu value dari data. hasil output nya berupa boolean (true / false)
         console.log(regex4.test(data)); // jika regex ditemukan akan bernilai true. jika tidak ditemukan bernilai false
         */
 
+        /**/
         // 3. RegExp modifier (mengubah sifat pencarian)
+        /*
+        // a. secara default RegExp bersifat case sensitive
+        const regex5 = /saddam/;
+        const data = 'My name is Saddam Bin Husein';
+
+        console.log(regex5.test(data)); // false karena tidak ditemukan saddam. saddam berbeda dengan Saddam
+        */
+
+        /* b. flag i
+        // dapat menggunakan modifier / flag i agar menjadi incase sensitive
+        // const regex6 = /saddam/i;  // i: incase sensitive
+        // const regex6 = new RegExp(/saddam/, 'i'); // jika pembuatan RegExp menggunakan object
+        const regex6 = new RegExp(/saddam/i); // jika pembuatan RegExp menggunakan object
+        const data = 'My name is Saddam Bin Husein';
+
+        console.log(regex6.test(data)); // true karena RegExp pada variable regex6 terdapat flag i, shingga bersifat incase sensitive
+        */
+
+        /*
+        // c. flag g
+        // - secara default juga, ketika dilakukan pencarian dan text langsung ditemukan, maka secara otomatis pencarian dihentikan. jika terdapat beberapa text yang sama di dalam data tersebut, maka secara otomatis pula text pertama yang ditemukan itulah yang akan ditampilkan, sedangkan text lainnya tidak ditampilkan karena pencarian sudah dihentikan
+        // - jika ingin menampilkan semua text sama yang sama tersebut, dapat menggunakan modifier / flag g
+        // const regex7 = /saddam/g; // g: global. Pencarian dilakukan secara global, secara default setelah menemukan text, pencarian akan berhenti. pada looping, tanpa g akan terjadi infinity looping karena pencarian berada di data yang sama
+        const regex7 = new RegExp(/saddam/, 'g'); // jika pembuatan regex menggunakan object
+        const data = 'my name is saddam and saddam is my name. of course, my name is saddam'; // saddam ditemukan di posisi index 11, 22 dan 63
+
+        let result;
+
+        while((result = regex7.exec(data)) !== null) { // untuk pencarian harus dengan bantuan looping, agar temuan data sama yang lainnya juga ikut ditampilkan. di dalam kondisi while, murni hanya berisikan kondisi, tidak berisikan init statement sehingga tidak dapat diisi dengan keyword let, const atau var. pada looping, tanpa g pada regex7 akan terjadi infinity looping karena pencarian berada di data yang sama. menggunakan while karena kita belum mengetahui berapa banyak text di dalam data tersebut, sehingga kita memanfaatkan kondisi pada while
+            console.log(result);
+        }
+
+        console.log(data);
+        */
+        
+        /*
+        // d. berdasarkan video
         const name = 'saddam husein\nAmin Bonda\nSaddam bonda';
         console.log(name);
 
-        const regex1 = /saddam/g; // flag g: global. Pencarian dilakukan secara global, secara default setelah menemukan data, pencarian akan berhenti. pada looping, tanpa g akan terjadi infinity looping karena pencarian berada di data yang sama
-        const regex2 = /bonda/ig; // flag ig: i, mengabaikan case sensitive, sedangkan g, global
+        const regex1 = /saddam/g; // flag g: global. Pencarian dilakukan secara global, secara default setelah menemukan text, pencarian akan berhenti. Agar mendapatkan / menemukan seluruh text (secara global) dalam data (jika terdapat text yang sama di dalam data), maka harus menggunakan flag g. 
+        const regex2 = /Bonda/ig; // flag ig: i, mengabaikan case sensitive, sedangkan g, global
 
         // console.log(regex2.exec(name));
 
         let result;
 
-        while((result = regex1.exec(name)) !== null) {
+        // regex1
+        while((result = regex1.exec(name)) !== null) {  // apabila tanpa flag g paga regex, maka akan terjadi infinity looping karena pencarian berada di data yang sama (berada pada kondisi !== null, sehingga terus2an bernilai true / tidak berubah ke kondisi === null, sehingga bernilai false)
             console.log(result); // regex1 hanya menggunakan flag g
         }
+
+        // regex2
         while((result = regex2.exec(name)) !== null) {
-            console.log(result); // jika  menggunakan flag regex ig, maka hasilnya 2, yaitu saddam (s huruf kecil) dan Saddam (s huruf besar)
+            console.log(result); // jika  menggunakan flag regex incase sensitive dan global, maka hasilnya 2, yaitu bonda (b huruf kecil) dan Bonda (B huruf besar). apabila tanpa flag g paga regex, maka akan terjadi infinity looping 
+        }
+        */
+
+        // 4. Fitur RegExp Lainnya
+        /*
+        // a. Assersions : indikasi awal dan akhir teks 
+        const name = 'saddam husein\nAmin Bonda\nSaddam bonda\nAmin Husein';
+        
+        // const regex1 = /^saddam/ig; // dengan menambahkan flag ^, maka yang dicari adalah kata saddam yang diawal berada diawal text. hanya berlaku kata yang diawal (saddam)
+        const regex1 = /^saddam/igm; // dengan menambahkan flag ^, maka yang dicari adalah kata saddam yang diawal berada diawal text. dengan menambahkan flag m maka akan bersifat multiline sehingga keyword yang berada pada multiline juga ikut ditampilkan (mirip tanpa ^ dan m)
+
+        let result;
+
+        while((result = regex1.exec(name)) !== null) {
+            console.log(result);
+        }
+        */
+        
+        /*
+        // b. Character Classes : membedakan antara huruf dan angka 
+        const name = 'saddam6 husein\nAmin45 Bonda\nSaddam bonda2222\nAmin Husein 34\neko eno \nedo';
+        
+        // const regex1 = /\d/g; // \d: berfungsi untuk menemukan digit (angka) di dalam text
+        const regex1 = /e.o/igm; // mencari kata dengan awal e dan akhir o, tanpa mempedulikan karakter yang ditengahnya
+
+        let result;
+
+        while((result = regex1.exec(name)) !== null) {
+            console.log(result);
+        }
+        */
+        /*
+        // c. Group dan Range : melakukan grouping atau range huruf atau angka 
+        const name = 'saddam6 husein\nAmin45 Bonda\nSaddam bonda2222\nAmin Husein 34\neko eno \nedo';
+        const regex1 = /e.[aieuo]/igm; // mencari kata dengan awal e tanpa mempedulikan karakter yang ditengahnya lalu dilanjutkan dengan group karakter yang berisikan [aieuo]
+
+        let result;
+
+        while((result = regex1.exec(name)) !== null) {
+            console.log(result);
+        }
+        */
+
+        // 5. Instance Method Dengan Memanfaatkan RegExp
+        const name = "edo eko eki eka eku eke edo eko eki";  // method2 yang digunakan dibawah tidak akan merubah data aslinya ini
+
+        // a. match(): Mencari semua data yang sesuai dengan regex
+        console.info(name.match(/ek[aiueo]/ig));  // string didapatkan dalam bentuk array
+
+        // b. search(): Mencari index data yang sesuai dengan regex
+        console.info(name.search(/ek[aiueo]/ig)); // ditemukan pertama pada posisi index ke 4. eko
+
+        // c. replace(): Mengubah data dengan value yang sesuai regex
+        console.info(name.replace(/ek[aiueo]/i, "kamu"));  // mereplace pola ek[aiueo] menjadi kamu. jika ingin mereplace temuan pertama saja maka hilangan flag g
+
+        // d. replaceAll(): Mengubah semua data dengan value yang sesuai regex
+        console.info(name.replaceAll(/ek[aiueo]/ig, "kamu"));  // mereplace semua harus menyertakan flag g
+
+        // e. split(): Memotong string dengan regex
+        console.info(name.split(/e/ig)); // menjadi array. e menjadi koma
+
+        /*
+        // 6. experiment sendiri (menghitung jumlah kata dengan incase sensitive di dalam suatu data text):
+        const regex7 = new RegExp(/saddam/, 'ig'); // pembuatan regex menggunakan object
+        // const regex7 = new RegExp(/saddam/ig); // pembuatan regex menggunakan object
+        // const regex7 = /saddam/ig; // pembuatan regex menggunakan literal notation
+        const data = 'my name is saddam and saddam is my name. of course, my name is Saddam'; // saddam ditemukan di posisi index 11, 22 dan 63
+
+        let result;
+        let counter = 0
+
+        while((result = regex7.exec(data)) !== null) { // untuk pencarian harus dengan bantuan looping, agar temuan data sama yang lainnya juga ikut ditampilkan. di dalam kondisi while, murni hanya berisikan kondisi, tidak berisikan init statement sehingga tidak dapat diisi dengan keyword let, const atau var. pada looping, tanpa g pada regex7 akan terjadi infinity looping karena pencarian berada di data yang sama
+            counter += 1;
         }
 
+        // console.log(typeof regex7) // bertipe data object
 
-
-
+        const kata = regex7.exec(data);
+        
+        console.log(data);
+        // console.log(kata)
+        console.log(`Ditemukan ${counter} kata yang mengandung keyword ${kata[0]}`);
+        */
     </script>
 </body>
 </html>

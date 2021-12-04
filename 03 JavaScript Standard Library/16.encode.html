@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encode</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            encode:
+            - menambah query parameter ke dalam URL
+            - fungsi encodeURI() digunakan untuk menyandikan URI. fungsi ini menyandikan karakter khusus kecuali tanda , / ? : @ & = + $ # yang tidak diubah
+            - karakter2 khusus tersebut biasanya ada di dalam url
+            - URL sendiri sudah memiliki standard encoding penulisan URL. Standard encoding ini dilakukan agar penulisan URL aman ketika diterima oleh server
+            - Aman disini dalam artian informasi URL tidak berubah (bukan aman secara security)
+            - Contoh Masalah Jika Tidak Menggunakan Encode:
+                - Misal ada query parameter dengan nama data, lalu kita ingin mengirimkan nilai kesana
+                - Misal nilainya adalah &eko=eko&, alhasil URL nya akan seperti berikut
+                - http://contoh.com?data=&eko=eko&
+                - URL diatas terlihat tidak ada masalah, tapi sebenarnya ketika diterima oleh server, parameter data bernilai kosong, kenapa? karena & dianggap sebagai pemisah antar parameter
+                - Artinya tanda seperti & dan lain-lain perlu di encode, agar tidak terjadi kesalahan data yang kita kirim
+            - decode berfungsi untuk mengembalikan URL yang sudah di encode
+            - Encode yang baik adalah yang memisahkan antara URL dan query parameter value nya. jadi yang di encode sebenarnya hanya value nya
+        */
+        
+        /*
+        // 1. encode dan decode URI
+        const url = 'http://contoh2.com/?name=saddam bin husein';
+        console.log(url);
+
+        // encode
+        // encodeURi(): Melakukan encode value, namun karakter yang dipesan di URI tidak akan diubah ;,/?:@&=+$#
+        const encoded = encodeURI(url);
+        console.log(encoded);  // karakter spasi diganti menjadi %20
+
+        // decode
+        // decodedURI(): Melakukan decode value hasil encodeURI()
+        const decoded = decodeURI(encoded);
+        console.log(decoded);
+
+        // encodeURIComponent
+        // encodeURIComponent(value): melakukan encode ke seluruh karakter termasuk ;,/?:@&=+$# kecuali huruf dan angka
+        const encodedComponent = encodeURIComponent(url); 
+        console.log(encodedComponent);
+
+        // decodeURIComponent
+        // decodeURIComponent(encoded): Melakukan decode value hasil encodeURIComponent()
+        const decodedComponent = decodeURIComponent(encodedComponent);
+        console.log(decodedComponent);
+        */
+        
+        // 2. Encode yang baik adalah yang memisahkan antara URL dan query parameter value nya (agar karakter : dan // pada http url tidak berubah). jadi yang di encode sebenarnya hanya value nya
+        const value = 'Saddam&Bin= Husein'
+        const url = 'http://contoh2.com/?name=';
+
+        const encodedComponent = encodeURIComponent(value); 
+        console.log(url + encodedComponent); // karakter : dan // pada http url tidak berubah
+
+        const decodedComponent = decodeURIComponent(encodedComponent);
+        console.log(url + decodedComponent);
+    </script>
+</body>
+</html>
