@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attr</title>
+</head>
+<body>
+    <img src="https://www.programmerzamannow.com/img/pzn.png" alt="PZN Logo" id="logo">
+    
+    <script>
+        /*
+            Attr:
+            - merupakan representasi dari atribut suatu element
+            - key mewakili nama atribut, sedangkan value mewakili value atribut
+            - referensi: https://developer.mozilla.org/en-US/docs/Web/API/Attr
+            - berdasarkan dokumentasi, hanya terdapat property
+        */
+
+        /**/
+        // 1. Contoh menggunakan property name dan value untuk mengambil key dan value dari atribut
+        const img = document.getElementById('logo');  // id nya diambil terlebih dahulu
+        const source = img.getAttributeNode('src'); // mendapatkan atribut (berisi key dan value)
+        const alt = img.getAttributeNode('alt');
+
+        console.log(img);
+        console.log(alt);
+        console.log(source); // langsung berupa key dan value
+        console.log(source.name); // mengambil key atribut
+        console.log(source.value); // mengambil value atribut
+        
+        
+        /*
+        // 2. Cara mendapatkan atribut value secara langsung menggunakan method getAttribute()
+        const img = document.getElementById('logo');
+        const src = img.getAttribute('src');
+
+        console.log(src);  // hasilnya langsung berupa value dari atribut
+        */
+
+        /*
+        // 3. Membuat attr
+        const img = document.getElementById('logo');
+
+        const attrTitle = document.createAttribute('title');  // method membuat atribut
+        // attrTitle.textContent = 'Logo Programmer Zaman Now 1'; // atau
+        attrTitle.value = 'Logo Programmer Zaman Now 2'; // membuat value menggunakan property value pada atribut
+        img.setAttributeNode(attrTitle); // menambahkan / memasukkan ke dalam img
+        console.log(img);
+
+        // atau dengan cara yang lebih sederhana:
+        // const attrTitle = img.setAttribute('title', 'logo programmer zaman now');  // method membuat atribut
+        // img.setAttributeNode(attrTitle);  // menambahkan / memasukkan ke dalam img
+        // console.log(img);
+        */
+
+
+    </script>
+</body>
+</html>

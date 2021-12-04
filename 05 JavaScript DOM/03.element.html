@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Element</title>
+</head>
+<body>
+    <!-- <h1 id="title"></h1>
+    <p id="description"></p> -->
+
+    <div id="content" class="class-content">
+        <h1 id="title" class="class-title">This is Title</h1>
+        <p id="description" class="class-description">This is Description</p>
+    </div>
+
+    <script>
+        /*
+            Element:
+            - contoh element <h1>, <p>, <body>, <html> dll
+            - Element merupakan Node yang berbentuk element
+            - Karena Element merupakan turunan dari Node, maka property2 dan method2 yang ada pada Node dapat digunakan pada Element
+            - Referensi: https://developer.mozilla.org/en-US/docs/Web/API/Element 
+        */
+
+        /*
+        // 1. Contoh implementasi pada element
+        // Mendapatkan suatu element dapat menggunakan method getElementById()
+        const title = document.getElementById('title');
+        title.textContent = 'Ini adalah Judul'; // heading yang kosong, diisi dengan suatu string
+        
+        const desc = document.getElementById('description');
+        desc.textContent = 'Ini adalah Paragraf';
+        */ 
+        
+        /*
+        // 2. Contoh property pada element
+        // referensi: https://developer.mozilla.org/en-US/docs/Web/API/Element#properties
+        // - id, className, tagName
+        const content = document.getElementById('content');
+        
+        console.log(content.id);  // mendapatkan value dari atribut id suatu element yang didapatkan
+        console.log(content.className);  // mendapatkan value dari atribut class suatu element
+        console.log(content.tagName);  // // mengetahui element apa yang digunakan
+        console.log(content.childNodes[3].tagName);  // memanfaatkan childNodes dan tagName untuk mengetahui element apa yang digunakan berdasarkan child tertentu
+        */ 
+        
+        /*
+        // 3. Contoh method pada element
+        // referensi: https://developer.mozilla.org/en-US/docs/Web/API/Element#methods
+        // - remove(): digunakan untuk menghapus. walaupun data di htmlnya masih ada, ketika method remove() dijalankan, maka element tersebut akan hilang dari document. ketika method remove() dihapus, maka element akan muncul kembali
+        // const title = document.getElementById('title');
+        // const desc = document.getElementById('description');
+        
+        // title.remove();  // menghapus element dengan id 'title'
+        // desc.remove();  // menghapus element dengan id 'description'
+        // console.log(document);
+        
+        // untuk menghapus menggunakan remove(), cara lain yang lebih sederhana dapat menggunakan seperti ini:
+        document.getElementById('title').remove();
+        document.getElementById('description').remove();
+        */
+
+        // 4. Membuat element (suatu element baru dapat dibuat menggunakan JS, dengan memanfaatkan beberapa method)
+        // referensi: https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
+        // - createElement(tag): method yang berfungsi untuk membuat element baru
+        const title = document.getElementById('content');  // mengambil parent Node
+
+        const newElement = document.createElement('h3');
+        newElement.textContent = 'Ini Element Baru';  // artinya element h3 yang berisikan text 'Element Baru'
+        title.appendChild(newElement); // method appendChild: digunakan untuk menambahkan / mengisi (newElement )ke dalam suatu parent Node (title), pada posisi paling akhir. setiap pembuatan element yang sudah dibuat, harus ditambah menggunakan appendChild, agar element baru tersebut muncul pada document
+    </script>
+</body>
+</html>

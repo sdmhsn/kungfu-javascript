@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>textContent innerText innerHTML</title>
+</head>
+<body>
+    <p id="content">
+        <script>
+            console.log('Saddam Bonda');
+        </script>
+
+        <strong>Saddam</strong><em> Bin</em><ins> Husein</ins>
+    </p>
+
+    <div id="content2"></div>
+
+    <script>
+        /*
+            textContent dan innerText:
+            - Selain menggunakan textContent, terdapat innerText yang juga digunakan untuk mendapatkan / mengambil / mengubah isi text dari sebuah element (persamaan)
+            - Perbedaan keduanya adalah, textContent akan mengambil semua isi berupa text yang terdapat pada sebuah element, jika terdapat element lainnya di dalam element tersebut, maka text di dalam element tersebut juga akan diambil, sedangkan innerText lebih pintar karena bisa mengetahui dan menyeleksi bagian text mana saja yang harus 
+            
+            innerHTML:
+            - jika textContent dan innerText hanya digunakan untuk mengambil text saja, maka innerHTML digunakan untuk mengambil seluruh element HTML sebagai text
+            - cocok digunakan untuk mengubah isi dari suatu element menggunakan text yang berisi tag HTML
+        */
+
+        /*
+        // 1. Perbedaan textContent dan innerText
+        const content = document.getElementById('content');
+        console.log(content.textContent);
+        console.log(content.innerText);  // pada innerText, dia lebih tahu text mana yang akan dirender pada halaman web. sebagai contoh dia mengetahui bahwa element script tidak akan dirender pada halaman web, sehingga yang diambil pada tag strong, em dan ins saja
+        */ 
+
+        /*
+        // 2. Contoh innerHTML:
+        const content = document.getElementById('content');
+
+        console.log(content.innerHTML);  // baik tag dan isi text yang terdapat di dalam sebuah element, kesemuanya akan diambil bulat2
+        */
+
+        // 3. Mengubah element dengan innerHTML:
+        const content2 = document.getElementById('content2');
+        content2.innerHTML = '<h1>Content Kedua</h1><p>Ini paragrafnya</p>';
+        // content2.innerText = '<h1>Content Kedua</h1><p>Ini paragrafnya</p>'; // perbedaan antara innerHTML dan innerText        
+    </script>
+</body>
+</html>

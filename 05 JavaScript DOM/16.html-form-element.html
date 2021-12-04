@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Form Element</title>
+</head>
+<body>
+    <form name="commentForm">
+        <label for="comment">Comment:</label>
+        <input type="text" name="komen" id="comment">
+        <br>
+        <label for="from">From:</label>
+        <input type="text" name="dari" id="from">
+        <br>
+        <input type="submit" value="Kirim">
+    </form>
+
+    <div id="commentList"></div>
+
+    <script>
+        /*
+            HTML Form Element
+            - Form adalah salah satu element yang memiliki banyak sekali fitur diluar dari Element DOM
+            - Hal ini karena penggunaan Form memang lebih kompleks dibandingkan element HTML lainnya
+            - Ada banyak sekali property, method dan juga event yang terdapat pada HTML form element atau input element
+            - Dapat langsung menggunakan property dan method tersebut tanpa menggunakan getAttribute() dan setAttribute()
+            - https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement 
+            - https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement 
+            - pada contoh dibawah, ketika form yang telah diisi disubmit, maka akan muncul didalam .commentList
+        */
+
+        // 1. Implementasi Form Element
+        /*
+        // - menggunakan Global Event Handler
+        document.querySelector('[name="commentForm"]').onsubmit = function(event) { //  document.querySelector('[name="commentForm"]'): mengambil Node berdasarkan atribut. .onsubmit = function(event): penerapan event handler
+            const comment = document.getElementById('comment').value;
+            const from = document.getElementById('from').value;
+            const commentList = document.getElementById('commentList');
+
+            const commentItem = document.createElement('p');
+            commentItem.textContent = `Comment: ${comment} - By: ${from} `;
+            commentList.appendChild(commentItem);
+
+            // document.querySelector('[name="commentForm"]').reset(); // atau menggunakan:
+            document.forms['commentForm'].reset(); // agar kotak form kembali kosong (baca bagian Akses Form Via Name pada slide). salah satu element dari array document.forms adalah commentForm. tentang forms. https://developer.mozilla.org/en-US/docs/Web/API/Document/forms
+
+            event.preventDefault(); // agar membatalkan submit bawaan element form / membatalkan submit dari element form (cukup JS yang mengimplementasikannya)
+        };
+        */
+        
+        /*
+        // - menggunakan Event Target Handler
+        document.querySelector('[name="commentForm"]').addEventListener('submit', function(event) {
+            const comment = document.getElementById('comment').value;
+            const from = document.getElementById('from').value;
+            const commentList = document.getElementById('commentList');
+
+            const commentItem = document.createElement('p');
+            commentItem.textContent = `Comment: ${comment} - By: ${from} `;
+            commentList.appendChild(commentItem);
+
+            // document.querySelector('[name="commentForm"]').reset(); // atau menggunakan:
+            document.forms['commentForm'].reset(); // agar kotak form kembali kosong (baca bagian Akses Form Via Name pada slide). salah satu element dari array document.forms adalah commentForm. tentang forms. https://developer.mozilla.org/en-US/docs/Web/API/Document/forms
+
+            event.preventDefault(); // agar membatalkan submit bawaan element form / membatalkan submit dari element form (cukup JS yang mengimplementasikannya)
+        });
+        */
+
+        // isi atribut name="commentForm"
+        // console.log(document.querySelector('[name="commentForm"]'))
+
+        /*
+        // 2. Akses Form Via Name
+        // document.querySelector() atau document.getElementById() pada form element, dapat diganti menggunakan akses form via name seperti pada document.forms['commentForm'].reset() contoh point 1 diatas.
+        document.forms['commentForm'].onsubmit = function(event) { //  document.querySelector('[name="commentForm"]'): mengambil Node berdasarkan atribut. .onsubmit = function(event): penerapan event handler
+            const comment = document.forms['commentForm']['comment'].value; // tiap2 atribut yang ingin diambil, diakses secara berurut
+            const from = document.forms['commentForm']['from'].value;
+            const commentList = document.getElementById('commentList');
+
+            const commentItem = document.createElement('p');
+            commentItem.textContent = `Comment: ${comment} - By: ${from} `;
+            commentList.appendChild(commentItem);
+
+            document.forms['commentForm'].reset(); // agar kotak form kembali kosong (baca bagian Akses Form Via Name pada slide). salah satu element dari array document.forms adalah commentForm. tentang forms. https://developer.mozilla.org/en-US/docs/Web/API/Document/forms
+            event.preventDefault(); // agar membatalkan submit bawaan element form / membatalkan submit dari element form (cukup JS yang mengimplementasikannya)
+        };
+        */
+        
+        /**/
+        // 3. experiment sendiri (jika terdapat form kosong)
+        document.forms['commentForm'].onsubmit = function(event) { //  document.querySelector('[name="commentForm"]'): mengambil Node berdasarkan atribut. .onsubmit = function(event): penerapan event handler
+            const comment = document.forms['commentForm']['comment'].value;
+            const from = document.forms['commentForm']['from'].value;
+            const commentList = document.getElementById('commentList');
+            // console.log(comment);
+
+            if (comment === '' || from === '') {
+                alert('Form tidak boleh kosong!');
+            } else {
+                const commentItem = document.createElement('p');
+                commentItem.textContent = `Comment: ${comment} - By: ${from} `;
+                commentList.appendChild(commentItem);
+            }
+
+            document.forms['commentForm'].reset(); // agar kotak form kembali kosong (baca bagian Akses Form Via Name pada slide). salah satu element dari array document.forms adalah commentForm. tentang forms. https://developer.mozilla.org/en-US/docs/Web/API/Document/forms
+
+            event.preventDefault(); // agar membatalkan submit bawaan element form / membatalkan submit dari element form (cukup JS yang mengimplementasikannya)
+        };
+        
+    </script>
+</body>
+</html>

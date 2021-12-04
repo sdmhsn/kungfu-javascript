@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello World</h1>
+    <p id="tulisan">Sebuah paragraf</p> <!-- 3 -->
+    
+    <script>
+        /*
+            Document:
+            - Merupakan representasi object dari halaman web
+            - Merupakan salah satu dari tipe data di dalam DOM
+            - Dalam satu halaman web, terdapat satu document, dan kita tidak perlu membuatnya secara manual, karena otomatis akan ada di browser
+            - Untuk mengakses Document, kita bisa gunakan object document
+            - https://developer.mozilla.org/en-US/docs/Web/API/Document 
+        */
+
+        /*
+        // 1. Document
+        console.log(document); // berisikan tag2 dari sebuah halaman html saat ini
+        */ 
+
+        /*
+        // 2. Contoh property pada Document
+        // dapat digunakan untuk melihat semua data yang terdapat didalam Document
+        // referensi: https://developer.mozilla.org/en-US/docs/Web/API/Document#properties 
+        console.log(document.doctype);
+        console.log(document.documentElement);
+        console.log(document.head);
+        console.log(document.body);
+        console.log(document.images);  // belum terdapat tag2 images
+        console.log(document.contentType);
+        */
+
+        // 3. Contoh method pada Document
+        // https://developer.mozilla.org/en-US/docs/Web/API/Document#methods 
+        // - getElementById(): mendapatkan suatu element berdasarkan id
+        const tulisanParagraf = document.getElementById('tulisan');  // mendapatkan id 'tulisan'
+        console.log(tulisanParagraf);
+
+    </script>
+</body>
+</html>

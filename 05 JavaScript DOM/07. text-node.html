@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Node</title>
+</head>
+<body>
+    Why yes.
+    <script>
+        /*
+            Text Node:
+            - text tanpa tag
+            - Saat kita membuat HTML, kadang kita membuat teks tanpa tag
+            - Saat halaman web tersebut direpresentasikan dalam DOM, text tanpa tag bukanlah merupakan Element, melainkan Node
+            - Lebih tepatnya adalah Text Node (turunan dari Node)
+            - https://developer.mozilla.org/en-US/docs/Web/API/Text 
+            - tidak direkomendasikan membuat Text Node karena cukup sulit untuk mengambil datanya (karena tidak terdapat id)
+            - untuk mengambil data pada Text Node, maka harus mengurai setiap Node pada document body
+        */
+        
+        /**/
+        // 1. Mengambil data Text Node
+        const text = document.body.firstChild; // karena tidak terdapat tag maka menggunakan cara seperti ini. mengambil firstChild di dalam body, apabila text dibawah element <script> maka menggunakan lastChild  
+        console.log(text.wholeText);  // untuk mendapatkan isi dari text nya ('Why yes.')
+        
+
+        // 2. Membuat Text Node
+        const text2 = document.createTextNode('Saddam Bin Husein');  // membuat Text Node
+        document.body.appendChild(text2);  // ditambahkan ke dalam body
+
+    </script>
+</body>
+</html>

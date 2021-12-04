@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Table Element</title>
+</head>
+<body>
+    <table border="2" id="orderRevenue">
+        <caption>Order Revenue</caption>
+        <thead>
+            <tr>
+                <th>Month</th>
+                <th>Income</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>January</td>
+                <td>100.000.000</td>
+            </tr>
+            <tr>
+                <td>February</td>
+                <td>200.000.000</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>Total</td>
+                <td>300.000.000</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <script>
+        /*
+            HTML Table Element:
+            - Salah satu HTML Element yang kompleks selain Form adalah Table
+            - HTML Table Element juga memiliki banyak sekali property, method dan event yang khusus
+            - Referensi: https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableElement 
+        */
+
+        const table = document.getElementById('orderRevenue');
+        console.log(table);
+        console.log(table.border);
+        console.log(table.caption);
+        console.log(table.tHead);
+        console.log(table.tBodies);
+        console.log(table.tFoot);
+        console.log(table.rows);
+        console.log(table.coloumns);
+        table.deleteCaption();  // menghapus element caption
+        </script>
+</body>
+</html>

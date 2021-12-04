@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node</title>
+</head>
+<body>
+    <ul id="menu">
+        tes
+        <li id="first">First</li>
+        <li id="second">Second</li>
+        <li id="third">Third</li>
+    </ul>
+
+    <script>
+        /*
+            Node:
+            - Merupakan base class (parent class) untuk semua tipe data di DOM, baik seperti Document, Element, dan Attr
+            - Semua fitur (property dan method) yang dimiliki di Node, dimiliki juga turunannya (Document, Element, dan Attr)
+            - Node di dalam DOM berbentuk seperti pohon keluarga. Terdapat parent (Node diatasnya) dan child (Node dibawahnya) dan sibling (Node disebelahnya)
+            - Referensi: https://developer.mozilla.org/en-US/docs/Web/API/Node 
+        */
+
+        /*
+        // 1. Contoh Node
+        const menu =  document.getElementById('menu');  // Parent. mengambil element ul (diambil satu block / termasuk element2 di dalamnya)
+        console.log(menu);
+
+        const second = document.getElementById('second');  // Child. mengambil element li
+        console.log(second);
+        */
+
+        /*
+        // 2. Contoh Node property
+        // berisi informasi reference ke Node lain nya, seperti ke node parent nya, node children nya atau node sebelahnya
+        // referensi: https://developer.mozilla.org/en-US/docs/Web/API/Node#properties
+        // - property children dan childNodes:
+        const menu =  document.getElementById('menu');
+        console.log(menu);
+        console.log(menu.children);  // untuk menampilkan children dari element dengan id menu. dapat juga menggunakan childNodes (lebih lengkap). hasilnya berbentuk array
+        console.log(menu.childNodes); // 0: text mewakili text tes pada ul
+        console.log(menu.childNodes[0]); // sehingga ketika index array diakses, maka akan menampilkan text " tes " nya 
+
+        // - property previousSibling, nextSibling dan textContent
+        const second = document.getElementById('second');
+        console.log(second);
+        console.log(second.textContent);  // property textContent berfungsi untuk mengambil text yang terdapat pada element li dengan id second "Second"
+
+        console.log(second.previousSibling.previousSibling);  // mendapatkan element li dari sibling pertama dari second. di kiri dan kanan element li terdapat text (karena adanya tab dan spasi), sehingga harus menggunakan double previousSibling
+        console.log(second.nextSibling.nextSibling); // mendapatkan element li dari sibling kedua dari second.
+
+        console.log(second.nextSibling.nextSibling.textContent);  // mengambil text yang yang terdapat pada sibling kedua dari second
+        */ 
+
+        // 3. Contoh Node method
+        // digunakan untuk memanipulasi dari data Node di dalam Node tersebut
+        // referensi: https://developer.mozilla.org/en-US/docs/Web/API/Node#methods
+        // - removeChild(): menghapus child
+        const menu = document.getElementById('menu');
+
+        menu.removeChild(document.getElementById('third'));  // menghapus element child (li) dengan id third
+
+        console.log(menu);  // tag li dengan id 'third' sudah tidak ada. walaupun data di htmlnya masih ada, ketika method removeChild() dijalankan, maka tag li tersebut akan hilang
+    </script>
+</body>
+</html>

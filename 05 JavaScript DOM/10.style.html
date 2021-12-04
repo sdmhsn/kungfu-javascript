@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style</title>
+</head>
+<body>
+    <input type="button" value="blue">
+    <input type="button" value="red">
+    <input type="button" value="yellow">
+
+    <div id="canvas" style="background-color: black; width: 500px; height: 500px;"></div>
+    
+    <script>
+        /*
+            Style:
+            - DOM dapat digunakan untuk memanipulasi atribut style pada element
+            - tidak menggunakan method setAttribut('style', 'value') untuk mengubah style, tapi langsung menggunakan element.style.name = value, cth: element.style.backgroundColor = 'red'
+            - referensi: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style
+            - penamaan property style menggunakan DOM style yang menggunakan format pascalCase. contoh property style normal background-color akan berubah menjadi backgroundColor jika menggunakan DOM style
+        */
+
+        const canvas = document.getElementById('canvas');
+        const buttons = document.querySelectorAll('input');
+
+        // a. video
+        for (const button of buttons) {
+            button.onclick = function() {
+                canvas.style.backgroundColor = button.getAttribute('value'); // atau
+                // canvas.style.backgroundColor = button.value; // tambahan: experiment sendiri
+            }
+        }
+        
+
+        // b. experiment sendiri
+        /**/
+        console.log(buttons); // isi buttons
+
+        for(const element of buttons) {  // isi dari masing atribut value pada button
+            console.log(element.value); // .value memanggil berdasarkan atribut (bukan dari getAttribute()). dapat juga memanggil atribut lainnya seperti .type. kesemuanya dapat dilihat pada isi tiap2 element pada buttons di console.log. lihat materi HTML Element
+        }
+        
+        
+        /*
+        // - menggunakan perulangan for of dan Global Event Handler:
+        for(const element of buttons) {
+            element.onclick = function() {
+                canvas.style.backgroundColor = element.value;
+            }
+        }
+        */
+
+        /*
+        // - menggunakan perulangan forEach dan Event Target Handler:
+        buttons.forEach(element => {
+            element.addEventListener('click', function() {
+                // console.log(element.value);
+                // element.style.name = element.value;
+                canvas.style.backgroundColor = element.value;
+            });
+            // console.log(element.value);
+        });
+        */
+        
+    </script>
+</body>
+</html>

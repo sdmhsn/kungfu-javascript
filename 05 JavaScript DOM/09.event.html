@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event</title>
+</head>
+<body>
+    <h1 id="text">Click Yellow Box</h1>
+    <div id="canvas" style="background-color: yellow; width: 500px; height: 500px;"></div>
+
+    <script>
+        /*
+            Event:
+            - Terdapat banyak sekali event (tidak hanya click)
+            - Event biasanya disesuaikan dengan target element nya misalkan pada element video, terdapat event play, pause, dan stop, namun event2 tersebut tidak terdapat pada element button
+            - Referensi: https://developer.mozilla.org/en-US/docs/Web/Events
+            - Pada callback function pada yang terdapat pada Event Handler, kita juga bisa menerima data event yang memicu event itu terjadi
+            - Data event tersebut bisa berbeda-beda, tergantung jenis event nya. Contohnya event click, memiliki data event berupa Mouse Event dimana seluruh data-datanya misalkan posisi cursor x dan y nya dll dapat ditangkap 
+        */
+
+        // 1. Contoh implementasi event pada element canvas
+        // referensi: https://developer.mozilla.org/en-US/docs/Web/API/Element#mouse_events
+        const canvas = document.getElementById('canvas');
+        const text = document.getElementById('text')
+        
+        // Event click 
+        /*
+        // - menggunakan Event Target
+        canvas.addEventListener('click', function(event) { // parameter event: data event pada event click
+            text.textContent = `You click at (${event.x}, ${event.y})`;
+        })
+        */
+
+        /*
+        // - menggunakan Global Event
+        canvas.onclick = function(event) {
+            text.textContent = `You click at (${event.x}, ${event.y})`;
+        }
+        */
+
+        // Event mouseover
+        /**/
+        // - menggunakan Event Target
+        canvas.addEventListener('mousemove', function(event) {
+            text.textContent = `You click at (${event.x}, ${event.y})`;
+        })
+        
+
+        /*
+        // - menggunakan Global Event
+        canvas.onmousemove = function(event) {
+            text.textContent = `You click at (${event.x}, ${event.y})`;
+        }
+        */
+    </script>
+</body>
+</html>

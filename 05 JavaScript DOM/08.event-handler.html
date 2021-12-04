@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handler</title>
+</head>
+<body>
+    <input type="button" id="tombol" value="Click Me">
+
+    <script>
+        /*
+            Event Handler:
+            - Node memiliki kemampuan untuk bereaksi setiap kejadian (event), misal ketika Node di klik, cursor mouse diatas Node dll
+            - Event handler merupakan pembuatan / penanganan aksi untuk event, dimana ketika dijalankan akan bereaksi sesuai diinginkan 
+            - Terdapat 2 cara untuk menambahkan event handler ke Node yaitu, menggunakan Event Target (semacam kontrak untuk document, element dll) atau Global Event Handler
+            - referensi: https://developer.mozilla.org/en-US/docs/Web/API/EventTarget 
+                        https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers 
+            
+        */
+
+        /*
+        // 1. Contoh Implementasi Event Target: merupakan parent class dari Node, artinya semua Node memiliki kemampuan Event Target
+        // addEventListener(type, callback): berfungsi untuk menambah Event Handler. Menggunakan addEventListner(), kita dapat menambah beberapa event dan callback (event handler) pada sebuah Node
+        // referensi: https://developer.mozilla.org/en-US/docs/Web/API/EventTarget
+        const tombol = document.getElementById('tombol');
+
+        // Event Target addEventListener() pertama:
+        tombol.addEventListener('click', function() {  // event nya adalah 'click'. function merupakan callback. ketika event diklik, maka akan mengeksekusi callback
+            tombol.setAttribute('value', "I've Clicked");  // isi dari atribut value diubah menjadi "I've Clicked"
+        });
+        
+        // Event Target addEventListener() kedua:
+        tombol.addEventListener('click', function() {  // event nya adalah 'click'. function merupakan callback. ketika event diklik, maka akan mengeksekusi callback
+            console.log('Button di klik');  // pada console mendeteksi adanya click dan banyaknya click. Selain itu perubahan atribut pada Event Target addEventListener pertama juga dieksekusi (tidak ditimpa dengan yang kedua).
+        });
+        */ 
+        
+        /**/
+        // 2. Contoh Implementasi Global Event: selain menggunakan Event Target, dapat juga menggunakan Global Event Handler untuk menambahkan Event Handler
+        // Global Event Handler bukanlah sebuah super class, hanya kontrak yang bisa kita gunakan untuk menambah event handler sesuai dengan type event nya
+        // referensi: https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers
+        const tombol = document.getElementById('tombol');
+
+        // Event Global onclick pertama:
+        tombol.onclick = function() { // event nya menggunakan property onclick.
+            tombol.setAttribute('value', "I've Clicked");  // atribut valuenya tidak berubah jika jika terdapat event onclick global kedua (karena ditimpa oleh event kedua tersebut). jika event kedua tersebut dihilangkan, maka perubahan atribut value pada event pertama ini akan terlihat. Inilah bukti bahwa Event Global seperti onclick ini, hanya bisa dipakai sekali
+        }
+
+        // Event Global onclick kedua:
+        tombol.onclick = function() { // event nya menggunakan property onclick
+            console.log('Button di klik');  // pada console mendeteksi adanya click dan banyaknya click. onclick global kedua ini menimpa onclick global pertama, sehingga perubah atribut pada yang pertama tersebut tidak dieksekusi
+        }
+    </script>
+</body>
+</html>

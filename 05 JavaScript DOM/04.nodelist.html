@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NodeList</title>
+</head>
+<body>
+    <ul id="menu1">
+        <li id="first">First</li>
+        <li id="second">Second</li>
+        <li id="third">Third</li>
+    </ul>
+
+    <ul id="menu2">
+        <li id="saddam">Saddam</li>
+        <li id="bin">Bin</li>
+        <li id="husein">Husein</li>
+    </ul>
+
+    <script>
+        /*
+            NodeList:
+            - kumpulan dari Node
+            - biasanya digunakan untuk menyeleksi banyak Node sekaligus. Cth penggunaan: kita ingin mengambil semua children dari sebuah Node, hasilnya nanti berupa NodeList. kenapa hasilnya NodeList, bukan element list? karena di dalamnya tidak hanya berisikan Node saja, tetapi Node, element serta lainnya.
+            - Manipulasi data yang ada pada NodeList, tetap dilakukan pada element nya, bukan NodeList nya
+            - referensi: https://developer.mozilla.org/en-US/docs/Web/API/NodeList
+        */
+
+        /*
+        // 1. Contoh implementasi dari NodeList
+        // a menggunakan method querySelectorAll():
+        const list = document.querySelectorAll('li');  // method querySelectorAll(tag) berfungsi untuk mengambil seluruh tag yang diinginkan (dalam hal ini tag li) pada document. hasilnya berupa NodeList, yang dikumpulkan ke dalam sebuah array
+
+        console.log(list);
+        // console.log(list[0]);
+
+        // menampilkan seluruh isi dari list dapat menggunakan looping:
+        // - menggunakan for of looping
+        // for (const data of list) {
+        //     console.log(data);
+        // }
+
+        // atau
+
+        // - menggunakan forEach() looping
+        // list.forEach(element => {
+        //     console.log(element);
+        // });
+        
+
+        // b menggunakan method getElementById() dan property childNodes:
+        const list1 = document.getElementById('menu1').childNodes; // dengan property childNodes, maka yang diambil hanya di ranah id 'menu1' (dalam hal ini element children yang terdapat pada Node 'menu1'). hasilnya berupa NodeList dari 'menu1' saja. element text pada index 0 mewakili text yang ada pada ul. sedangkan element text lainnya mewakili tab dan spasi yang ada pada tiap li, sehingga total elemen sebanyak 7.
+        console.log(list1);
+
+        const list2 = document.getElementById('menu2').childNodes;
+        console.log(list2);
+        */
+
+        // 2. Live & Static NodeList (tipe dari NodeList)
+        /**/
+        // a. Live: perubahan yang terjadi pada NodeList nya, akan merubah semua NodeList yang sama. Cth: jika salah 1 dari element dari NodeList nya dirubah, maka element lainnya yang ada pada NodeList tersebut juga ikut berubah.
+        // - Saat kita menggunakan element.childNodes, NodeList tersebut bersifat Live
+        const menu1 = document.getElementById('menu1');
+        const list1 = menu1.childNodes;
+        
+        // const newElement1 = document.createElement('li');
+        menu1.appendChild(document.createElement('li'));
+        menu1.appendChild(document.createElement('li'));
+
+        console.log(list1); // NodeList bertambah 2 dari createElement('li'). ciri Live
+
+        // b. Static: perubah yang terjadi pada NodeList nya, tidak akan merubah semua NodeList yang sama. Cth: jika salah 1 dari element dari NodeList nya dirubah, maka element lainnya yang ada pada NodeList tersebut tidak ikut berubah
+        // - Saat kita menggunakan document.querySelectorAll(), NodeList tersebut bersifat Static
+        /*
+        const menu2 = document.getElementById('menu2');
+        const list2 = menu2.querySelectorAll('li');
+
+        menu2.appendChild(document.createElement('li'));
+        menu2.appendChild(document.createElement('li'));
+        
+        console.log(list2);  // NodeList tidak bertambah, meskipun sudah dilakukan createElement('li') pada Node menu2. ciri Static
+        // console.log(menu2);  // sebenarnya Node 'menu2' tersebut sudah ditambah 2 element dari createElement('li')
+        */
+
+        // agar pada Static NodeList juga ikut berubah, maka dilakukan query ulang
+        const menu2 = document.getElementById('menu2');
+        let list2 = menu2.querySelectorAll('li');  // diubah menjadi let
+
+        menu2.appendChild(document.createElement('li'));
+        menu2.appendChild(document.createElement('li'));
+        
+        list2 = menu2.querySelectorAll('li'); // dan diquery ulang
+
+        console.log(list2);  // NodeList pada querySelectorAll() sudah bertambah menggunakan createElement()
+        // console.log(menu2);
+    </script>
+</body>
+</html>

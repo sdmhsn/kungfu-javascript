@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window</title>
+</head>
+<body>
+    <p id="content"></p>
+    <p id="location"></p>
+
+    <script>
+        /*
+            Window:
+            - merupakan representai window yang berisikan DOM document
+            - javascript function yang berasal dari object window seperti alert(), confirm() dan prompt(). jadi cara kerja sebenarnya dari function tersebut adalah window.alert() dan lainnya
+            - Untuk membuat Window, kita tidak perlu membuat object nya, cukup menggunakan keyword window
+            - tidak ada hubungannya dengan browser, karena eksklusif kepunyaan browser
+            - terdapat banyak property dan method bahkan event yang dapat digunakan pada window
+            - referensi: https://developer.mozilla.org/en-US/docs/Web/API/Window 
+        */
+
+        const content = document.getElementById('content');
+        const lokasi = document.getElementById('location'); // variable tidak boleh diberi nama location (akan error), karena nama location akan terbaca pada const url = window.location; dibawah
+        const width = window.screen.width;
+        const height = window.screen.height;
+        const url = window.location; 
+
+        content.innerHTML = `Your window width <strong>${width}</strong> and height <strong>${height}</strong>`;
+        lokasi.innerHTML = decodeURI(`Your location: <strong>${url}</strong>`);  // memanfaat function decodeURI untuk mengubah url yang telah di encode
+
+        console.log(content);
+        console.log(lokasi)
+        console.log(width);
+        console.log(height);
+        console.log(url);
+    </script>
+</body>
+</html>
