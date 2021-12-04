@@ -17,7 +17,7 @@
             - untuk mengatasi error tersebut dapat menggunakan optional chaining
         */
 
-        /**/
+        /*
         // 1. contoh data nullish
         const person = {}; // object kosong
 
@@ -26,7 +26,7 @@
         // sekilas error data nullish diatas tidak terlihat pada halaman web, namun ketika di lihat pada console terdapat error
         // error tersebut mengakibatkan program terhenti, sehingga code yang berada dibawahnya tidak dieksekusi seperti berikut:
         document.writeln('<h1>hello world</h1>');
-        
+        */
         
         /*
         // 2. untuk mengatasi error data nullish tersebut dapat menggunakan optional chaining
@@ -36,7 +36,7 @@
         document.writeln('<h1>hello world</h1>'); // karena tidak terdapat error, maka kode dibawah optional chaining dapat dieksekusi
         */
         
-        /*
+        /**/
         // 3. cara kerja optional chainning
         const person = {
             address: {
@@ -45,7 +45,7 @@
         };
         
         console.log(person?.address?.country); // pertama cek person, apakah nullish (optional karena output pada console hanya menampilkan object kosong {}. bukan undefined). jika tidak cek yang kedua (address), apakah nullish. ketiga tampilkan value dari property terakhir. jika di person sudah nullish, maka property selanjutnya sudah undefined
-        */
+        
         
         /*
         // 4. penanganan data nullish tanpa optional chaining (kode menjadi lebih panjang)

@@ -20,8 +20,9 @@
 
         /**/
         // 1. menggunakan percabangan untuk identifikasi undefined:
-        let nama; // seandainya di set nilainya, maka akan menampilkan alert 'Defined'
+        let nama; // undefined. seandainya di set nilainya, maka akan menampilkan alert 'Defined'
         // let nama = undefined; // ini juga merupakan undefined karena diset valuenya dengan undefined
+        console.log(typeof nama); // undefined merupakan tipe data
         // let nama = 'saddam'; // variable yang berisikan value string
 
         if (nama === undefined){ // menggunakan === karena undefined merupakan tipe data, sehingga sekalian dilakukan pencocokan nilai dan tipe datanya

@@ -10,8 +10,8 @@
     
     <script>
         /*
-            falsy truthy:
-            - tidak dilakukan operasi perbandingan di dalam kondisi if else statement lagi / berada diluar kondisi boolean
+            tentang falsy truthy:
+            - tidak dilakukan operasi perbandingan di dalam kondisi if else statement lagi / berada diluar kondisi boolean / hanya berisikan sebuah value atau hanya berisikan sebuah variable di dalam kondisi
             - falsy: value boolean yang dianggap false
             - truthy: value boolean yang dianggap true
             - di python juga ada
@@ -21,6 +21,7 @@
             - 0 (angka nol, namun bilangan negatif tidak)
             - false (boolean false)
             - null, NaN dan undefined
+            - tambahan: penggunaan operator negasi (!) terhadap sebuah variable di dalam kondisi yang membuat variable tersebut menjadi false
 
             data truthy:
             - kebalikan dari data falsy (data yang bukan bernilai falsy)
@@ -28,33 +29,47 @@
         
         /*
         // 1. contoh falsy
-        // const data = '';
+        // const data = '';  // string kosong
         // const data = 0;
         // const data = false;
         // const data = null;
         // const data = NaN;
-        const data = undefined; // atau let data; (deklarasi variable menggunakan keyword const tanpa assign suatu nilai akan menghasilkan error. sumber video: menit ke 7.00)
+        // const data = undefined; // atau let data; (deklarasi variable menggunakan keyword const tanpa assign suatu nilai akan menghasilkan error. sumber video: menit ke 7.00)
+        let data;  // suatu variable yang menggunakan let atau var (kecuali const. const tanpa value akan error) tanpa value akan menjadi undefined
+        console.log(typeof data);
 
         if (data) { // tempat true. tidak lagi dilakukan operasi perbandingan yang menghasilkan boolean true
             console.log('data truthy');
         } else { // tempat false
             console.log('data falsy');
         }
+        
+
+        // falsy di dalam kondisi
+        let nilai;
+        
+        if (!nilai) { // nilai dikonversi menjadi false menggunakan operator negasi (lihat materi tentang 11.operator-logika )
+            console.log('data falsy');
+        } else {
+            console.log('data truthy');
+        }
         */
         
+        /**/
         // 2. contoh truthy
-        // const data = 'saddam';
+        const data = 'saddam';  // ketika dikondisi if, akan dipaksa menjadi boolean true atau data === true. tapi value nya tetap 'saddam', tidak dikonversi menjadi true. true hanya sementara pada kondisi saja. (sumber: Javascript The Complete Guide by Max. coercion vs conversion)
         // const data = -1;
         // const data = true;
-        // const data = []; // baik kosong atau yang memiliki isi akan bernilai true
-        // const data = {}; // baik kosong atau yang memiliki isi akan bernilai true
-        const data = 'false'; // ini merupakan string
+        // const data = []; // array kosong. baik kosong atau yang memiliki isi (element) akan bernilai true
+        // const data = {}; // object kosong. baik kosong atau yang memiliki isi (property) akan bernilai true
+        // const data = 'false'; // ini merupakan string
 
         if (data) {
             console.log('data truthy');
         } else {
             console.log('data falsy');
         }
+        
     </script>
 </body>
 </html>
