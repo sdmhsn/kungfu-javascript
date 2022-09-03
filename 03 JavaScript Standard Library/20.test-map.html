@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Experiment Library map</title>
+  </head>
+  <body>
+    <script>
+      /*
+            - Experiment Library .map()
+        */
+
+      // Sample 1 (data array yang berisikan string):
+      const namas = ['Saddam', 'Rahmat', 'Fuad'];
+
+      const nama1 = namas.map((nama) => nama);
+      const nama2 = namas.map((nama) => `Hello ${nama}!`);
+      
+      console.log(nama1); // ['Saddam', 'Rahmat', 'Fuad']
+      console.log(nama2); // ['Hello Saddam!', 'Hello Rahmat!', 'Hello Fuad!']
+      
+      namas.map((nama) => console.log(nama));
+      /*
+        - penggunaan console.log() di dalam map() akan menghasilkan data string (bukan array)
+        Output: 
+            Saddam
+            Rahmat
+            Fuad
+      */
+
+      // Sample 2 (data array yang berisikan number):
+      const umurs = [10, 20, 30];
+
+      const umur1 = umurs.map((umur) => umur * umur);
+
+      console.log(umur1);  // [100, 400, 900]
+
+      umurs.map((umur) => console.log(umur * umur));
+      /*
+        - penggunaan console.log() di dalam map() akan menghasilkan data number (bukan array)
+        Output:
+            100
+            400
+            900
+      */
+
+      // Sample 3 (data array yang berisikan object):
+      const orangs = [
+        { nama: 'Saddam', umur: 32 },
+        { nama: 'Rahmat', umur: 28 },
+      ];
+
+      console.log(orangs);  // // [{ nama: 'Saddam', umur: 32 }, { nama: 'Rahmat', umur: 28 }]
+
+      const orang1 = orangs.map((orang) => orang);
+      console.log(orang1);  // [{ nama: 'Saddam', umur: 32 }, { nama: 'Rahmat', umur: 28 }]
+
+      const orang2 = orangs.map((orang) => orang.nama);
+      console.log(orang2);  // ['Saddam', 'Rahmat']
+
+      const orang3 = orangs.map((orang) => orang.umur);
+      console.log(orang3);  // [32, 28]
+    </script>
+  </body>
+</html>
