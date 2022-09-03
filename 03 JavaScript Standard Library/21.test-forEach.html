@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment Library forEach</title>
+</head>
+<body>
+    
+
+    <script>
+        /*
+            - Experiment Library .forEach()
+            * Layanknya perulangan for, forEach dapat melakukan iterasi perulangan, namun dengan cara deklaratif terhadap data array
+            * Dengan menggunakan cara deklaratif, kode perintah yang ditulis menjadi lebih sederhana (singkat)m, dibandingkan cara imperatif
+            * Namun dengan menggunakan forEach, beberapa operator syntax seperti break dan continue tidak dapat digunakan didalamnya
+        */
+
+        const angkas = [10, 20, 30];
+        angkas.forEach((angka) => console.log(angka));
+        /*
+            - Harus menggunakan console.log() ketika ingin menampilkan hasil. Jika direturn dengan memasukkan kedalam sebuah variable hasilnya undefined
+            Output:
+                10
+                20
+                30
+        */
+
+        angkas.forEach((angka) => console.log(angka * angka));
+        /*
+            Output:
+                100
+                400
+                900
+        */
+    </script>
+</body>
+</html>
