@@ -10,33 +10,49 @@
     <script>
       /*
             - Experiment Library Filter
-        */
+            * filter() berfungsi untuk melakukan penyaringan / filter suatu array sesuai kondisi. 
+            * apabila kondisi tersebut terpenuhi, maka akan diciptakan sebuah array baru sesuai dengan kondisi tersebut, sehingga tidak perlu lagi dilakukan secara manual menggunakan looping. cukup menggunakan method
+      */
+
       const orangs = [
         { nama: 'Saddam', umur: 32 },
         { nama: 'Rahmat', umur: 28 },
       ];
-
+      
+      // Sample 1:
       orangs.filter((orang) => console.log(orang.nama));
       /*
-        menampilkan value dari properti nama yang terdapat pada array yang berisikan object. 
+        menampilkan value dari properti nama yang terdapat pada array yang berisikan object. yang ditampilkan adalah string bukan array 
         Output: 
             Saddam
             Rahmat
       */
 
-      console.log(orangs);
-      /*
-        berisikan array yang berisikan object
-        Output:
-            [{ nama: 'Saddam', umur: 32 }, { nama: 'Rahmat', umur: 28 }]
-      */
-
+      // Sample 2:
       orangs.filter((orang) => console.log(orang));
       /* 
-        berisikan value (object) yang terdapat dalam array
+        berisikan value (object) yang terdapat dalam array (bukan mengembalikan data array)
         Output:
             {nama: 'Saddam', umur: 32}
             {nama: 'Rahmat', umur: 28}
+      */
+
+      // Sample 3 (yang tidak dapat dilakukan oleh filter()):
+      const orang1 = orangs.filter((orang) => orang.nama);
+      console.log(orang1);
+      /*
+        ketika filter ditampung ke dalam sebuah variable, output dari variable tersebut tidak menampilkan propertynya namun menggembalikan kembali array object tersebut. hal ini tidak dapat dilakukan menggunakan filter, sehingga harus menggunakan method .map()
+        Output:
+            [{ nama: 'Saddam', umur: 32 }, { nama: 'Rahmat', umur: 28 }]  // output yang tampil bukan property nama, melainkan array object
+      */
+
+      // Sample 4 (filter dengan kondisi / implementasi filter):
+      const orang2 = orangs.filter((orang) => orang.umur === 32); 
+      console.log(orang2);
+      /*
+        implementasi kondisi yang biasa dilakukan di .filter() (tidak dapat dilakukan pada .map())
+        Output:
+            [{ nama: 'Saddam', umur: 32 }] // mengembalikan array baru yang berisikan object. array tersebut sesuai dengan  kondisi yang ditulis di dalam .filter()
       */
     </script>
   </body>
