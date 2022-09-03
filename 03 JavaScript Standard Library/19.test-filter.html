@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Experiment Library Filter</title>
+  </head>
+  <body>
+    <script>
+      /*
+            - Experiment Library Filter
+        */
+      const orangs = [
+        { nama: 'Saddam', umur: 32 },
+        { nama: 'Rahmat', umur: 28 },
+      ];
+
+      orangs.filter((orang) => console.log(orang.nama));
+      /*
+        menampilkan value dari properti nama yang terdapat pada array yang berisikan object. 
+        Output: 
+            Saddam
+            Rahmat
+      */
+
+      console.log(orangs);
+      /*
+        berisikan array yang berisikan object
+        Output:
+            [{ nama: 'Saddam', umur: 32 }, { nama: 'Rahmat', umur: 28 }]
+      */
+
+      orangs.filter((orang) => console.log(orang));
+      /* 
+        berisikan value (object) yang terdapat dalam array
+        Output:
+            {nama: 'Saddam', umur: 32}
+            {nama: 'Rahmat', umur: 28}
+      */
+    </script>
+  </body>
+</html>
