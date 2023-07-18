@@ -46,12 +46,14 @@
         
 
         // falsy di dalam kondisi
-        let nilai;
+        let nilai; // undefined = false
         
-        if (!nilai) { // nilai dikonversi menjadi false menggunakan operator negasi (lihat materi tentang 11.operator-logika )
-            console.log('data falsy');
-        } else {
+        if (!nilai) { // nilai dikonversi menjadi kebalikan menggunakan operator negasi (lihat materi tentang 11.operator-logika )
+            // true
             console.log('data truthy');
+        } else {
+            // false
+            console.log('data falsy');
         }
         */
         
@@ -65,8 +67,10 @@
         // const data = 'false'; // ini merupakan string
 
         if (data) {
+            // true
             console.log('data truthy');
         } else {
+            // false
             console.log('data falsy');
         }
         
